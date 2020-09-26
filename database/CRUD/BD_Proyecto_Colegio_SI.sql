@@ -13,6 +13,7 @@ CREATE TABLE paises
 	PRIMARY KEY (idpais)
 );
 
+
 insert into paises values(null,'PERU','1');
 insert into paises values(null,'BRAZIL','1');
 insert into paises values(null,'ARGENTINA','1');
