@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="container-fluid ">
   <div class="form-group">
-    <h1>LISTADO DE GRADOS</h1>
+    <h1>LISTADO DE GRADOS GAAAAAAAAAAAAAAAAAAAAA</h1>
     
     <form class="form-inline my-2 my-lg-0 float-right">
       <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="{{$buscarpor}}">
