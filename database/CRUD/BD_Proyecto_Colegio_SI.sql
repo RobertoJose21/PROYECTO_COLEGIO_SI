@@ -13,6 +13,9 @@ CREATE TABLE paises
 	PRIMARY KEY (idpais)
 );
 
+insert into paises values(null,'PERU','1');
+insert into paises values(null,'BRAZIL','1');
+insert into paises values(null,'ARGENTINA','1');
  
 CREATE TABLE niveles
 (
@@ -52,6 +55,9 @@ CREATE TABLE departamentos
 	FOREIGN KEY (idpais) REFERENCES paises(idpais)
 );
 
+insert into departamentos values(null,'LIBERTAD','1','1');
+insert into departamentos values(null,'BRAZILIA','2','1');
+insert into departamentos values(null,'ARGENT','3','1');
   
 CREATE TABLE provincias
 (
