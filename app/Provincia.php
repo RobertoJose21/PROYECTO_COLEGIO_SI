@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Distrito;
+
 class Provincia extends Model
 {
     protected $table='provincias';
@@ -13,5 +15,9 @@ class Provincia extends Model
 
     public function distritos(){
         return $this->hasMany(Distrito::class,'idprovincia','idprovincia');
+    }
+
+    public function departamento(){
+        return $this->hasOne('App\Departamento','iddepartamento','iddepartamento');
     }
 }

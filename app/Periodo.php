@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Matricula;
+
 class Periodo extends Model
 {
     protected $table='periodos';
@@ -14,4 +16,5 @@ class Periodo extends Model
     public function matriculas(){
         return $this->hasMany(Matricula::class,'idperiodo','idperiodo');
     }
+    
 }

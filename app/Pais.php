@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Departamento;
+
 class Pais extends Model
 {
     protected $table='paises';
