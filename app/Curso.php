@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Capacidad;
+use App\Detalle_Catedra;
 
 class Curso extends Model
 {
@@ -19,5 +21,9 @@ class Curso extends Model
     public function detalles_catedra()    
     {
         return $this->hasMany(Detalle_Catedra::class,'idcurso','idcurso');
+    }
+
+    public function grado(){
+        return $this->hasOne('App\Grado','idgrado','idgrado');
     }
 }

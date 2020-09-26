@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Grado;
+
 class Nivel extends Model
 {
     protected $table='niveles';

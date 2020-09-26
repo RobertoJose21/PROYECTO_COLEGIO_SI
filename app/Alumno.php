@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Matricula;
 
 class Alumno extends Model
 {
@@ -13,5 +14,9 @@ class Alumno extends Model
 
     public function matriculas(){
         return $this->hasMany(Matricula::class,'idalumno','idalumno');
+    }
+
+    public function distrito(){
+        return $this->hasOne('App\Distrito','iddistrito','iddistrito');
     }
 }
