@@ -7,7 +7,7 @@ use DBproyectocolegio;
 
 CREATE TABLE paises
 (
-	idpais               INT  AUTO_INCREMENT NOT NULL,
+	idpais               INT  AUTO_INCREMENT,
 	pais                 VARCHAR(50) NOT NULL,
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idpais)
@@ -16,7 +16,7 @@ CREATE TABLE paises
  
 CREATE TABLE niveles
 (
-	idnivel              INT AUTO_INCREMENT NOT NULL,
+	idnivel              INT AUTO_INCREMENT ,
 	nivel                VARCHAR(30) NULL,
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idnivel)
@@ -26,7 +26,7 @@ CREATE TABLE niveles
  
 CREATE TABLE profesores
 (
-	idprofesor           INT AUTO_INCREMENT NOT NULL,
+	idprofesor           INT AUTO_INCREMENT ,
 	profesor             VARCHAR(50) NOT NULL,
 	codigoprofesor       CHAR(18) NULL,
 	estado               CHAR(1) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE profesores
 
 CREATE TABLE periodos
 (
-	idperiodo            INT AUTO_INCREMENT NOT NULL,
+	idperiodo            INT AUTO_INCREMENT ,
 	periodo              VARCHAR(50) NULL,
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idperiodo)
@@ -44,7 +44,7 @@ CREATE TABLE periodos
 
 CREATE TABLE departamentos
 (
-	iddepartamento       INT AUTO_INCREMENT NOT NULL,
+	iddepartamento       INT AUTO_INCREMENT ,
 	departamento         VARCHAR(50) NULL,
 	idpais               INT NOT NULL,
 	estado               CHAR(1) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE departamentos
 CREATE TABLE provincias
 (
 	iddepartamento       INT NOT NULL,
-	idprovincia          INT AUTO_INCREMENT NOT NULL,
+	idprovincia          INT AUTO_INCREMENT ,
 	provincia            VARCHAR(50) NULL,
 	estado               CHAR(1) NOT NULL,
 PRIMARY KEY (idprovincia),
@@ -67,7 +67,7 @@ FOREIGN KEY (iddepartamento) REFERENCES departamentos(iddepartamento)
 CREATE TABLE distritos
 (
 	idprovincia          INT NOT NULL,
-	iddistrito           INT AUTO_INCREMENT NOT NULL,
+	iddistrito           INT AUTO_INCREMENT ,
 	distrito             VARCHAR(50) NULL,
 	estado               CHAR(1) NOT NULL,
     PRIMARY KEY (iddistrito),
@@ -78,7 +78,7 @@ CREATE TABLE distritos
 CREATE TABLE alumnos
 (
 	iddistrito           INT  NOT NULL,
-	idalumno             INT AUTO_INCREMENT NOT NULL,
+	idalumno             INT AUTO_INCREMENT ,
 	codigoalumno         CHAR(10) NOT NULL,
 	dni                  CHAR(8) NOT NULL,
 	apellidos            VARCHAR(50) NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE alumnos
   
 CREATE TABLE grados
 (
-	idgrado              INT AUTO_INCREMENT NOT NULL,
+	idgrado              INT AUTO_INCREMENT ,
 	grado                VARCHAR(30) NOT NULL,
 	idnivel              INT NOT NULL,
 	estado               CHAR(1) NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE grados
 
 CREATE TABLE secciones
 (
-	idseccion            INT AUTO_INCREMENT NOT NULL,
+	idseccion            INT AUTO_INCREMENT ,
 	seccion              CHAR(1) NOT NULL,
 	idgrado              INT NOT NULL,
 	PRIMARY KEY (idseccion),
@@ -130,7 +130,7 @@ CREATE TABLE secciones
 CREATE TABLE cursos
 (
 	idgrado              INT NOT NULL,
-	idcurso              INT AUTO_INCREMENT NOT NULL,
+	idcurso              INT AUTO_INCREMENT ,
 	curso                VARCHAR(50) NOT NULL,
 	codigocurso          CHAR(2) NOT NULL,
 	PRIMARY KEY (idcurso),
@@ -140,7 +140,7 @@ CREATE TABLE cursos
 CREATE TABLE capacidades
 (
 	idcurso              INT NOT NULL,
-	idcapacidad          INT AUTO_INCREMENT NOT NULL,
+	idcapacidad          INT AUTO_INCREMENT ,
 	capacidad            VARCHAR(50) NOT NULL,
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idcapacidad),
@@ -152,7 +152,7 @@ CREATE TABLE matriculas
 (
 	idalumno             INT NOT NULL,
 	idperiodo            INT NOT NULL,
-	idmatricula          INT AUTO_INCREMENT NOT NULL,
+	idmatricula          INT AUTO_INCREMENT ,
 	fecha                DATE NOT NULL,
 	idseccion            INT NOT NULL,
 	estado               CHAR(1) NOT NULL,
@@ -176,7 +176,7 @@ CREATE TABLE notas
 (
 	idmatricula          INT NOT NULL,
 	idcapacidad          INT NOT NULL,
-	idnota               INT AUTO_INCREMENT NOT NULL,
+	idnota               INT AUTO_INCREMENT ,
 	nota1                FLOAT NOT NULL,
 	nota2                FLOAT NOT NULL,
 	nota3                FLOAT NOT NULL,
