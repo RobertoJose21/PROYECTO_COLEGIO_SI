@@ -12,7 +12,7 @@ table tr:hover {
 
 
 <div class="container">
-  <h1>Listado de Matriculas</h1>
+  <h1>Listado de Matriculas prueba actualizada xdxdxdxd</h1>
 
   @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
           <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
