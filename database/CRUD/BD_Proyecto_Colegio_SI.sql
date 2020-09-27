@@ -223,7 +223,6 @@ CREATE TABLE cursos
 	idgrado              INT NOT NULL,
 	idcurso              INT AUTO_INCREMENT ,
 	curso                VARCHAR(50) NOT NULL,
-	estado               CHAR(1) NOT NULL,
 	codigocurso          CHAR(2) NOT NULL,
 	estado				 CHAR(1) NOT NULL,
 	PRIMARY KEY (idcurso),
@@ -290,7 +289,7 @@ CREATE TABLE detalle_catedra
 	idprofesor           INT NOT NULL,
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idcurso,idprofesor),
-	FOREIGN KEY (idcurso) REFERENCES (idcurso),
+	FOREIGN KEY (idcurso) REFERENCES cursos(idcurso),
     FOREIGN KEY (idprofesor) REFERENCES profesores(idprofesor)
 );
  
@@ -332,6 +331,6 @@ CREATE TABLE notas
  insert into notas values( '1','13',null,11,12,13,12,'1');
  insert into notas values( '1','14',null,12,13,14,13,'1');
  insert into notas values( '1','15',null,10,11,12,11,'1');
- insert into notas values( '1','16'null,09,10,13,11,'1');
+ insert into notas values( '1','16',null,09,10,13,11,'1');
  insert into notas values( '1','17',null,14,08,13,12,'1');
  insert into notas values( '1','18',null,15,16,05,12,'1');
