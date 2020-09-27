@@ -21,14 +21,10 @@ CREATE TABLE paises
 	PRIMARY KEY (idpais)
 );
 
-<<<<<<< HEAD
 insert into paises values(null,'PERU','1');
 
 
  
-=======
-
->>>>>>> 6a19f529101fc145d85374e164055842ffbc5403
 CREATE TABLE niveles
 (
 	idnivel              INT AUTO_INCREMENT,
@@ -77,15 +73,11 @@ CREATE TABLE departamentos
 	FOREIGN KEY (idpais) REFERENCES paises(idpais)
 );
 
-<<<<<<< HEAD
 insert into departamentos values(null,'LIBERTAD','1','1');
 insert into departamentos values(null,'AREQUIPA','1','1');
 insert into departamentos values(null,'PIURA','1','1');
 insert into departamentos values(null,'CAJAMARCA','1','1');
 insert into departamentos values(null,'TUMBES','1','1');
-=======
-
->>>>>>> 6a19f529101fc145d85374e164055842ffbc5403
   
 CREATE TABLE provincias
 (
