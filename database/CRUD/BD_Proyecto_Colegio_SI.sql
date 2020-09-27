@@ -331,6 +331,6 @@ CREATE TABLE notas
  insert into notas values( '1','13',null,11,12,13,12,'1');
  insert into notas values( '1','14',null,12,13,14,13,'1');
  insert into notas values( '1','15',null,10,11,12,11,'1');
- insert into notas values( '1','16'null,09,10,13,11,'1');
+ insert into notas values( '1','16',null,09,10,13,11,'1');
  insert into notas values( '1','17',null,14,08,13,12,'1');
  insert into notas values( '1','18',null,15,16,05,12,'1');
