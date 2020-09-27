@@ -8,6 +8,11 @@ use App\Grado;
 use App\Seccion;
 use App\Periodo;
 use App\Curso;
+use App\Matricula;
+use App\Capacidad;
+use App\Profesor;
+use App\Detalle_Catedra;
+ 
 
 use Illuminate\Http\Request;
 
@@ -23,19 +28,26 @@ class NotaController extends Controller
     {
 
             $buscarpor=$request->get('buscarpor');
-            $nota=Nota::where('estado','=','1')->where('estudiante_id','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
+            $notas=DB::table('notas as n','n.estado','=','1')
+            ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
+            ->join('alumnos as a','m.idalumno','=','a.idalumno')
+            ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
+
+            /*$nota=Nota::where('estado','=','1')->join('matriculas m','m.idmatricula','=','notas.idmatricula')
+            ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);*/
             $grado=Grado::where('estado','=','1')->get();
             $seccion=Seccion::where('estado','=','1')->get();
             $periodo=Periodo::where('estado','=','1')->get();
             $curso=Curso::where('estado','=','1')->get();
+            $profesor=Profesor::where('estado','=','1')->get();
 
-            foreach($nota as $itemnota)
+            /*foreach($notas as $itemnota)
             {
-                $itemnota->promedio=floor(($itemnota->nota1+$itemnota->nota2+$itemnota->nota3+$itemnota->nota4)/4);
+                $itemnota->promedio=floor(($itemnota->nota1+$itemnota->nota2+$itemnota->nota3)/3);
                 $itemnota->save();
-            }
+            }*/
 
-            return view('nota.index',['nota'=>$nota,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
+            return view('nota.index',['profesor'=>$profesor,'nota'=>$notas,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
     }
 
     /**

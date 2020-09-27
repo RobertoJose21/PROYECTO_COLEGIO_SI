@@ -135,7 +135,7 @@ table tr:hover {
   </div>
   <div class="col-4" >
     <label for="id">DOCENTE</label>
-    <input type="text" class="form-control" disabled="disabled" placeholder="docente" id="docente" name="docente" style="border-radius: 10px;">
+    <input type="text" class="form-control"   placeholder="docente" id="docente" name="docente" style="border-radius: 10px;">
   </div>
 </div><br>
 <div class="row">
@@ -154,11 +154,11 @@ table tr:hover {
       <table class="table">
         <thead class="thead-dark text-center"  >
           <th scope="col">ID_NOTA</th>
+
           <th scope="col">NOMBRES DE ESTUDIANTE</th>
           <th scope="col">NOTA 1</th>
           <th scope="col">NOTA 2</th>
           <th scope="col">NOTA 3</th>
-          <th scope="col">NOTA 4</th>
           <th scope="col">PROMEDIO</th>
           <th scope="col">EDITAR NOTAS</th>
         </thead>
@@ -166,15 +166,15 @@ table tr:hover {
           @foreach($nota as $itemnota)
             <tr class="text-center">
               
-                <td >{{$itemnota->nota_id}}</td>
-                <td>{{$itemnota->estudiante->nameestudiante}}</td>
+                <td >{{$itemnota->idnota}}</td>
+                
                 <td>{{$itemnota->nota1}}</td>
                 <td>{{$itemnota->nota2}}</td>
                 <td>{{$itemnota->nota3}}</td>
-                <td>{{$itemnota->nota4}}</td>                   
+                            
                 <td>{{$itemnota->promedio}}</td>
                 <td class="menu" data-animation="to-left">  
-                    <a href="{{route('nota.edit',$itemnota->nota_id)}}" > 
+                    <a href="{{route('nota.edit',$itemnota->idnota)}}" > 
                       <span><b>EDITAR NOTA</b></span>
                       <span>
                         <i class="fas fa-edit" aria-hidden="true"></i>
