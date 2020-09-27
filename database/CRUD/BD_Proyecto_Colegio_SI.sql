@@ -35,6 +35,7 @@ CREATE TABLE niveles
 	
 );
 
+insert into niveles values(NULL,'PRIMARIA','1');
  
 CREATE TABLE profesores
 (
@@ -44,6 +45,13 @@ CREATE TABLE profesores
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idprofesor)
 );
+
+insert into profesores values(null,'SALAS PEREZ JOSE ','010101','1');
+insert into profesores values(null,'SANCHEZ DIAZ JUAN ','020202','1');
+insert into profesores values(null,'SALOMON CONTRERAS MANUEL ','030303','1');
+insert into profesores values(null,'RODRIGUEZ PEREZ CARLOS ','040404','1');
+insert into profesores values(null,'DIAZ SALAZAR PEDRO ','050505','1');
+insert into profesores values(null,'GONZALES RODIGUEZ LUIS ','060606','1');
 
 CREATE TABLE periodos
 (
@@ -132,6 +140,9 @@ CREATE TABLE grados
     FOREIGN KEY (idnivel) REFERENCES niveles(idnivel)
 );
 
+insert into grados values(NULL,'PRIMERO','1','1');
+insert into grados values(NULL,'SEGUNDO','1','1');
+insert into grados values(NULL,'TERCERO','1','1');
 
 CREATE TABLE secciones
 (
@@ -148,9 +159,17 @@ CREATE TABLE cursos
 	idcurso              INT AUTO_INCREMENT ,
 	curso                VARCHAR(50) NOT NULL,
 	codigocurso          CHAR(2) NOT NULL,
+	estado				 CHAR(1) NOT NULL,
 	PRIMARY KEY (idcurso),
 	FOREIGN KEY (idgrado) REFERENCES grados(idgrado)
 );
+
+insert into cursos values('1',NULL,'MATEMATICA','MA','1');
+insert into cursos values('1',NULL,'COMUNICACION','CO','1');
+insert into cursos values('2',NULL,'MATEMATICA','MA','1');
+insert into cursos values('2',NULL,'COMUNICACION','CO','1');
+insert into cursos values('2',NULL,'CIENCIA Y AMBIENTE','CA','1');
+insert into cursos values('3',NULL,'ARTE','AR','1');
 
 CREATE TABLE capacidades
 (
@@ -162,6 +181,24 @@ CREATE TABLE capacidades
 	FOREIGN KEY (idcurso) REFERENCES cursos(idcurso)
 );
 
+insert into capacidades values('1',NULL,'RAZONAMIENTO','1');
+insert into capacidades values('1',NULL,'ANALISIS DE PROBLEMAS','1');
+insert into capacidades values('1',NULL,'RESOLUCION DE PROBLEMAS','1');
+insert into capacidades values('2',NULL,'COMPRENCION LECTORA','1');
+insert into capacidades values('2',NULL,'ANALISIS DE TEXTOS','1');
+insert into capacidades values('2',NULL,'CREACION DE TEXTOS','1');
+insert into capacidades values('3',NULL,'RAZONAMIENTO','1');
+insert into capacidades values('3',NULL,'ANALISIS DE PROBLEMAS','1');
+insert into capacidades values('3',NULL,'RESOLUCION DE PROBLEMAS','1');
+insert into capacidades values('4',NULL,'COMPRENCION LECTORA','1');
+insert into capacidades values('4',NULL,'ANALISIS DE TEXTOS','1');
+insert into capacidades values('4',NULL,'CREACION DE TEXTOS','1');
+insert into capacidades values('5',NULL,'CUIDADO DEL AMBIENTE','1');
+insert into capacidades values('5',NULL,'SOLUCIONES PARA EL AMBIENTE','1');
+insert into capacidades values('5',NULL,'COMPROMISO CON EL AMBIENTE','1');
+insert into capacidades values('6',NULL,'DESARROLLO DE HABILIDADES ARTISTICAS','1');
+insert into capacidades values('6',NULL,'APRECIAXION DEL ARTE','1');
+insert into capacidades values('6',NULL,'COMPROMISO CON EL ARTE','1');
 
 CREATE TABLE matriculas
 (
@@ -177,16 +214,28 @@ CREATE TABLE matriculas
 	FOREIGN KEY (idseccion) REFERENCES secciones(idseccion)
 );
 
- 
+insert into matriculas values('1','4',null,'2020/02/15','1','1');
+insert into matriculas values('2','4',null,'2020/02/20','3','1');
+insert into matriculas values('3','4',null,'2020/02/24','1','1');
+
 CREATE TABLE detalle_catedra
 (
 	idcurso              INT NOT NULL,
 	idprofesor           INT NOT NULL,
+	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idcurso,idprofesor),
 	FOREIGN KEY (idcurso) REFERENCES cursos(idcurso),
     FOREIGN KEY (idprofesor) REFERENCES profesores(idprofesor)
 );
  
+insert into detalle_catedra values('1','1','1');
+insert into detalle_catedra values('2','2','1');
+insert into detalle_catedra values('3','3','1');
+insert into detalle_catedra values('4','4','1');
+insert into detalle_catedra values('5','5','1');
+insert into detalle_catedra values('6','6','1');
+
+
 CREATE TABLE notas
 (
 	idmatricula          INT NOT NULL,
@@ -202,4 +251,21 @@ CREATE TABLE notas
 	FOREIGN KEY (idcapacidad) REFERENCES capacidades(idcapacidad)
 );
  
- 
+ insert into notas values( '1','1',null,14,16,13,14,'1');
+ insert into notas values( '1','2',null,15,16,14,15,'1');
+ insert into notas values( '1','3',null,12,16,15,14,'1');
+ insert into notas values( '1','4',null,11,12,13,12,'1');
+ insert into notas values( '1','5',null,12,13,14,13,'1');
+ insert into notas values( '1','6',null,10,11,12,11,'1');
+ insert into notas values( '1','7',null,09,10,13,11,'1');
+ insert into notas values( '1','8',null,14,08,13,12,'1');
+ insert into notas values( '1','9',null,15,16,05,12,'1');
+ insert into notas values( '1','10',null,14,16,13,14,'1');
+ insert into notas values( '1','11',null,15,16,14,15,'1');
+ insert into notas values( '1','12',null,12,16,15,14,'1');
+ insert into notas values( '1','13',null,11,12,13,12,'1');
+ insert into notas values( '1','14',null,12,13,14,13,'1');
+ insert into notas values( '1','15',null,10,11,12,11,'1');
+ insert into notas values( '1','16'null,09,10,13,11,'1');
+ insert into notas values( '1','17',null,14,08,13,12,'1');
+ insert into notas values( '1','18',null,15,16,05,12,'1');
