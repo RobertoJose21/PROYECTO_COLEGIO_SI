@@ -8,7 +8,7 @@
       <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="{{$buscarpor}}">
       <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-  </div>
+  </div> 
     @if(session('datos'))
       <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
         {{session('datos')}}

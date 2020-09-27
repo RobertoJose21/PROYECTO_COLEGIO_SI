@@ -24,12 +24,17 @@ CREATE TABLE paises
 
 CREATE TABLE niveles
 (
-	idnivel              INT AUTO_INCREMENT ,
+	idnivel              INT AUTO_INCREMENT,
 	nivel                VARCHAR(30) NULL,
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idnivel)
 	
 );
+
+INSERT niveles VALUES(null,'INCIAL','1');
+INSERT niveles VALUES(null,'PRIMARIA','1');
+INSERT niveles VALUES(null,'SECUNDARIA','1');
+
 
  
 CREATE TABLE profesores
@@ -49,6 +54,11 @@ CREATE TABLE periodos
 	PRIMARY KEY (idperiodo)
 );
 
+insert periodos values(null,'2017',1);
+insert periodos values(null,'2018',1);
+insert periodos values(null,'2019',1);
+insert periodos values(null,'2020',1);
+
 
 CREATE TABLE departamentos
 (
@@ -60,9 +70,7 @@ CREATE TABLE departamentos
 	FOREIGN KEY (idpais) REFERENCES paises(idpais)
 );
 
-insert into departamentos values(null,'LIBERTAD','1','1');
-insert into departamentos values(null,'BRAZILIA','2','1');
-insert into departamentos values(null,'ARGENT','3','1');
+
   
 CREATE TABLE provincias
 (
@@ -128,6 +136,22 @@ CREATE TABLE grados
     FOREIGN KEY (idnivel) REFERENCES niveles(idnivel)
 );
 
+INSERT  grados VALUES(null,'PRIMER INICIAL',1,1);
+INSERT  grados VALUES(null,'SEGUNDO INICIAL',1,1);
+INSERT  grados VALUES(null,'TERCER INICIAL',1,1);
+INSERT  grados VALUES(null,'CUARTO INICIAL',1,1);
+INSERT  grados VALUES(null,'QUITNO INICIAL',1,1);
+
+
+INSERT  grados VALUES(null,'PRIMERO DE PRIMARIA',2,1);
+INSERT  grados VALUES(null,'SEGUNDO DE PRIMARIA',2,1);
+INSERT  grados VALUES(null,'TERCERO DE PRIMARIA',2,1);
+INSERT  grados VALUES(null,'CUARTO DE PRIMARIA',2,1);
+
+INSERT  grados VALUES(null,'3 AÑOS',3,1);
+INSERT  grados VALUES(null,'4 AÑOS',3,1);
+INSERT  grados VALUES(null,'5 AÑOS',3,1);
+
 
 CREATE TABLE secciones
 (
@@ -138,6 +162,31 @@ CREATE TABLE secciones
 	PRIMARY KEY (idseccion),
 	FOREIGN KEY (idgrado) REFERENCES grados(idgrado)
 );
+
+INSERT  secciones VALUES(null,'A',1,1);
+INSERT  secciones VALUES(null,'B',1,1);
+INSERT  secciones VALUES(null,'C',1,2);
+INSERT  secciones VALUES(null,'D',1,2);
+INSERT  secciones VALUES(null,'E',1,3);
+INSERT  secciones VALUES(null,'F',1,3);
+INSERT  secciones VALUES(null,'C',1,4);
+INSERT  secciones VALUES(null,'D',1,4);
+INSERT  secciones VALUES(null,'A',1,5);
+INSERT  secciones VALUES(null,'D',1,5);
+
+INSERT  secciones VALUES(null,'D',1,6);
+INSERT  secciones VALUES(null,'A',1,6);
+INSERT  secciones VALUES(null,'C',1,7);
+INSERT  secciones VALUES(null,'D',1,7);
+INSERT  secciones VALUES(null,'F',1,8);
+INSERT  secciones VALUES(null,'E',1,8);
+INSERT  secciones VALUES(null,'B',1,9);
+INSERT  secciones VALUES(null,'A',1,9);
+
+INSERT  secciones VALUES(null,'D',1,10);
+INSERT  secciones VALUES(null,'E',1,11);
+INSERT  secciones VALUES(null,'F',1,12);
+
 
 CREATE TABLE cursos
 (
@@ -189,7 +238,7 @@ CREATE TABLE notas
 (
 	idmatricula          INT NOT NULL,
 	idcapacidad          INT NOT NULL,
-	idnota               INT AUTO_INCREMENT ,
+	idnota               INT AUTO_INCREMENT,
 	nota1                FLOAT NOT NULL,
 	nota2                FLOAT NOT NULL,
 	nota3                FLOAT NOT NULL,
