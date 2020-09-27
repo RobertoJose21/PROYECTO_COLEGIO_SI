@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::Get('/gradobyniveles/{id}', 'NotaController@byGrado');
+Route::Get('/seccionesbygrados/{id}', 'NotaController@bySeccion');
+Route::Get('/cursosbygrados/{id}', 'NotaController@byCurso');
 
 Route::get('/', function () {    return view('index');});
  

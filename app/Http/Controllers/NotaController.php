@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Nota;
 use DB;
-use App\Estudiante;
+use App\Alumno;
 use App\Grado;
 use App\Seccion;
 use App\Periodo;
@@ -12,7 +12,7 @@ use App\Matricula;
 use App\Capacidad;
 use App\Profesor;
 use App\Detalle_Catedra;
- 
+use App\Nivel;
 
 use Illuminate\Http\Request;
 
@@ -31,7 +31,7 @@ class NotaController extends Controller
             $notas=DB::table('notas as n','n.estado','=','1')
             ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
             ->join('alumnos as a','m.idalumno','=','a.idalumno')
-            ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
+            ->where('m.idalumno','like','%'.$buscarpor.'%')->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->paginate($this::PAGINACION);
 
             /*$nota=Nota::where('estado','=','1')->join('matriculas m','m.idmatricula','=','notas.idmatricula')
             ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);*/
@@ -40,14 +40,16 @@ class NotaController extends Controller
             $periodo=Periodo::where('estado','=','1')->get();
             $curso=Curso::where('estado','=','1')->get();
             $profesor=Profesor::where('estado','=','1')->get();
-
+            $nivel=Nivel::where('estado','=','1')->get();
+            $capacidad=Capacidad::where('estado','=','1')->get();
+            $matricula=Matricula::where('estado','=','1')->get();
             /*foreach($notas as $itemnota)
             {
                 $itemnota->promedio=floor(($itemnota->nota1+$itemnota->nota2+$itemnota->nota3)/3);
                 $itemnota->save();
             }*/
 
-            return view('nota.index',['profesor'=>$profesor,'nota'=>$notas,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
+            return view('nota.index',['matricula'=>$matricula,'capacidad'=>$capacidad,'nivel'=>$nivel,'profesores'=>$profesor,'nota'=>$notas,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
     }
 
     /**
@@ -55,9 +57,23 @@ class NotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function byGrado($id){
+        return Grado::where('activo','=','1')->where('idnivel','=',$id)->get();
+    }
+    public function bySeccion($id){
+        return Seccion::where('activo','=','1')->where('idgrado','=',$id)->get();
+    }
+    public function byCurso($id){
+        return Curso::where('activo','=','1')->where('idgrado','=',$id)->get();
+    }
+
     public function create()
     {
-        //
+        $capacidad=Capacidad::where('estado','=','1')->get();
+        //,$itemnota->idcapacidad
+        $matricula=Matricula::where('estado','=','1')->get();
+        $alumno=Alumno::where('estado','=','1')->get();        
+        return view('nota.create',['alumno'=>$alumno,'matricula'=>$matricula,'capacidad'=>$capacidad]);
     }
 
     /**
@@ -68,7 +84,33 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        
+        $data=request()->validate([
+            'idalumno'=>'required',
+            
+            'idcapacidad'=>'required',
+            
+        ],
+        [
+         'idalumno.required'=>'Seleccione un alumno',
+         'idcapacidad.required'=>'Seleccione una capacidad',
+        ]);
+
+
+
+    $nota=new Nota();    
+    $nota->idmatricula=$request->idmatricula;   
+    $nota->idcapacidad=$request->idcapacidad;  
+    $nota->nota1=$request->nota1;  
+    $nota->nota2=$request->nota2;   
+    $nota->nota3=$request->nota3;   
+    $nota->promedio=($request->nota1+$request->nota2+$request->nota3)/3; 
+    
+    $nota->estado='1';   //campo de estado
+    $nota->save();       
+    return redirect()->route('nota.index')->with('datos','Registro Nuevo Guardado...!'); //devolvemos los datos q usara el index
+
     }
 
     /**
@@ -91,8 +133,8 @@ class NotaController extends Controller
     public function edit($nota_id)
     {
         $nota=Nota::findOrFail($nota_id);
-        $estudiante=Estudiante::where('estado','=','1')->get();        
-        return view('nota.edit',compact('nota','estudiante'));
+        $alumno=Alumno::where('estado','=','1')->get();        
+        return view('nota.edit',compact('nota','alumno'));
     }
 
     /**
@@ -108,7 +150,7 @@ class NotaController extends Controller
             'nota1'=>'required|max:2',
             'nota2'=>'required|max:2',
             'nota3'=>'required|max:2',
-            'nota4'=>'required|max:2',
+           
         ],
         [
             'nota1.required'=>'INGRESE NOTA 1 DEL ESTUDIANTE',
@@ -117,14 +159,13 @@ class NotaController extends Controller
             'nota2.max'=>'MAXIMO 2 CARACTERES PARA LA NOTA 2',
             'nota3.required'=>'INGRESE NOTA 3 DEL ESTUDIANTE',
             'nota3.max'=>'MAXIMO 2 CARACTERES PARA LA NOTA 3',
-            'nota4.required'=>'INGRESE NOTA 4 DEL ESTUDIANTE',
-            'nota4.max'=>'MAXIMO 2 CARACTERES PARA LA NOTA 4',
+             
         ]);
         $nota=Nota::findOrFail($nota_id);
         $nota->nota1=$request->nota1;
         $nota->nota2=$request->nota2;
         $nota->nota3=$request->nota3;
-        $nota->nota4=$request->nota4;
+        $nota->promedio=($request->nota1+$request->nota2+$request->nota3)/3;
         $nota->save();
         return redirect()->route('nota.index')->with('datos','REGISTRO ACTUALIZADO...!');
     }

@@ -9,6 +9,7 @@
   <title>
     THE ONE
   </title>
+   
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--    FUENTESITAS E ICONOS     -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"  />
@@ -19,6 +20,12 @@
   <link rel="stylesheet" href="/css/demo.css">
   <!-- LOGIN PROF -->
 
+
+ 
+ 
+ 
+  <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
+ 
   <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <link rel="stylesheet" href="/css/login.css">
@@ -158,7 +165,15 @@
         <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
+        <script src="{{asset('assets/adminlte/plugins/jquery/jquery.min.js')}}"></script>
+        <!-- Bootstrap 4 -->
+        <script src="{{asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{asset('assets/adminlte/dist/js/adminlte.min.js')}}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{asset('assets/adminlte/dist/js/demo.js')}}"></script>
+        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+        <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
         <!-- Bootstrap core JavaScript -->
         <script src="/adminlte/dist/js/menu/jquery.min.js"></script>
         <script src="/adminlte/dist/js/menu/bootstrap.bundle.min.js"></script>
@@ -184,18 +199,8 @@
   <script src="/adminlte/dist/js/core/jquery.min.js"></script>        
   <script src="/adminlte/dist/js/core/popper.min.js"></script>        
   <script src="/adminlte/dist/js/core/bootstrap.min.js"></script>        
-
-  <!-- DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-switch.js"></script>
-
-  <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://refreshless.com/nouislider/ -->
-  <script src="/adminlte/plugins/gg/js/plugins/nouislider.min.js"></script>
-
-  <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-datepicker.js"></script>
-
-  <!--  Google Maps ESTE SCRIPT SOLO LO PEGUÉ xdddd    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+ 
+ 
   <!-- CENTRO DE EFECTOS Y SCRIPTS-->
   <script src="/adminlte/dist/js/now-ui-kit.js?v=1.3.0"></script>        
   <!-- LOGIN PROF-->

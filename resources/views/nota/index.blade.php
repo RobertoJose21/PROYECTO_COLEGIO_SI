@@ -89,55 +89,73 @@ table tr:hover {
 <div class="container-fluid">
   <div class="row">
 
-      <div class="col-4 text-center">
-        <label for="">NIVELES</label>
-            <select class="form-control" name="grado_id" id="grado_id" style="border-radius: 40px;">
-                @foreach($grado as $itemgrado)
-                <option value="{{$itemgrado['grado_id']}}">{{$itemgrado['namegrado']}}</option>
-                @endforeach
-            </select>
-      </div>
-      <div class="col-3 text-center">
-        <label for="">PERIODO</label>
-            <select class="form-control" name="periodo_id" id="periodo_id" style="border-radius: 40px;">
-                @foreach($periodo as $itemperiodo)
-                <option value="{{$itemperiodo['periodo_id']}}">{{$itemperiodo['periodo']}}</option>
-                @endforeach
-            </select>
-      </div>
+    <div class=" form-group col-3 text-center">
+      <label for="">PERIODO</label>
+          <select class="form-control" name="idperiodo" id="idperiodo" style="border-radius: 40px;">
+              @foreach($periodo as $itemperiodo)
+              <option value="{{$itemperiodo['idperiodo']}}">{{$itemperiodo['periodo']}}</option>
+              @endforeach
+          </select>
+    </div>
 
-      <div class="col-4 text-center">
-        <label for="">GRADOS</label>
-            <select class="form-control" name="grado_id" id="grado_id" style="border-radius: 40px;">
-                @foreach($grado as $itemgrado)
-                <option value="{{$itemgrado['grado_id']}}">{{$itemgrado['namegrado']}}</option>
+      <div class="form-group col-3 text-center">
+        <label for="">NIVELES</label>
+            <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;">
+              <option value="" disabled selected>Seleccione un Nivel</option>
+                @foreach($nivel as $itemnivel)
+                <option value="{{$itemnivel['idnivel']}}">{{$itemnivel['nivel']}}</option>
                 @endforeach
             </select>
+      </div>
+      
+
+      <div class="form-group col-4 text-center">
+        <label for="">GRADOS</label>
+             
+              <select  name="idgrado" id="idgrado"  class="form-control" style="border-radius: 40px;" disabled required>
+                <option value="" selected>Seleccione un Grado</option>
+            </select>
+            
       </div>  
        
+      <div class=" form-group col-2 text-center">
+        <label for="">SECCIONES</label>
+            <select class="form-control" name="idseccion" id="idseccion" style="border-radius: 40px;" disabled required>
+              <option value="" selected>Seleccione un Grado</option> 
+            </select>
+      </div>
   </div><br>
 <div class="row">
-  <div class="col-2 text-center">
-    <label for="">SECCIONES</label>
-        <select class="form-control" name="seccion_id" id="seccion_id" style="border-radius: 40px;">
-            @foreach($seccion as $itemseccion)
-            <option value="{{$itemseccion['seccion_id']}}">{{$itemseccion['nameseccion']}}</option>
-            @endforeach
-        </select>
-  </div>
-  <div class="col-4 text-center">
+  
+  <div class=" form-group col-4 text-center">
     <label for="">CURSO</label>
-        <select class="form-control" name="curso_id" id="curso_id" style="border-radius: 40px;">
+        <select class="form-control" name="idcurso" id="idcurso" style="border-radius: 40px;">
             @foreach($curso as $itemcurso)
-            <option value="{{$itemcurso['curso_id']}}">{{$itemcurso['namecurso']}}</option>
+            <option value="{{$itemcurso['idcurso']}}">{{$itemcurso['curso']}}</option>
             @endforeach
         </select>
   </div>
-  <div class="col-4" >
-    <label for="id">DOCENTE</label>
-    <input type="text" class="form-control"   placeholder="docente" id="docente" name="docente" style="border-radius: 10px;">
+  <div class="form-group col-4 text-center">
+    <label for="">CAPACIDAD</label>
+        <select class="form-control" name="idcapacidad" id="idcapacidad" style="border-radius: 40px;">
+            @foreach($capacidad as $itemcapacidad)
+            <option value="{{$itemcapacidad['idcapacidad']}}">{{$itemcapacidad['capacidad']}}</option>
+            @endforeach
+        </select>
+  </div>
+  <div class=" form-group col-4 text-center">
+    <label for="">DOCENTE</label>
+        <select class="form-control" name="idprofesor" id="idprofesor" style="border-radius: 40px;">
+            @foreach($profesores as $itemprofesor)
+            <option value="{{$itemprofesor['idprofesor']}}">{{$itemprofesor['profesor']}}</option>
+            @endforeach
+        </select>
   </div>
 </div><br>
+ 
+<a href="{{route('nota.create')}}" class="btn btn-primary form-inline my-2 my-lg-0 float-left" ><i class="fas fa-plus"></i>Registrar Nueva Nota </a>
+
+
 <div class="row">
   <div class="col-12">
     <h3 class="text-center">LISTADO DE NOTAS</h3>
@@ -167,7 +185,7 @@ table tr:hover {
             <tr class="text-center">
               
                 <td >{{$itemnota->idnota}}</td>
-                
+                <td >{{$itemnota->nombres}}, {{$itemnota->apellidos}}</td>
                 <td>{{$itemnota->nota1}}</td>
                 <td>{{$itemnota->nota2}}</td>
                 <td>{{$itemnota->nota3}}</td>
@@ -193,4 +211,42 @@ table tr:hover {
   <div class="align-center" style="margin-left: 40%"><h5>{{$nota->links()}}</h5></div>
 </div>
 </div>
+
 @endsection
+ 
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+      $("#idnivel").change(function(){
+        var nivel = $(this).val();
+            $('#idgrado').removeAttr('disabled');
+        $.get('../../gradobyniveles/'+nivel, function(data){
+          console.log(data);
+            var producto_select = '<option value="" disabled selected>Seleccione un Grado</option>'
+              for (var i=0; i<data.length;i++)
+                producto_select+='<option value="'+data[i].idgrado+'">'+data[i].grado+'</option>';
+              $("#idgrado").html(producto_select);
+
+        });
+      });
+      $("#idgrado").change(function(){
+        var grado = $(this).val();
+        $("#idseccion").removeAttr('disabled');
+        $("#idcurso").removeAttr('disabled');
+        $.get('../seccionesbygrados/'+grado, function(data){
+          console.log(data);
+            var producto_select = '<option value="" disabled selected>Seleccione una Seccion</option>';
+            if(data.length>=1)
+              for (var i=0; i<data.length;i++)
+                producto_select+='<option value="'+data[i].idseccion+'">'+data[i].seccion+'</option>';
+            else
+                producto_select+='<option value="" disabled selected>Ninguna Seccion Encontrada</option>';
+
+            $("#idseccion").html(producto_select);
+
+        });
+      });
+    });
+
+  </script>
