@@ -133,6 +133,7 @@ CREATE TABLE secciones
 (
 	idseccion            INT AUTO_INCREMENT ,
 	seccion              CHAR(1) NOT NULL,
+	estado               CHAR(1) NOT NULL,
 	idgrado              INT NOT NULL,
 	PRIMARY KEY (idseccion),
 	FOREIGN KEY (idgrado) REFERENCES grados(idgrado)
@@ -143,6 +144,7 @@ CREATE TABLE cursos
 	idgrado              INT NOT NULL,
 	idcurso              INT AUTO_INCREMENT ,
 	curso                VARCHAR(50) NOT NULL,
+	estado               CHAR(1) NOT NULL,
 	codigocurso          CHAR(2) NOT NULL,
 	PRIMARY KEY (idcurso),
 	FOREIGN KEY (idgrado) REFERENCES grados(idgrado)
