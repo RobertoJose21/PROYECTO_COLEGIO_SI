@@ -224,17 +224,16 @@ CREATE TABLE cursos
 	idcurso              INT AUTO_INCREMENT ,
 	curso                VARCHAR(50) NOT NULL,
 	codigocurso          CHAR(2) NOT NULL,
-	estado				 CHAR(1) NOT NULL,
 	PRIMARY KEY (idcurso),
 	FOREIGN KEY (idgrado) REFERENCES grados(idgrado)
 );
 
-insert into cursos values('1',NULL,'MATEMATICA','MA','1');
-insert into cursos values('1',NULL,'COMUNICACION','CO','1');
-insert into cursos values('2',NULL,'MATEMATICA','MA','1');
-insert into cursos values('2',NULL,'COMUNICACION','CO','1');
-insert into cursos values('2',NULL,'CIENCIA Y AMBIENTE','CA','1');
-insert into cursos values('3',NULL,'ARTE','AR','1');
+insert into cursos values('1',NULL,'MATEMATICA','1','MA');
+insert into cursos values('1',NULL,'COMUNICACION','1','CO');
+insert into cursos values('2',NULL,'MATEMATICA','1','MA');
+insert into cursos values('2',NULL,'COMUNICACION','1','CO');
+insert into cursos values('2',NULL,'CIENCIA Y AMBIENTE','1','CA');
+insert into cursos values('3',NULL,'ARTE','1','AR');
 
 CREATE TABLE capacidades
 (
