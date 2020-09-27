@@ -3,7 +3,15 @@ create database DBproyectocolegio;
 use DBproyectocolegio;
 
 
+CREATE TABLE users (
+  id int(11) AUTO_INCREMENT,
+  name varchar(50) NULL,
+  password varchar(255)  NULL,
+  estado int(11)  NULL,
+  PRIMARY KEY (id)
+);
 
+INSERT INTO users (`id`, `name`, `password`, `estado`) VALUES (NULL, 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1);
 
 CREATE TABLE paises
 (
@@ -52,6 +60,9 @@ CREATE TABLE departamentos
 	FOREIGN KEY (idpais) REFERENCES paises(idpais)
 );
 
+insert into departamentos values(null,'LIBERTAD','1','1');
+insert into departamentos values(null,'BRAZILIA','2','1');
+insert into departamentos values(null,'ARGENT','3','1');
   
 CREATE TABLE provincias
 (
