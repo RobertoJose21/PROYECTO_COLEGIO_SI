@@ -21,10 +21,9 @@ CREATE TABLE paises
 	PRIMARY KEY (idpais)
 );
 
-
 insert into paises values(null,'PERU','1');
-insert into paises values(null,'BRAZIL','1');
-insert into paises values(null,'ARGENTINA','1');
+
+
  
 CREATE TABLE niveles
 (
@@ -65,35 +64,50 @@ CREATE TABLE departamentos
 );
 
 insert into departamentos values(null,'LIBERTAD','1','1');
-insert into departamentos values(null,'BRAZILIA','2','1');
-insert into departamentos values(null,'ARGENT','3','1');
+insert into departamentos values(null,'AREQUIPA','1','1');
+insert into departamentos values(null,'PIURA','1','1');
+insert into departamentos values(null,'CAJAMARCA','1','1');
+insert into departamentos values(null,'TUMBES','1','1');
   
 CREATE TABLE provincias
 (
-	iddepartamento       INT NOT NULL,
 	idprovincia          INT AUTO_INCREMENT ,
+	iddepartamento       INT NOT NULL,
 	provincia            VARCHAR(50) NULL,
 	estado               CHAR(1) NOT NULL,
 PRIMARY KEY (idprovincia),
 FOREIGN KEY (iddepartamento) REFERENCES departamentos(iddepartamento)
 );
 
+insert into provincias values(null,'1','TRUJILLO','1');
+insert into provincias values(null,'2','CASTILLA','1');
+insert into provincias values(null,'3','SECHURA','1');
+insert into provincias values(null,'4','JAEN','1');
+insert into provincias values(null,'5','ZARUMILLA','1');
+
+
 
 CREATE TABLE distritos
 (
-	idprovincia          INT NOT NULL,
 	iddistrito           INT AUTO_INCREMENT ,
+	idprovincia          INT NOT NULL,
 	distrito             VARCHAR(50) NULL,
 	estado               CHAR(1) NOT NULL,
     PRIMARY KEY (iddistrito),
 	FOREIGN KEY (idprovincia) REFERENCES provincias(idprovincia)
 );
 
+insert into distritos values(null,'1','TRUJILLO','1');
+insert into distritos values(null,'2','MACHAGUAY','1');
+insert into distritos values(null,'3','SECHURA','1');
+insert into distritos values(null,'4','SAN FELIPE','1');
+insert into distritos values(null,'5','ZARUMILLA','1');
+
 
 CREATE TABLE alumnos
 (
-	iddistrito           INT  NOT NULL,
 	idalumno             INT AUTO_INCREMENT ,
+	iddistrito           INT  NOT NULL,
 	codigoalumno         CHAR(10) NOT NULL,
 	dni                  CHAR(8) NOT NULL,
 	apellidos            VARCHAR(50) NOT NULL,
@@ -120,6 +134,11 @@ CREATE TABLE alumnos
 	PRIMARY KEY (idalumno),
 	FOREIGN KEY (iddistrito) REFERENCES distritos(iddistrito)
 );
+
+insert into alumnos values(null,'1','1023478738','75748511','VALVERDE ROSAS','JUAN ALBERTO','MASCULINO','2002-01-21','CASTELLANO','SOLTERO','CATOLICA','SAN JUAN','Av. Húsares de Junín, 690','948367245','BUS','10','LADRILLO Y/O CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','4','6','PROMOVIDO','1');
+insert into alumnos values(null,'2','1023478523','87563422','CALDERON MENDEZ','LUIS LEONNOR','MASCULINO','2015-05-11','CASTELLANO','SOLTERO','CATOLICA','JOSE OLAYA','Calle Santiago Huaco Medina','946745982','MOTO','8','LADRILLO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO SIN AGUA CORRIENTE','5','6','PROMOVIDO','1');
+insert into alumnos values(null,'3','1023478620','65489244','ARENAS GUERRERO','PERLA ALEJANDRA','FEMENINO','2008-03-12','CASTELLANO','SOLTERO','CATOLICA','MANUEL COX','CALLE CESAR PINGLO','946734829','TAXI','5','LADRILLO Y CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','6','10','PROMOVIDO','1');
+
 
   
 CREATE TABLE grados
