@@ -22,7 +22,7 @@ CREATE TABLE paises
 );
 
 insert into paises values(null,'PERU','1');
-
+insert into paises values(null,'BRASIL','1');
 
  
 CREATE TABLE niveles
@@ -34,16 +34,10 @@ CREATE TABLE niveles
 	
 );
 
-<<<<<<< HEAD
 INSERT niveles VALUES(null,'INCIAL','1');
 INSERT niveles VALUES(null,'PRIMARIA','1');
 INSERT niveles VALUES(null,'SECUNDARIA','1');
 
-
-=======
-insert into niveles values(NULL,'PRIMARIA','1');
->>>>>>> leodan12
- 
 CREATE TABLE profesores
 (
 	idprofesor           INT AUTO_INCREMENT ,
@@ -89,6 +83,7 @@ insert into departamentos values(null,'AREQUIPA','1','1');
 insert into departamentos values(null,'PIURA','1','1');
 insert into departamentos values(null,'CAJAMARCA','1','1');
 insert into departamentos values(null,'TUMBES','1','1');
+insert into departamentos values(null,'SAO PAULO','2','1');
   
 CREATE TABLE provincias
 (
@@ -105,7 +100,7 @@ insert into provincias values(null,'2','CASTILLA','1');
 insert into provincias values(null,'3','SECHURA','1');
 insert into provincias values(null,'4','JAEN','1');
 insert into provincias values(null,'5','ZARUMILLA','1');
-
+insert into provincias values(null,'6','BRAZILIA','1');
 
 
 CREATE TABLE distritos
@@ -172,12 +167,11 @@ CREATE TABLE grados
     FOREIGN KEY (idnivel) REFERENCES niveles(idnivel)
 );
 
-<<<<<<< HEAD
-INSERT  grados VALUES(null,'PRIMER INICIAL',1,1);
-INSERT  grados VALUES(null,'SEGUNDO INICIAL',1,1);
-INSERT  grados VALUES(null,'TERCER INICIAL',1,1);
-INSERT  grados VALUES(null,'CUARTO INICIAL',1,1);
-INSERT  grados VALUES(null,'QUITNO INICIAL',1,1);
+INSERT  grados VALUES(null,'PRIMER INICIAL',3,1);
+INSERT  grados VALUES(null,'SEGUNDO INICIAL',3,1);
+INSERT  grados VALUES(null,'TERCER INICIAL',3,1);
+INSERT  grados VALUES(null,'CUARTO INICIAL',3,1);
+INSERT  grados VALUES(null,'QUITNO INICIAL',3,1);
 
 
 INSERT  grados VALUES(null,'PRIMERO DE PRIMARIA',2,1);
@@ -185,15 +179,9 @@ INSERT  grados VALUES(null,'SEGUNDO DE PRIMARIA',2,1);
 INSERT  grados VALUES(null,'TERCERO DE PRIMARIA',2,1);
 INSERT  grados VALUES(null,'CUARTO DE PRIMARIA',2,1);
 
-INSERT  grados VALUES(null,'3 AÑOS',3,1);
-INSERT  grados VALUES(null,'4 AÑOS',3,1);
-INSERT  grados VALUES(null,'5 AÑOS',3,1);
-
-=======
-insert into grados values(NULL,'PRIMERO','1','1');
-insert into grados values(NULL,'SEGUNDO','1','1');
-insert into grados values(NULL,'TERCERO','1','1');
->>>>>>> leodan12
+INSERT  grados VALUES(null,'3 AÑOS',1,1);
+INSERT  grados VALUES(null,'4 AÑOS',1,1);
+INSERT  grados VALUES(null,'5 AÑOS',1,1);
 
 CREATE TABLE secciones
 (
@@ -207,27 +195,27 @@ CREATE TABLE secciones
 
 INSERT  secciones VALUES(null,'A',1,1);
 INSERT  secciones VALUES(null,'B',1,1);
-INSERT  secciones VALUES(null,'C',1,2);
-INSERT  secciones VALUES(null,'D',1,2);
-INSERT  secciones VALUES(null,'E',1,3);
-INSERT  secciones VALUES(null,'F',1,3);
-INSERT  secciones VALUES(null,'C',1,4);
-INSERT  secciones VALUES(null,'D',1,4);
+INSERT  secciones VALUES(null,'A',1,2);
+INSERT  secciones VALUES(null,'B',1,2);
+INSERT  secciones VALUES(null,'A',1,3);
+INSERT  secciones VALUES(null,'B',1,3);
+INSERT  secciones VALUES(null,'A',1,4);
+INSERT  secciones VALUES(null,'B',1,4);
 INSERT  secciones VALUES(null,'A',1,5);
-INSERT  secciones VALUES(null,'D',1,5);
+INSERT  secciones VALUES(null,'B',1,5);
 
-INSERT  secciones VALUES(null,'D',1,6);
 INSERT  secciones VALUES(null,'A',1,6);
-INSERT  secciones VALUES(null,'C',1,7);
-INSERT  secciones VALUES(null,'D',1,7);
-INSERT  secciones VALUES(null,'F',1,8);
-INSERT  secciones VALUES(null,'E',1,8);
+INSERT  secciones VALUES(null,'B',1,6);
+INSERT  secciones VALUES(null,'A',1,7);
+INSERT  secciones VALUES(null,'B',1,7);
+INSERT  secciones VALUES(null,'A',1,8);
+INSERT  secciones VALUES(null,'B',1,8);
+INSERT  secciones VALUES(null,'C',1,8);
 INSERT  secciones VALUES(null,'B',1,9);
-INSERT  secciones VALUES(null,'A',1,9);
 
-INSERT  secciones VALUES(null,'D',1,10);
-INSERT  secciones VALUES(null,'E',1,11);
-INSERT  secciones VALUES(null,'F',1,12);
+INSERT  secciones VALUES(null,'A',1,10);
+INSERT  secciones VALUES(null,'B',1,11);
+INSERT  secciones VALUES(null,'A',1,12);
 
 
 CREATE TABLE cursos
