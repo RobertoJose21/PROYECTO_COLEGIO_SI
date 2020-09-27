@@ -13,7 +13,7 @@ CREATE TABLE paises
 	PRIMARY KEY (idpais)
 );
 
- 
+
 CREATE TABLE niveles
 (
 	idnivel              INT AUTO_INCREMENT ,
