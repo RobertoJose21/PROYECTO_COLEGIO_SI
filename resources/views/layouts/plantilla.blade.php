@@ -9,29 +9,16 @@
   <title>
     THE ONE
   </title>
-   
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <link rel="stylesheet" href="../js/fontawesome-free/css/all.min.css">
- 
   <!--    FUENTESITAS E ICONOS     -->
-  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"  />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <!-- CSS  el now es para el filtro-->
+  <!-- CSS  -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0">  
+  <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0">
   <link rel="stylesheet" href="/css/demo.css">
   <!-- LOGIN PROF -->
 
- 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
-  
- 
- 
- 
-  <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
- 
   <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <link rel="stylesheet" href="/css/login.css">
@@ -73,6 +60,34 @@
             </a>
           </li>
 
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/nivel">
+              <h5> NIVELES</h5>
+                
+             
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/grado">
+              <h5> GRADOS</h5>
+                
+             
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/seccion">
+              <h5> SECCIONES</h5>
+                
+             
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/periodo">
+              <h5> PERIODOS</h5>
+                
+             
+            </a>
+          </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
               <h5> MATRICULAS</h5>
@@ -171,26 +186,25 @@
         <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-        <script src="{{asset('assets/adminlte/plugins/jquery/jquery.min.js')}}"></script>
-        <!-- Bootstrap 4 -->
-        <script src="{{asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <!-- AdminLTE App -->
-        <script src="{{asset('assets/adminlte/dist/js/adminlte.min.js')}}"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{asset('assets/adminlte/dist/js/demo.js')}}"></script>
-       <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+
         <!-- Bootstrap core JavaScript -->
-        <script src="../js/jquery-ui/jquery-ui.min.js"></script>
         <script src="/adminlte/dist/js/menu/jquery.min.js"></script>
         <script src="/adminlte/dist/js/menu/bootstrap.bundle.min.js"></script>
-        <script src="../js/ekko-lightbox/ekko-lightbox.min.js"></script>
+
         <!-- Plugin JavaScript -->
         <script src="/adminlte/dist/js/menu/jquery.easing.min.js"></script>
-        <script src="../js/filterizr/jquery.filterizr.min.js"></script>
+
         <!-- Custom scripts for this template -->
         <script src="/adminlte/dist/js/menu/stylish-portfolio.min.js"></script>
 </body>
- 
+
+        <!-- fin centro -->
+   
+
+
+
+
+    
   
   </div>
   <!--   Core JS ARCCHIVOS   -->
@@ -198,8 +212,18 @@
   <script src="/adminlte/dist/js/core/jquery.min.js"></script>        
   <script src="/adminlte/dist/js/core/popper.min.js"></script>        
   <script src="/adminlte/dist/js/core/bootstrap.min.js"></script>        
- 
- 
+
+  <!-- DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-switch.js"></script>
+
+  <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://refreshless.com/nouislider/ -->
+  <script src="/adminlte/plugins/gg/js/plugins/nouislider.min.js"></script>
+
+  <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: https://github.com/uxsolutions/bootstrap-datepicker -->
+  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-datepicker.js"></script>
+
+  <!--  Google Maps ESTE SCRIPT SOLO LO PEGUÉ xdddd    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- CENTRO DE EFECTOS Y SCRIPTS-->
   <script src="/adminlte/dist/js/now-ui-kit.js?v=1.3.0"></script>        
   <!-- LOGIN PROF-->

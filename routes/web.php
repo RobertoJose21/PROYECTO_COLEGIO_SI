@@ -33,15 +33,15 @@ Route::resource('cuenta', 'UserController');
 
 Route::resource('estudiante','EstudianteController');
 Route::resource('nota','NotaController');
-Route::resource('seccion','SeccionController');
+
+Route::resource('nivel','NivelController');
 Route::resource('grado','GradoController');
+Route::resource('seccion','SeccionController');
+Route::resource('periodo','PeriodoController');
 
 Route::get('/cancelarnota',function(){
     return redirect()->route('nota.index')->with('datos','ACCIÓN CANCELADA...!');
 })->name('cancelarnota');
-
-
-
 
 Route::resource('matricula', 'MatriculaController');  //para darle un mejor nombre a als categorias
 
@@ -50,4 +50,15 @@ Route::get('cancelarMatricula', function () {
 })->name('cancelarMatricula');  //le damos nombre a la ruta
 
 Route::get('/matricula/{numeromatricula}/confirmar', 'MatriculaController@confirmar')->name('matricula.confirmar');
+
+
+Route::Get('/gradobyniveles/{id}', 'MatriculaController@byGrado');
+Route::Get('/seccionesbygrados/{id}', 'MatriculaController@bySeccion');
+
+
+//impresion
+Route::get('/imprime/{idmatricula}/imprime','MatriculaController@show')->name('imprimeMatricula');
+
+//grafico
+Route::get('grafico','GraficoController@graficoMatricula')->name('graficoMatricula');
 

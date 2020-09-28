@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Seccion;
-use App\Estudiante;
-use App\Matricula;
+use App\Alumno;
+use App\Nivel;
 use App\Grado;
+use App\Periodo;
+use App\Seccion;
+use App\Matricula;
 use DB;
 
 
@@ -23,8 +25,7 @@ class MatriculaController extends Controller
 
     {
         $buscarpor=$request->get('buscarpor');
-        //$producto=Producto::where('estado','=','1')->paginate($this::PAGINATION);
-        $matricula=Matricula::where('estado','=','1')->where('fecha','like','%'.$buscarpor.'%')->paginate($this::PAGINATION);   //creo una variable categorias y llamo a todas con estado 1 y lo almacena
+        $matricula=Matricula::where('estado','=','1')->where('fecha','like','%'.$buscarpor.'%')->paginate($this::PAGINATION);   
         return view('matricula.index',compact('matricula','buscarpor'));
     }
 
@@ -35,10 +36,12 @@ class MatriculaController extends Controller
      */
     public function create()
     {
+        $alumno=Alumno::where('estado','=','1')->get();
+        $periodo=Periodo::where('estado','=','1')->get();
         $seccion=Seccion::where('estado','=','1')->get();
-        $estudiante=Estudiante::where('estado','=','1')->get();
+        $nivel=Nivel::where('estado','=','1')->get();
         $grado=Grado::where('estado','=','1')->get();
-        return view('matricula.create',compact('seccion','estudiante','grado'));
+        return view('matricula.create',compact('alumno','periodo','seccion','nivel','grado'));
 
     }
 
@@ -51,29 +54,18 @@ class MatriculaController extends Controller
     public function store(Request $request)
     {
         $data=request()->validate([
-            'escala'=>'required|max:1',
-            
-            'añoescolar'=>'required|max:4',
-            
+            'fecha'=>'required|max:30',     
         ],
         [
-
-            'escala.required'=>'Ingrese la escala de la matricula',
-            'escala.max'=>'Máximo  1 caracter para la escala',
-            'añoescolar.required'=>'Ingrese el año escolar de la matricula',
-            'añoescolar.max'=>'Máximo  4 caracter para el año escolar',
-        
+            'fecha.required'=>'Ingrese la escala de la matricula',  
         ]);
 
 
     $matricula=new Matricula();    
+    $matricula->idalumno=$request->idalumno;  //designamos el valor de descripcion
     $matricula->fecha=$request->fecha;  //designamos el valor de descripcion
-    $matricula->estudiante_id=$request->estudiante_id;  //designamos el valor de descripcion
-    $matricula->nivel=$request->nivel;  //designamos el valor de descripcion
-    $matricula->año=$request->año;  //designamos el valor de descripcion
-    $matricula->nameseccion=$request->nameseccion;  //seccion 
-    $matricula->escala=$request->escala;  //designamos el valor de descripcion
-    $matricula->añoescolar=$request->añoescolar;  //designamos el valor de descripcion
+    $matricula->idseccion=$request->idseccion;  //seccion 
+    $matricula->idperiodo=$request->idperiodo;  //designamos el valor de descripcion
 
     $matricula->estado='1';   //campo de descripcion
     $matricula->save();       
@@ -88,11 +80,7 @@ class MatriculaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,11 +91,13 @@ class MatriculaController extends Controller
     {
         
         $matricula=Matricula::findOrfail($numeromatricula);
+        $alumno=Alumno::where('estado','=','1')->get();
+        $periodo=Periodo::where('estado','=','1')->get();
         $seccion=Seccion::where('estado','=','1')->get();
-        $estudiante=Estudiante::where('estado','=','1')->get();
+        $nivel=Nivel::where('estado','=','1')->get();
         $grado=Grado::where('estado','=','1')->get();
 
-        return view('matricula.edit',compact('matricula','seccion','estudiante','grado'));
+        return view('matricula.edit',compact('matricula','alumno','periodo','seccion','nivel','grado'));
     }
 
     /**
@@ -120,33 +110,31 @@ class MatriculaController extends Controller
     public function update(Request $request, $numeromatricula)
     {
         $data=request()->validate([
-            'escala'=>'required|max:1',
-            
-            'añoescolar'=>'required|max:4',
-            
+            'fecha'=>'required|max:30',     
         ],
         [
-
-            'escala.required'=>'Ingrese la escala de la matricula',
-            'escala.max'=>'Máximo  1 caracter para la escala',
-            'añoescolar.required'=>'Ingrese el año escolar de la matricula',
-            'añoescolar.max'=>'Máximo  4 caracter para el año escolar',
-        
+            'fecha.required'=>'Ingrese la escala de la matricula',  
         ]);
 
 
     $matricula=Matricula::findOrfail($numeromatricula);    //instanciamos nuestro modelo categoria
     $matricula->fecha=$request->fecha;  //designamos el valor de descripcion
-    $matricula->estudiante_id=$request->estudiante_id;  //designamos el valor de descripcion
-    $matricula->nivel=$request->nivel;  //designamos el valor de descripcion
-    $matricula->año=$request->año;  //designamos el valor de descripcion
-    $matricula->nameseccion=$request->nameseccion;  //seccion 
-    $matricula->escala=$request->escala;  //designamos el valor de descripcion
-    $matricula->añoescolar=$request->añoescolar;  //designamos el valor de descripcionon
+    $matricula->idalumno=$request->idalumno;  //designamos el valor de descripcion
+    $matricula->idperiodo=$request->idperiodo;  //designamos el valor de descripcion
+    $matricula->idseccion=$request->idseccion;  //seccion 
 
     $matricula->estado='1';   //campo de descripcion
-    $matricula->save();       
+    $matricula->save();         
     return redirect()->route('matricula.index')->with('datos','Registro Actualizado...!'); //devolvem
+    }
+
+    public function show($id)
+    {
+        $matricula= Matricula::where('idmatricula','=',$id)->first();
+
+        $pdf = \PDF::loadView('matricula.rpmatricula', compact('matricula'))->setPaper('a4', 'landscape');
+        return $pdf->stream('matricula.pdf');
+
     }
 
     /**
@@ -167,4 +155,13 @@ class MatriculaController extends Controller
         $matricula->save();
         return redirect()->route('matricula.index')->with('datos','Registro Eliminadoa...!');
     }
+
+    public function byGrado($id){
+        return Grado::where('estado','=','1')->where('idnivel','=',$id)->get();
+    }
+    public function bySeccion($id){
+        return Seccion::where('estado','=','1')->where('idgrado','=',$id)->get();
+    }
+
+
 }
