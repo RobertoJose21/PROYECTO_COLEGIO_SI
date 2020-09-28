@@ -11,7 +11,7 @@ class Seccion extends Model
     protected $table='secciones';
     protected $primaryKey = 'idseccion';
     public $timestamps=false;
-    protected $fillable = ['seccion','idgrado'];
+    protected $fillable = ['seccion','estado','idgrado'];
 
     public function matriculas()    
     {

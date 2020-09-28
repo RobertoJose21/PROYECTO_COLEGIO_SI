@@ -20,14 +20,9 @@ class SeccionController extends Controller
     
     {
 
-        $buscarpor=$request->get('buscarpor');
-        //el del dolar tiene q ser igual con el de compact las variables
-
-       // $categoria=Categoria::where('estado','=','1')->get();
-       $seccion=Seccion::where('estado','=','1')->where('nameseccion','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);   //creo una variable categorias y llamo a todas con estado 1 y lo almacena
-     //  return view('categoria.index',compact('categoria')); 
-       return view('seccion.index',compact('seccion','buscarpor'));  //llamamos a la vista y luego envio a la vista mi varibale categoria 
-        //el valor de buscarpor no se pierda
+       $buscarpor=$request->get('buscarpor');
+       $seccion=Seccion::where('estado','=','1')->where('seccion','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);  
+       return view('seccion.index',compact('seccion','buscarpor'));  
     }
 
     /**
@@ -37,6 +32,7 @@ class SeccionController extends Controller
      */
     public function create()
     {    
+        $grado=Grado::where('estado','=','1')->get();
         return view('seccion.create',compact('grado'));
     }
 
@@ -48,18 +44,20 @@ class SeccionController extends Controller
      */
     public function store(Request $request)
     {       
-         /*   $data=request()->validate([
-                'descripcion'=>'required|max:30'
+            $data=request()->validate([
+                'seccion'=>'required|max:1'
             ],
             [
-                'descripcion.required'=>'Ingrese descripcion de categoria',
-                'descripcion.max'=>'Máximo 30 caracteres para la descripcion'
+                'seccion.required'=>'Ingrese seccion ',
+                'seccion.max'=>'Máximo 1 caracter para seccion'
             ]);
-        $seccion=new Categoria();    //instanciamos nuestro modelo categoria
-        $seccion->descripcion=$request->descripcion;  //designamos el valor de descripcion
+
+        $seccion=new Seccion();    //instanciamos nuestro modelo categoria
+        $seccion->seccion=$request->seccion;  //designamos el valor de descripcion
+        $seccion->idgrado=$request->idgrado;  //designamos el valor de descripcion
         $seccion->estado='1';   //campo de descripcion
         $seccion->save();       
-        return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado...!'); *///devolvemos los datos q usara el index
+        return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado...!'); 
     }
 
     /**
@@ -81,8 +79,10 @@ class SeccionController extends Controller
      */
     public function edit($id)
     {
-       /* $seccion=Categoria::findOrfail($id);
-        return view('seccion.edit',compact('seccion'));*/
+        $grado=Nivel::where('estado','=','1')->get();
+        $seccion=Grado::findOrfail($id);
+        
+        return view('seccion.edit',compact('seccion','grado'));
     }
 
     /**
@@ -94,23 +94,27 @@ class SeccionController extends Controller
      */
     public function update(Request $request, $id)
     {
-       /* $data=request()->validate([
-            'descripcion'=>'required|max:30'
-        ],[
-            'descripcion.required'=>'Ingrese descripcion de categoria',
-            'descripcion.max'=>'maximo de 30 caracteres para descripcion',
+        $data=request()->validate([
+            'seccion'=>'required|max:1'
+        ],
+        [
+            'seccion.required'=>'Ingrese seccion ',
+            'seccion.max'=>'Máximo 1 caracter para seccion'
         ]);
 
-        $seccion=Categoria::findOrFail($id);
-        $seccion->descripcion=$request->descripcion;
-        $seccion->save();
-        return redirect()->route('seccion.index')->with('datos','Registro Actualizado...!');*/
+        $seccion=Seccion::findOrFail($id);
+        $seccion->seccion=$request->seccion;
+        $seccion->idgrado=$request->idgrado;  //designamos el valor de descripcion
+    
+        $seccion->estado='1';   //campo de descripcion
+        $seccion->save();  
+        return redirect()->route('seccion.index')->with('datos','Registro Actualizado...!');
     }
 
 
     public function confirmar($id){
-       /* $seccion=Categoria::find($id);
-        return view('seccion.confirmar',compact('categoria'));*/
+        $seccion=Seccion::find($id);
+        return view('seccion.confirmar',compact('seccion'));
     }
 
     /**
@@ -121,9 +125,9 @@ class SeccionController extends Controller
      */
     public function destroy($id)
     {
-      /*  $seccion=Seccion::findOrFail($id);
+        $seccion=Seccion::findOrFail($id);
         $seccion->estado='0';
         $seccion->save();
-        return redirect()->route('seccion.index')->with('datos','Registro Eliminado...!');*/
+        return redirect()->route('seccion.index')->with('datos','Registro Eliminado...!');
     }
 }

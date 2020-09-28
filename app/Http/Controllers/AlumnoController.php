@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Estudiante;
+use App\Alumno;
 use Illuminate\Http\Request;
 
-class EstudianteController extends Controller
+class AlumnoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class EstudianteController extends Controller
     public function index(Request $request)
         {
             $buscarpor=$request->get('buscarpor');
-            $estudiante=Estudiante::where('estado','=','1')->where('nameestudiante','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
+            $alumno=Estudiante::where('estado','=','1')->where('nameestudiante','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
             return view('estudiante.index',['estudiante'=>$estudiante,'buscarpor'=>$buscarpor]);
         }
 

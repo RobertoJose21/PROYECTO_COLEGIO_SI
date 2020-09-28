@@ -5,8 +5,8 @@
 
 	 
         
-    <h1>Desea eliminar el número de la matrícula : {{$matricula->numeromatricula}} , código del educando : {{$matricula->estudiante_id}} </h1>
-		<form method="POST" action="{{ route('matricula.destroy',$matricula->numeromatricula) }}">
+    <h1>Desea eliminar el número de la matrícula : {{$matricula->idmatricula}} , código del educando : {{$matricula->idalumno}} </h1>
+		<form method="POST" action="{{ route('matricula.destroy',$matricula->idmatricula) }}">
 		@method('delete')	
             @csrf
     

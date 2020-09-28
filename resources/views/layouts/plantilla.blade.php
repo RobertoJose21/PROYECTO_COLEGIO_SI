@@ -61,6 +61,34 @@
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/nivel">
+              <h5> NIVELES</h5>
+                
+             
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/grado">
+              <h5> GRADOS</h5>
+                
+             
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/seccion">
+              <h5> SECCIONES</h5>
+                
+             
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/periodo">
+              <h5> PERIODOS</h5>
+                
+             
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
               <h5> MATRICULAS</h5>
                 
