@@ -54,7 +54,7 @@
           
           <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" rel="tooltip" title="Inicio" data-placement="bottom" href="/inicio">
-                <img class="img-fluid" src="img/inicio.png">
+                <img class="img-fluid" src="/img/inicio.png">
                 
                  
             </a>
@@ -126,7 +126,7 @@
           
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="Salir" data-placement="bottom" href="../" >
-                <img class="img-fluid" src="img/salir.png">
+                <img class="img-fluid" src="/img/salir.png">
                 
                 
             </a>

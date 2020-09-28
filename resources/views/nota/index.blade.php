@@ -89,7 +89,7 @@ table tr:hover {
 <div class="container-fluid">
   <div class="row">
 
-    <div class=" form-group col-3 text-center">
+    <div class="  col-3 text-center">
       <label for="">PERIODO</label>
           <select class="form-control" name="idperiodo" id="idperiodo" style="border-radius: 40px;">
               @foreach($periodo as $itemperiodo)
@@ -98,7 +98,7 @@ table tr:hover {
           </select>
     </div>
 
-      <div class="form-group col-3 text-center">
+      <div class="  col-3 text-center">
         <label for="">NIVELES</label>
             <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;">
               <option value="" disabled selected>Seleccione un Nivel</option>
@@ -109,7 +109,7 @@ table tr:hover {
       </div>
       
 
-      <div class="form-group col-4 text-center">
+      <div class=" col-4 text-center">
         <label for="">GRADOS</label>
              
               <select  name="idgrado" id="idgrado"  class="form-control" style="border-radius: 40px;" disabled required>
@@ -118,7 +118,7 @@ table tr:hover {
             
       </div>  
        
-      <div class=" form-group col-2 text-center">
+      <div class="   col-2 text-center">
         <label for="">SECCIONES</label>
             <select class="form-control" name="idseccion" id="idseccion" style="border-radius: 40px;" disabled required>
               <option value="" selected>Seleccione un Grado</option> 
@@ -127,20 +127,20 @@ table tr:hover {
   </div><br>
 <div class="row">
   
-  <div class=" form-group col-4 text-center">
+  <div class="  col-4 text-center">
     <label for="">CURSO</label>
         <select class="form-control" name="idcurso" id="idcurso" style="border-radius: 40px;" disabled required>
           <option value="" selected>Seleccione un Grado</option> 
           
         </select>
   </div>
-  <div class="form-group col-4 text-center">
+  <div class="  col-4 text-center">
     <label for="">CAPACIDAD</label>
         <select class="form-control" name="idcapacidad" id="idcapacidad" style="border-radius: 40px;" disabled required>
           <option value="" selected>Seleccione una Capacidad</option>    
         </select>
   </div>
-  <div class=" form-group col-4 text-center">
+  <div class="   col-4 text-center">
     <label for="">DOCENTE</label>
         <select class="form-control" name="idprofesor" id="idprofesor" style="border-radius: 40px;" disabled required>
         <option value="" selected>Docente</option>     
@@ -159,8 +159,49 @@ table tr:hover {
   </div>
 </div>
   
+ 
+<div class="modal fade" id="modal_editar" role="dialog">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              
+              <h3 class="modal-title text-black">Modificar Nota</h3>
+          </div>
+          <div class="modal-body">
+            <form method="POST"  >
+              @method('put')
+                  @csrf
+          
+                  <div class="form-row">
+                      
+                      <div class="  col-md-3 text-center">
+                          <label for="id" class="text-black">NOTA 1 :</label>
+                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"   >
+                      </div>
+                      <div class="  col-md-3 text-center">
+                          <label for="id" class="text-black">NOTA 2 :</label>
+                          <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2"  >
+                      </div>
+                      <div class="  col-md-3 text-center">
+                          <label for="id" class="text-black">NOTA 3 :</label>
+                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  >
+                      </div>
+                       
+                  </div>
+              
+                
+                   
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> GRABAR</button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal">CANCELAR</button>
+          </div>
+      </div>
 
-
+  </div>
+</div>
 
 @yield('tablanotas')
 <!--  para la tabla donde se va mostrar los alumnos y las notas -->
@@ -205,6 +246,7 @@ table tr:hover {
  
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 var c=0;
 //para el combobox grado
@@ -260,7 +302,7 @@ var c=0;
       $("#idcurso").change(function(){
         var curso = $(this).val();
         $("#idcapacidad").removeAttr('disabled');
-        $("#idprofesor").removeAttr('disabled');
+       // $("#idprofesor").removeAttr('disabled');
         $.get('../capacidadbycursos/'+curso, function(data){
           console.log(data);
             var producto_select = '<option value="" disabled selected>Seleccione una Capacidad</option>';
@@ -305,7 +347,7 @@ var c=0;
               for (var i=0; i<data.length;i++){
                 
                 var ind=data[i].idnota;
-              fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary btn-lg"  >Editar</a></td></tr>';
+              fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
  
             	$('#tabla1').append(fila);
               fila='';
@@ -317,7 +359,19 @@ var c=0;
 
     });
 
+     
+function Editar(idnota) {                      //para el editar una nota
+      
+  $.get('../Minota/'+idnota, function(data){
+              
+          $("#editarnota1").val(data[0].nota1);
+          $("#editarnota2").val(data[0].nota2);
+          $("#editarnota3").val(data[0].nota3);
+        });
+     $('#modal_editar').modal('show');
     
+     $("#editarnota1").placeholder(idnota);
+       };
     
 </script>
  

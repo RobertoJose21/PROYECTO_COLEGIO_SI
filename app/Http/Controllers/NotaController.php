@@ -84,10 +84,29 @@ class NotaController extends Controller
         /**/
         return DB::table('notas as n','n.estado','=','1')
         ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
+       // ->join('secciones as s','s.idseccion','=','%'.$seccion.'%')
         ->join('alumnos as a','m.idalumno','=','a.idalumno')
         ->where('n.idcapacidad','like','%'.$id.'%')
         ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
     
+    }
+
+    public function MiNota($id){
+     
+        return Nota::where('estado','=','1')->where('idnota','=',$id)->get();
+        }
+
+    public function byMatricula($id){
+     
+       return Matricula::where('estado','=','1')->where('idalumno','=',$id)->get();
+     }
+     public function byCursoM($id){
+
+        return DB::table('cursos as c','c.estado','=','1')
+        ->join('grados as g','c.idgrado','=','g.idgrado')
+        ->join('secciones as s','g.idgrado','=','s.idgrado')
+        ->join('matriculas as m','m.idseccion','=','s.idseccion')
+        ->where('m.idmatricula','like','%'.$id.'%')->select('c.idcurso','c.curso','s.idseccion','s.seccion')->get();
     }
 
     public function create()

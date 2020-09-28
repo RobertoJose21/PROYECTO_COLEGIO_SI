@@ -18,6 +18,9 @@ Route::Get('/cursosbygrados/{id}', 'NotaController@byCurso');
 Route::Get('/capacidadbycursos/{id}', 'NotaController@byCapacidad');
 Route::Get('/profesorbycurso/{id}', 'NotaController@byprofesor');
 Route::Get('/notasbycapacidad/{id}', 'NotaController@byNotas');
+Route::Get('/matriculabyalumno/{id}', 'NotaController@byMatricula');
+Route::Get('/cursobymatricula/{id}', 'NotaController@byCursoM');
+Route::Get('/Minota/{id}', 'NotaController@MiNota');
 
 Route::get('/', function () {    return view('index');});
  
