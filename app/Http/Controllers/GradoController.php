@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Grado;   //no olvidar poner esto
+use App\Nivel;
 use Illuminate\Http\Request;
 
 
@@ -19,15 +20,10 @@ class GradoController extends Controller
     
     {
 
-        $buscarpor=$request->get('buscarpor');
-        //el del dolar tiene q ser igual con el de compact las variables
-
-       // $categoria=Categoria::where('estado','=','1')->get();
-       $grado=Grado::where('estado','=','1')->where('namegrado','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);   //creo una variable categorias y llamo a todas con estado 1 y lo almacena
-     //  return view('categoria.index',compact('categoria')); 
-       return view('grado.index',compact('grado','buscarpor'));  //llamamos a la vista y luego envio a la vista mi varibale categoria 
-        //el valor de buscarpor no se pierda
-    }
+       $buscarpor=$request->get('buscarpor');
+       $grado=Grado::where('estado','=','1')->where('grado','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);   
+       return view('grado.index',compact('grado','buscarpor')); 
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +32,8 @@ class GradoController extends Controller
      */
     public function create()
     {
-        return view('grado.create');
+        $nivel=Nivel::where('estado','=','1')->get();
+        return view('grado.create',compact('nivel'));
     }
 
     /**
@@ -47,6 +44,22 @@ class GradoController extends Controller
      */
     public function store(Request $request)
     {   
+        $data=request()->validate([
+            'grado'=>'required|max:30'
+        ],
+        [
+            'grado.required'=>'Ingrese grado',
+            'grado.max'=>'Máximo 30 caracteres para el grado'
+        ]);
+        
+        $grado=new Grado();    //instanciamos nuestro modelo categoria
+        $grado->grado=$request->titVideo;  //designamos el valor de descripcion
+        $grado->idnivel=$request->idnivel;  //designamos el valor de descripcion
+        $grado->estado='1';   //campo de descripcion
+        $grado->save();       
+        return redirect()->route('grado.index')->with('datos','Registro Nuevo Guardado...!'); //devolvemos los datos q usara el index
+
+
 
     }
 
@@ -67,9 +80,12 @@ class GradoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idvideo)
     {
-       
+        $nivel=Nivel::where('estado','=','1')->get();
+        $grado=Grado::findOrfail($idvideo);
+        
+        return view('grado.edit',compact('nivel','grado'));
     }
 
     /**
@@ -79,13 +95,22 @@ class GradoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idgrado)
     {
+        $grado=Grado::findOrfail($idgrado);    //instanciamos nuestro modelo categoria
+        $grado->grado=$request->grado;  //designamos el valor de descripcion
+        $grado->idnivel=$request->idnivel;  //designamos el valor de descripcion
+    
+        $grado->estado='1';   //campo de descripcion
+        $grado->save();       
+        return redirect()->route('grado.index')->with('datos','Registro Actualizado...!'); //devolvem
        
     }
 
 
     public function confirmar($id){
+        $grado=Grado::find($id);
+        return view('grado.confirmar',compact('grado'));
        
     }
 
@@ -97,6 +122,10 @@ class GradoController extends Controller
      */
     public function destroy($id)
     {
+        $grado=Grado::findOrFail($id);
+        $grado->estado='0';
+        $grado->save();
+        return redirect()->route('grado.index')->with('datos','Registro Eliminadoa...!');
         
     }
 }

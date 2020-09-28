@@ -167,11 +167,11 @@ CREATE TABLE grados
     FOREIGN KEY (idnivel) REFERENCES niveles(idnivel)
 );
 
-INSERT  grados VALUES(null,'PRIMER INICIAL',3,1);
-INSERT  grados VALUES(null,'SEGUNDO INICIAL',3,1);
-INSERT  grados VALUES(null,'TERCER INICIAL',3,1);
-INSERT  grados VALUES(null,'CUARTO INICIAL',3,1);
-INSERT  grados VALUES(null,'QUITNO INICIAL',3,1);
+INSERT  grados VALUES(null,'PRIMERO DE SECUNDARIA',3,1);
+INSERT  grados VALUES(null,'SEGUNDO DE SECUNDARIA',3,1);
+INSERT  grados VALUES(null,'TERCERO DE SECUNDARIA',3,1);
+INSERT  grados VALUES(null,'CUARTO DE SECUNDARIA',3,1);
+INSERT  grados VALUES(null,'QUINTO DE SECUNDARIA',3,1);
 
 
 INSERT  grados VALUES(null,'PRIMERO DE PRIMARIA',2,1);
@@ -334,3 +334,9 @@ CREATE TABLE notas
  insert into notas values( '1','16',null,09,10,13,11,'1');
  insert into notas values( '1','17',null,14,08,13,12,'1');
  insert into notas values( '1','18',null,15,16,05,12,'1');
+
+
+
+create procedure alumnosxsecciones()
+select s.seccion as seccion,count(m.idalumno)
+ as cantidad from secciones s inner join matriculas m on s.idseccion=m.idseccion group by m.idseccion;

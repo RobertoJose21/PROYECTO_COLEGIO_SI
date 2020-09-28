@@ -1,22 +1,22 @@
 @extends('layouts.plantilla')
 @section('contenido')
 <style>
-  table tbody {
-  background-color: #8ce1fd; 
-}
-table tr:hover {
-  background-color: #E3E4E5;
-}
-</style>
+    table tbody {
+    background-color: #8ce1fd; 
+  }
+  table tr:hover {
+    background-color: #E3E4E5;
+  }
+  </style>
 <div class="container-fluid ">
   <div class="form-group">
-    <h1>LISTADO DE SECCIONES</h1>
+    <h1>LISTADO DE PERIODOS </h1>
     
     <form class="form-inline my-2 my-lg-0 float-right">
       <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="{{$buscarpor}}">
       <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-  </div><BR>
+  </div>  <br>
     @if(session('datos'))
       <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
         {{session('datos')}}
@@ -26,26 +26,24 @@ table tr:hover {
       </div>
     @endif
 
-      <br>
+
     <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">ID SECCION</th>
-            <th scope="col">GRADO</th>
-            <th scope="col">SECCION</th>
+            <th scope="col">Id Periodo</th>
+            <th scope="col">Periodo</th>
           </tr>
         </thead>
         <tbody>
-            @foreach($seccion as $k)
+            @foreach($periodo as $k)
                 <tr>
-                    <td>{{$k->idseccion}}</td>
-                    <td>{{$k->grado->grado}}</td>
-                    <td>{{$k->seccion}}</td>
+                    <td>{{$k->idperiodo}}</td>
+                    <td>{{$k->periodo}}</td>
                 </tr>   
             @endforeach
         </tbody>
     </table>  
-      {{$seccion->links()}}    
+      {{$periodo->links()}}    
 </div>
 
 @endsection
