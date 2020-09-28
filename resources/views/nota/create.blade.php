@@ -38,7 +38,7 @@
           </div>
           <div class="  col-4 text-center">
             <label for="">DOCENTE</label>
-                <select class="form-control text-success" name="idprofesor" id="idprofesor" style="border-radius: 40px;" disabled required>
+                <select class="form-control text-success " name="idprofesor" id="idprofesor" style="border-radius: 40px;" disabled required>
                 <option value="" selected>Docente</option>     
                 </select>
           </div>
@@ -46,15 +46,30 @@
           <div class="row">
             <div class="form-group col-md-3 text-center ">
                 <label for="id">NOTA - 1</label>
-                <input type="number" min="0" max="20" step="0.1" class="form-control  text-success"  placeholder="0" id="nota1" name="nota1" value="">
+                <input type="number" min="0" max="20" step="0.1" class="form-control  text-success  @error('nota1') is-invalid @enderror"  placeholder="0" id="nota1" name="nota1" value="">
+                @error('nota1')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{$message}}</strong>
+                </span>
+            @enderror
             </div>
             <div class="form-group col-md-3 text-center">
                 <label for="id">NOTA - 2</label>
-                <input type="number" min="0" max="20" step="0.1" class="form-control  text-success"  placeholder="0" id="nota2" name="nota2" value="">
+                <input type="number" min="0" max="20" step="0.1" class="form-control  text-success  @error('nota2') is-invalid @enderror"  placeholder="0" id="nota2" name="nota2" value="">
+                @error('nota2')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{$message}}</strong>
+                </span>
+            @enderror
             </div>
             <div class="form-group col-md-3 text-center">
                 <label for="id" >NOTA - 3</label>
-                <input type="number" min="0" max="20" step="0.1" class="form-control  text-success"  placeholder="0" id="nota3" name="nota3" value="">
+                <input type="number" min="0" max="20" step="0.1" class="form-control  text-success  @error('nota3') is-invalid @enderror"  placeholder="0" id="nota3" name="nota3" value="">
+                @error('nota3')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{$message}}</strong>
+                </span>
+            @enderror
             </div>
         </div>
         <div class="row"> 

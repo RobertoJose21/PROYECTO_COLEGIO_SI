@@ -126,20 +126,23 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-       
-        
-        $data=request()->validate([
+           $data=request()->validate([
             'idalumno'=>'required',
             'idcapacidad'=>'required',
-            
+            'nota1'=>'required',
+            'nota2'=>'required',
+            'nota3'=>'required',
+ 
         ],
         [
          'idalumno.required'=>'Seleccione un alumno',
          'idcapacidad.required'=>'Seleccione una capacidad',
+         'nota1.required'=>'ingrese la nota 1',
+         'nota2.required'=>'ingrese la nota 2',
+         'nota3.required'=>'ingrese la nota 3',
+         
         ]);
-
-        //Nota::create($request->all());
-
+ 
     $nota=new Nota();    
     $nota->idmatricula=$request->idmatricula;   
     $nota->idcapacidad=$request->idcapacidad;  
