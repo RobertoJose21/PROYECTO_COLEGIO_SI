@@ -25,10 +25,14 @@ Route::get('/integrantes','UserController@integrantes')->name('user.integrantes'
 Route::resource('cuenta', 'UserController');
 
 
-Route::resource('estudiante','EstudianteController');
+Route::resource('alumno','AlumnoController');
 Route::resource('nota','NotaController');
 Route::resource('seccion','SeccionController');
 Route::resource('grado','GradoController');
+
+Route::Get('/paisdepartamento/{id}', 'AlumnoController@PaisDepartamento');
+Route::Get('/departamentoprovincia/{id}', 'AlumnoController@DepartamentoProvincia');
+Route::Get('/provinciadistrito/{id}', 'AlumnoController@ProvinciaDistrito');
 
 Route::get('/cancelarnota',function(){
     return redirect()->route('nota.index')->with('datos','ACCIÓN CANCELADA...!');
