@@ -23,7 +23,7 @@ class NotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    const PAGINACION=5;
+    const PAGINACION=6;
     public function index(Request $request)
     {
 
@@ -31,7 +31,8 @@ class NotaController extends Controller
             $notas=DB::table('notas as n','n.estado','=','1')
             ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
             ->join('alumnos as a','m.idalumno','=','a.idalumno')
-            ->where('m.idalumno','like','%'.$buscarpor.'%')->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->paginate($this::PAGINACION);
+            ->where('a.apellidos','like','%'.$buscarpor.'%')
+            ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->paginate($this::PAGINACION);
 
             /*$nota=Nota::where('estado','=','1')->join('matriculas m','m.idmatricula','=','notas.idmatricula')
             ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);*/
@@ -43,13 +44,14 @@ class NotaController extends Controller
             $nivel=Nivel::where('estado','=','1')->get();
             $capacidad=Capacidad::where('estado','=','1')->get();
             $matricula=Matricula::where('estado','=','1')->get();
+            $alumno=Alumno::where('estado','=','1')->get();
             /*foreach($notas as $itemnota)
             {
                 $itemnota->promedio=floor(($itemnota->nota1+$itemnota->nota2+$itemnota->nota3)/3);
                 $itemnota->save();
             }*/
 
-            return view('nota.index',['matricula'=>$matricula,'capacidad'=>$capacidad,'nivel'=>$nivel,'profesores'=>$profesor,'nota'=>$notas,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
+            return view('nota.index',['alumno'=>$alumno,'matricula'=>$matricula,'capacidad'=>$capacidad,'nivel'=>$nivel,'profesores'=>$profesor,'nota'=>$notas,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
     }
 
     /**
@@ -58,13 +60,34 @@ class NotaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function byGrado($id){
-        return Grado::where('activo','=','1')->where('idnivel','=',$id)->get();
+        return Grado::where('estado','=','1')->where('idnivel','=',$id)->get();
     }
     public function bySeccion($id){
-        return Seccion::where('activo','=','1')->where('idgrado','=',$id)->get();
+        return Seccion::where('estado','=','1')->where('idgrado','=',$id)->get();
     }
     public function byCurso($id){
-        return Curso::where('activo','=','1')->where('idgrado','=',$id)->get();
+        return Curso::where('estado','=','1')->where('idgrado','=',$id)->get();
+    }
+    public function byCapacidad($id){
+     
+    return Capacidad::where('estado','=','1')->where('idcurso','=',$id)->get();
+    }
+    public function byProfesor($id){
+       $catedra= Detalle_Catedra::where('estado','=','1')->where('idcurso','=',$id)->get();
+       
+        return  DB::table('detalle_catedra as dc','dc.estado','=','1')->join('profesores as p','dc.idprofesor','=','p.idprofesor')
+        ->where('dc.idcurso','=',$id)->select('p.idprofesor','p.profesor','dc.idcurso')->get();
+    }
+
+    public function byNotas($id){
+
+        /**/
+        return DB::table('notas as n','n.estado','=','1')
+        ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
+        ->join('alumnos as a','m.idalumno','=','a.idalumno')
+        ->where('n.idcapacidad','like','%'.$id.'%')
+        ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
+    
     }
 
     public function create()
@@ -88,7 +111,6 @@ class NotaController extends Controller
         
         $data=request()->validate([
             'idalumno'=>'required',
-            
             'idcapacidad'=>'required',
             
         ],
@@ -97,7 +119,7 @@ class NotaController extends Controller
          'idcapacidad.required'=>'Seleccione una capacidad',
         ]);
 
-
+        //Nota::create($request->all());
 
     $nota=new Nota();    
     $nota->idmatricula=$request->idmatricula;   
@@ -130,6 +152,7 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function edit($nota_id)
     {
         $nota=Nota::findOrFail($nota_id);

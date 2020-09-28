@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 Route::Get('/gradobyniveles/{id}', 'NotaController@byGrado');
 Route::Get('/seccionesbygrados/{id}', 'NotaController@bySeccion');
 Route::Get('/cursosbygrados/{id}', 'NotaController@byCurso');
+Route::Get('/capacidadbycursos/{id}', 'NotaController@byCapacidad');
+Route::Get('/profesorbycurso/{id}', 'NotaController@byprofesor');
+Route::Get('/notasbycapacidad/{id}', 'NotaController@byNotas');
 
 Route::get('/', function () {    return view('index');});
  

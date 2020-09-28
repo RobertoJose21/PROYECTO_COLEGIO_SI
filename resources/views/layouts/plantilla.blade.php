@@ -11,16 +11,22 @@
   </title>
    
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <link rel="stylesheet" href="../js/fontawesome-free/css/all.min.css">
+ 
   <!--    FUENTESITAS E ICONOS     -->
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"  />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <!-- CSS  -->
+  <!-- CSS  el now es para el filtro-->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0">
+  <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0">  
   <link rel="stylesheet" href="/css/demo.css">
   <!-- LOGIN PROF -->
 
-
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+  
  
  
  
@@ -172,26 +178,19 @@
         <script src="{{asset('assets/adminlte/dist/js/adminlte.min.js')}}"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{asset('assets/adminlte/dist/js/demo.js')}}"></script>
-        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
-        <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+       <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
         <!-- Bootstrap core JavaScript -->
+        <script src="../js/jquery-ui/jquery-ui.min.js"></script>
         <script src="/adminlte/dist/js/menu/jquery.min.js"></script>
         <script src="/adminlte/dist/js/menu/bootstrap.bundle.min.js"></script>
-
+        <script src="../js/ekko-lightbox/ekko-lightbox.min.js"></script>
         <!-- Plugin JavaScript -->
         <script src="/adminlte/dist/js/menu/jquery.easing.min.js"></script>
-
+        <script src="../js/filterizr/jquery.filterizr.min.js"></script>
         <!-- Custom scripts for this template -->
         <script src="/adminlte/dist/js/menu/stylish-portfolio.min.js"></script>
 </body>
-
-        <!-- fin centro -->
-   
-
-
-
-
-    
+ 
   
   </div>
   <!--   Core JS ARCCHIVOS   -->
