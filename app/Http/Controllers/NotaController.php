@@ -78,7 +78,7 @@ class NotaController extends Controller
 
         $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
         return $pdf->stream('libreta.pdf');
-       
+       //aca va mostrar la libreta
     }
 
     public function byGrado($id){
