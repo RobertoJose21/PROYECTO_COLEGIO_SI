@@ -343,7 +343,7 @@ select g.grado as grado,
 	 count(m.idalumno) as cantidad
 	 from secciones s inner join matriculas m on s.idseccion=m.idseccion 
 	 inner join grados g on s.idgrado=g.idgrado
-	 group by  g.grado
+	 group by  g.grado;
 
 create procedure alumnosxperiodo()
 select p.periodo	as periodo,
