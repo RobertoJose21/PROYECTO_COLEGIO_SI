@@ -87,6 +87,18 @@ table tr:hover {
 
 </style>
 <div class="container-fluid">
+
+  
+  @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
+          <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+            {{ session('datos')   }}
+              <button type="button" class="close"  data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+      @endif
+     
+
   <div class="row">
 
     <div class="  col-3 text-center">
@@ -151,11 +163,14 @@ table tr:hover {
  
 <div class="row">
   <div class="col-4">
-    <a type="button" href="{{route('nota.create')}}" class="btn btn-success" style="text-align: left" >Agregar Nota</a><br>
+    <a type="button" href="{{route('nota.create')}}" class="btn btn-success " style="text-align: left" ><i class="fas fa-plus"></i>_Agregar Nota</a><br>
 
   </div>
   <div class="col-4">
-  
+    
+    <a href="{{route('nota.libretas')}}" class="btn btn-success" ><i class="fas fa-graduation-cap"></i>_Ver Libretas</a>
+          
+    
   </div>
 </div>
   
@@ -169,41 +184,53 @@ table tr:hover {
               <h3 class="modal-title text-black">Modificar Nota</h3>
           </div>
           <div class="modal-body">
-            <form method="POST"  >
-              @method('put')
-                  @csrf
-          
-                  <div class="form-row">
-                      
-                      <div class="  col-md-3 text-center">
-                          <label for="id" class="text-black">NOTA 1 :</label>
-                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"   >
-                      </div>
-                      <div class="  col-md-3 text-center">
-                          <label for="id" class="text-black">NOTA 2 :</label>
-                          <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2"  >
-                      </div>
-                      <div class="  col-md-3 text-center">
-                          <label for="id" class="text-black">NOTA 3 :</label>
-                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  >
-                      </div>
-                       
+
+            <div class="form-group">
+            <form method="post" action="{{route('nota.store')}}">
+     
+              @csrf
+              <div class="form-row">
+                  
+                <div class="  col col-xs-1 text-center">
+                  <label for="id" class="text-black">ID</label>
+              <input type="number"  class="form-control text-success"   id="idnota" name="idnota"   disabled   >
+              </div>
+                  
+                  <div class="  col-md-3 text-center">
+                      <label for="id" class="text-black">NOTA 1 :</label>
+                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"   >
                   </div>
-              
+                  <div class="  col-md-3 text-center">
+                      <label for="id" class="text-black">NOTA 2 :</label>
+                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2"  >
+                  </div>
+                  <div class="  col-md-3 text-center">
+                      <label for="id" class="text-black">NOTA 3 :</label>
+                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  >
+                  </div>
+               
                 
                    
-              </form>
+                  
+              </div>
+              
+              </div>
+          
+             
+              <button type="submit" class="btn btn-primary"    ><i class="fas fa-save"></i> GRABAR</button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal">CANCELAR</button>
+          </form>
+          </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> GRABAR</button>
-              <button type="button" class="btn btn-warning" data-dismiss="modal">CANCELAR</button>
+           
           </div>
       </div>
 
   </div>
 </div>
 
-@yield('tablanotas')
+ 
 <!--  para la tabla donde se va mostrar los alumnos y las notas -->
 <div class="row">
   <div class="col-12">
@@ -367,11 +394,23 @@ function Editar(idnota) {                      //para el editar una nota
           $("#editarnota1").val(data[0].nota1);
           $("#editarnota2").val(data[0].nota2);
           $("#editarnota3").val(data[0].nota3);
+          $("#idnota").val(idnota);
         });
      $('#modal_editar').modal('show');
     
      $("#editarnota1").placeholder(idnota);
        };
+
     
+       function guardar() { 
+
+      var  nota1=document.getElementById('editarnota1').value;
+      var  nota2=document.getElementById('editarnota2').value;
+      var  nota3=document.getElementById('editarnota3').value;
+      var  idnota=document.getElementById('idnota').value;
+
+
+       }   
+
 </script>
  

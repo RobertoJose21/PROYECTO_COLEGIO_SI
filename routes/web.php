@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//rutas pa el inicio
+Route::get('/', function () {    return view('index');});
+Route::post('/', 'UserController@login')->name('user.login');
+Route::get('/inicio', function () {    return view('inicio');});
+Route::get('/integrantes','UserController@integrantes')->name('user.integrantes');
+Route::resource('cuenta', 'UserController');
+
+
+//rutas para los combobox dependientes de las notas
 Route::Get('/gradobyniveles/{id}', 'NotaController@byGrado');
 Route::Get('/seccionesbygrados/{id}', 'NotaController@bySeccion');
 Route::Get('/cursosbygrados/{id}', 'NotaController@byCurso');
@@ -22,29 +32,25 @@ Route::Get('/matriculabyalumno/{id}', 'NotaController@byMatricula');
 Route::Get('/cursobymatricula/{id}', 'NotaController@byCursoM');
 Route::Get('/Minota/{id}', 'NotaController@MiNota');
 
-Route::get('/', function () {    return view('index');});
- 
-Route::post('/', 'UserController@login')->name('user.login');
-Route::get('/inicio', function () {    return view('inicio');});
+//rutas para la libreta y actualizar notas
+Route::get('/libretas','NotaController@libretas')->name('nota.libretas');
+Route::get('/libretaNotas/{idmatricula}','NotaController@libretaNotas')->name('nota.libretaNotas');
+Route::post('/nota/actualizar','NotaController@actualizar')->name('nota.actualizar');
+
+//ruta para cancelar una accion en las notas
+Route::get('/cancelarnota',function(){
+    return redirect()->route('nota.index')->with('datos','ACCIÓN CANCELADA...!');
+})->name('cancelarnota');
 
 
-
-Route::get('/integrantes','UserController@integrantes')->name('user.integrantes');
-
-Route::resource('cuenta', 'UserController');
-
-
-Route::resource('estudiante','EstudianteController');
+// rutas generales
 Route::resource('nota','NotaController');
-
 Route::resource('nivel','NivelController');
 Route::resource('grado','GradoController');
 Route::resource('seccion','SeccionController');
 Route::resource('periodo','PeriodoController');
 
-Route::get('/cancelarnota',function(){
-    return redirect()->route('nota.index')->with('datos','ACCIÓN CANCELADA...!');
-})->name('cancelarnota');
+
 
 Route::resource('matricula', 'MatriculaController');  //para darle un mejor nombre a als categorias
 

@@ -15,7 +15,7 @@ use App\Detalle_Catedra;
 use App\Nivel;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Collection;
 class NotaController extends Controller
 {
     /**
@@ -54,11 +54,33 @@ class NotaController extends Controller
             return view('nota.index',['alumno'=>$alumno,'matricula'=>$matricula,'capacidad'=>$capacidad,'nivel'=>$nivel,'profesores'=>$profesor,'nota'=>$notas,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function libretas(Request $request){
+
+        $buscarpor=$request->get('buscarpor');
+        $notas=DB::table('matriculas as m','n.estado','=','1')
+        ->join('periodos as p','p.idperiodo','=','m.idperiodo')
+        ->join('alumnos as a','m.idalumno','=','a.idalumno')
+        ->where('a.apellidos','like','%'.$buscarpor.'%')
+        ->select('m.idmatricula','m.fecha','p.idperiodo','p.periodo','a.nombres','a.apellidos','a.idalumno')->paginate($this::PAGINACION);
+
+        /*$nota=Nota::where('estado','=','1')->join('matriculas m','m.idmatricula','=','notas.idmatricula')
+        ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
+   
+        
+        $periodo=Periodo::where('estado','=','1')->get();
+        $matricula=Matricula::where('estado','=','1')->get();
+        $alumno=Alumno::where('estado','=','1')->get();*/
+        return view('nota.libretas',['nota'=>$notas,'buscarpor'=>$buscarpor]);
+    }
+
+    public function libretaNotas($id){
+        $matricula= Matricula::where('idmatricula','=',$id)->first();
+
+        $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
+        return $pdf->stream('libreta.pdf');
+       
+    }
+
     public function byGrado($id){
         return Grado::where('estado','=','1')->where('idnivel','=',$id)->get();
     }
@@ -126,7 +148,8 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-           $data=request()->validate([
+          
+        $data=request()->validate([
             'idalumno'=>'required',
             'idcapacidad'=>'required',
             'nota1'=>'required',
@@ -143,6 +166,12 @@ class NotaController extends Controller
          
         ]);
  
+    if((DB::table('notas as n','n.estado','=','1')->where('n.idmatricula','=',$request->idmatricula)->where('n.idcapacidad','=',$request->idcapacidad))->count()>=1)
+        {
+        return redirect()->route('nota.create')->with('datos','Este Alumno Ya Tiene Notas en Esta Capacidad...!');
+        }
+    else
+    {
     $nota=new Nota();    
     $nota->idmatricula=$request->idmatricula;   
     $nota->idcapacidad=$request->idcapacidad;  
@@ -154,7 +183,7 @@ class NotaController extends Controller
     $nota->estado='1';   //campo de estado
     $nota->save();       
     return redirect()->route('nota.index')->with('datos','Registro Nuevo Guardado...!'); //devolvemos los datos q usara el index
-
+   }
     }
 
     /**
@@ -189,7 +218,38 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nota_id)
+
+    public function actualizar(Request $request)
+    {
+        $data=request()->validate([
+            'idnota'=>'required',
+            'nota1'=>'required|max:20',
+            'nota2'=>'required|max:20',
+            'nota3'=>'required|max:20',
+           
+        ],
+        [
+            'nota1.required'=>'INGRESE NOTA 1 DEL ESTUDIANTE',
+            'nota1.max'=>'MAXIMO 20 CARACTERES PARA LA NOTA 1',
+            'nota2.required'=>'INGRESE NOTA 2 DEL ESTUDIANTE',
+            'nota2.max'=>'MAXIMO 20 CARACTERES PARA LA NOTA 2',
+            'nota3.required'=>'INGRESE NOTA 3 DEL ESTUDIANTE',
+            'nota3.max'=>'MAXIMO 20 CARACTERES PARA LA NOTA 3',
+             
+        ]);
+        $nota=Nota::findOrFail($request->idnota);
+        $nota->nota1=$request->nota1;
+        $nota->nota2=$request->nota2;
+        $nota->nota3=$request->nota3;
+        $nota->promedio=($request->nota1+$request->nota2+$request->nota3)/3;
+        $nota->save();
+        return redirect()->route('nota.index')->with('datos','REGISTRO ACTUALIZADO...!');
+    
+
+    }
+
+
+    public function update(Request $request)
     {
         $data=request()->validate([
             'nota1'=>'required|max:2',
@@ -206,7 +266,7 @@ class NotaController extends Controller
             'nota3.max'=>'MAXIMO 2 CARACTERES PARA LA NOTA 3',
              
         ]);
-        $nota=Nota::findOrFail($nota_id);
+        $nota=Nota::findOrFail($request->idnota);
         $nota->nota1=$request->nota1;
         $nota->nota2=$request->nota2;
         $nota->nota3=$request->nota3;

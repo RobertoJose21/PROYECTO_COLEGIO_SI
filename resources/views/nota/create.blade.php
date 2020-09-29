@@ -4,6 +4,16 @@
 
 <div class="container">
     <h2> AGREGAR UNA NOTA A UN ALUMNO -  </h2>
+    
+  @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{ session('datos')   }}
+      <button type="button" class="close"  data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+@endif
+
 <form method="POST"  action="{{route('nota.store')}}">
      
         @csrf
