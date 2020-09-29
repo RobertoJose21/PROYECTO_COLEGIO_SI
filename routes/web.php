@@ -38,12 +38,20 @@ Route::get('/libretaNotas/{idmatricula}','NotaController@libretaNotas')->name('n
 Route::post('/nota/actualizar','NotaController@actualizar')->name('nota.actualizar');
 
 //ruta para cancelar una accion en las notas
+
+
+
+Route::Get('/paisdepartamento/{id}', 'AlumnoController@PaisDepartamento');
+Route::Get('/departamentoprovincia/{id}', 'AlumnoController@DepartamentoProvincia');
+Route::Get('/provinciadistrito/{id}', 'AlumnoController@ProvinciaDistrito');
+
 Route::get('/cancelarnota',function(){
     return redirect()->route('nota.index')->with('datos','ACCIÓN CANCELADA...!');
 })->name('cancelarnota');
 
 
 // rutas generales
+Route::resource('alumno','AlumnoController');
 Route::resource('nota','NotaController');
 Route::resource('nivel','NivelController');
 Route::resource('grado','GradoController');
