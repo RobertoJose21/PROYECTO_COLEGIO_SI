@@ -108,7 +108,7 @@ class NotaController extends Controller
         ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
        // ->join('secciones as s','s.idseccion','=','%'.$seccion.'%')
         ->join('alumnos as a','m.idalumno','=','a.idalumno')
-        ->where('n.idcapacidad','like','%'.$id.'%')
+        ->where('n.idcapacidad','like',$id)
         ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
     
     }
