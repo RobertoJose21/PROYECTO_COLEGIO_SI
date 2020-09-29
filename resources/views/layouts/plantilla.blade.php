@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS  -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0">
+  <!-- <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0">-->
   <link rel="stylesheet" href="/css/demo.css">
   <!-- LOGIN PROF -->
 
@@ -54,7 +54,7 @@
           
           <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" rel="tooltip" title="Inicio" data-placement="bottom" href="/inicio">
-                <img class="img-fluid" src="img/inicio.png">
+                <img class="img-fluid" src="/img/inicio.png">
                 
                  
             </a>
@@ -126,7 +126,7 @@
           
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="Salir" data-placement="bottom" href="../" >
-                <img class="img-fluid" src="img/salir.png">
+                <img class="img-fluid" src="/img/salir.png">
                 
                 
             </a>
