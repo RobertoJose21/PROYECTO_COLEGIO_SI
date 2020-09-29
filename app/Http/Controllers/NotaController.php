@@ -65,7 +65,7 @@ class NotaController extends Controller
 
         /*$nota=Nota::where('estado','=','1')->join('matriculas m','m.idmatricula','=','notas.idmatricula')
         ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-   
+   // este va ser el cambio xdg
         
         $periodo=Periodo::where('estado','=','1')->get();
         $matricula=Matricula::where('estado','=','1')->get();

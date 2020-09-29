@@ -25,8 +25,7 @@
                                         
                          </div>
                 </div>
-
-
+                
                 <div class="form-row">
                    
                     <div class="from-group col-md-6">

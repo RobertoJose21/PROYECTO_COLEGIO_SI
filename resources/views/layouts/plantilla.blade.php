@@ -90,9 +90,7 @@
           </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
-              <h5> MATRICULAS</h5>
-                
-             
+              <h5> MATRICULAS</h5>       
             </a>
           </li>
 
@@ -102,6 +100,11 @@
             </a>
           </li>
 
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="Registro de Alumnos" data-placement="bottom" href="/alumno">
+              <h5>ALUMNOS</h5>
+            </a>
+          </li>
          
         </ul>
       </div>
@@ -141,7 +144,7 @@
   <div class="page-header clear-filter" filter-color="black"> <!-- inidio y fin de fondo  -->
     <div class="page-header-image" style="background-image:url(/img/innova.jpg)"> </div> <!-- fondo  -->
     <!-- centro -->
-    <body id="page-top">
+    
 
        
       
@@ -159,23 +162,23 @@
           
           <div class="overlay"></div>
         </header>
-    </div>
+  </div>
 
       
         
-    <div class="page-header clear-filter" filter-color="black">
+    <div class="page-header clear-filter" >
       <div class="page-header-image" style="background-image:url(/img/portfolio-1.jpg)"> </div> <!-- fondo  -->
       <div class="content">
-        <div class="container">
+  
         
                   <section class="content"><!-- aquí va la tabla -->
                     @yield ('contenido')
                   </section>
               
              
-            </div>
-          </div>
-        </div>
+     
+         </div>
+    </div>
 
         
       
@@ -196,7 +199,7 @@
 
         <!-- Custom scripts for this template -->
         <script src="/adminlte/dist/js/menu/stylish-portfolio.min.js"></script>
-</body>
+
 
         <!-- fin centro -->
    
@@ -213,14 +216,11 @@
   <script src="/adminlte/dist/js/core/popper.min.js"></script>        
   <script src="/adminlte/dist/js/core/bootstrap.min.js"></script>        
 
-  <!-- DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-switch.js"></script>
 
   <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://refreshless.com/nouislider/ -->
   <script src="/adminlte/plugins/gg/js/plugins/nouislider.min.js"></script>
 
-  <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-datepicker.js"></script>
+
 
   <!--  Google Maps ESTE SCRIPT SOLO LO PEGUÉ xdddd    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>

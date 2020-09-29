@@ -198,16 +198,7 @@
   <script src="/adminlte/dist/js/core/jquery.min.js"></script>        
   <script src="/adminlte/dist/js/core/popper.min.js"></script>        
   <script src="/adminlte/dist/js/core/bootstrap.min.js"></script>        
-
-  <!-- DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-switch.js"></script>
-
-  <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: http://refreshless.com/nouislider/ -->
-  <script src="/adminlte/plugins/gg/js/plugins/nouislider.min.js"></script>
-
-  <!--  DE AQUÍ SAQUÉ ALGUNOS PLUGINS: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="/adminlte/plugins/gg/js/plugins/bootstrap-datepicker.js"></script>
-
+  
   <!--  Google Maps ESTE SCRIPT SOLO LO PEGUÉ xdddd    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- CENTRO DE EFECTOS Y SCRIPTS-->

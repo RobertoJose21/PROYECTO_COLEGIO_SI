@@ -7,31 +7,57 @@
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart2);
 
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Secciones', 'Matriculados'],
+          ['Alumnos', 'Matriculados'],
           @foreach($registros as $reg)
-              ['{{$reg->seccion}}',{{$reg->cantidad}}],  
+              ['{{$reg->grado}}',{{$reg->cantidad}}],  
           @endforeach          
         ]);
 
         var options = {
-          title: 'Cantidad de Alumnos por Secciones'
+          title: 'Cantidad de Alumnos por Grados'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
         chart.draw(data, options);
       }
+
+
+      function drawChart2() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Alumnos', 'Matriculados'],
+          @foreach($registrosDos as $reg)
+              ['{{$reg->periodo}}',{{$reg->cantidad}}],  
+          @endforeach          
+        ]);
+
+        var options = {
+          title: 'Cantidad de Alumnos por Periodo'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart.draw(data, options);
+        }
     </script>
   </head>
   <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <a href="/matricula" class="btn btn-back"> Volver</a>
+    <div class="row">
+      <div class="col md-7">
+        <div id="piechart" style="width: 500px; height: 400px;"></div>
+      </div>
+      <div class="col md-7">
+        <div id="piechart2" style="width: 500px; height: 400px;"></div>
+      </div>
+    </div>
   </body>
 </html>
-
-
 
 @stop
