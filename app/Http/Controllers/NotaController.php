@@ -108,7 +108,7 @@ class NotaController extends Controller
         ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
        // ->join('secciones as s','s.idseccion','=','%'.$seccion.'%')
         ->join('alumnos as a','m.idalumno','=','a.idalumno')
-        ->where('n.idcapacidad','like','%'.$id.'%')
+        ->where('n.idcapacidad','like',$id)
         ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
     
     }
@@ -151,14 +151,15 @@ class NotaController extends Controller
           
         $data=request()->validate([
             'idalumno'=>'required',
+            'idmatricula'=>'required',
             'idcapacidad'=>'required',
             'nota1'=>'required',
             'nota2'=>'required',
             'nota3'=>'required',
- 
         ],
         [
          'idalumno.required'=>'Seleccione un alumno',
+         'idmatricula.required'=>'Seleccione una matricula',
          'idcapacidad.required'=>'Seleccione una capacidad',
          'nota1.required'=>'ingrese la nota 1',
          'nota2.required'=>'ingrese la nota 2',
@@ -172,6 +173,7 @@ class NotaController extends Controller
         }
     else
     {
+        
     $nota=new Nota();    
     $nota->idmatricula=$request->idmatricula;   
     $nota->idcapacidad=$request->idcapacidad;  
