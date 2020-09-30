@@ -117,7 +117,7 @@ class NotaController extends Controller
      $pdf = \PDF::loadView('nota.registros', compact('profesor','alumno','notas','matricula','curso',))->setPaper('a4', 'portrait');
       return $pdf->stream('registros.pdf');
             
- }
+    }
     
 
     public function byGrado($id){
