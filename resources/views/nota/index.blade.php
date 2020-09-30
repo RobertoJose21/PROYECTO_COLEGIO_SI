@@ -359,7 +359,7 @@ var c=0;
 
     });
   
-//para mostrar las notas por capacidades
+//para mostrar las notas por capacidades xd xd xd
      
       $("#idcapacidad").change(function(){
         var capacidad = $(this).val();
