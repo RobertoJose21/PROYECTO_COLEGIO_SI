@@ -220,7 +220,7 @@ table tr:hover {
               </div>
           
              
-              <button type="submit" class="btn btn-primary"    ><i class="fas fa-save"></i> GRABAR</button>
+              <button type="submit" class="btn btn-primary"    ><i class="fas fa-save"></i> GRABAR</button><!--no hace nada-->
               <button type="button" class="btn btn-warning" data-dismiss="modal">CANCELAR</button>
           </form>
           </div>
@@ -362,7 +362,7 @@ var c=0;
 
     });
   
-//para mostrar las notas por capacidades
+//para mostrar las notas por capacidades xd xd xd
      
       $("#idcapacidad").change(function(){
         var capacidad = $(this).val();
@@ -370,18 +370,19 @@ var c=0;
         $.get('../notasbycapacidad/'+capacidad, function(data){
           console.log(data);
             var producto_select ;
-            for (var x=1; x<=c+1;x++){
+            for (var x=0; x<c+1;x++){
             $('#fila'+x).remove();
             }
             c=0;
+          
               for (var i=0; i<data.length;i++){
-                
+                 c=i;
                 var ind=data[i].idnota;
               fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
  
             	$('#tabla1').append(fila);
               fila='';
-              c=i;
+             
               }
             
         });

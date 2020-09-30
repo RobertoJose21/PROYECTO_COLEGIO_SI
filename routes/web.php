@@ -36,7 +36,7 @@ Route::Get('/Minota/{id}', 'NotaController@MiNota');
 Route::get('/libretas','NotaController@libretas')->name('nota.libretas');
 Route::get('/registros','NotaController@registrosNotas')->name('nota.registros'); //modificado richard
 Route::get('/libretaNotas/{idmatricula}','NotaController@libretaNotas')->name('nota.libretaNotas');
-Route::get('/registroNotas/{idmatricula}','NotaController@reporteRegistroNotas')->name('nota.registroaNotas'); //modificado ricahrd
+Route::get('/registroNotas/{idmatricula}','NotaController@reporteRegistroNotas')->name('nota.registroNotas'); //modificado ricahrd
 Route::post('/nota/actualizar','NotaController@actualizar')->name('nota.actualizar');
 
 //ruta para cancelar una accion en las notas

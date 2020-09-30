@@ -57,7 +57,7 @@ class NotaController extends Controller
     public function libretas(Request $request){
 
         $buscarpor=$request->get('buscarpor');
-        $notas=DB::table('matriculas as m','n.estado','=','1')
+        $notas=DB::table('matriculas as m','m.estado','=','1')
         ->join('periodos as p','p.idperiodo','=','m.idperiodo')
         ->join('alumnos as a','m.idalumno','=','a.idalumno')
         ->where('a.apellidos','like','%'.$buscarpor.'%')
@@ -72,33 +72,7 @@ class NotaController extends Controller
          return $pdf->stream('libreta.pdf');
                
     }
-    
-    public function registrosNotas(Request $request){
-        
-        $buscarpor=$request->get('buscarpor');
-        $notas=DB::table('matriculas as m','n.estado','=','1')
-        ->join('secciones as s','s.idseccion','=','m.idseccion')
-        ->join('grados as g','g.idgrado','=','s.idseccion')
-        ->join('niveles as ni','ni.idnivel','=','g.idnivel')
-        ->join('cursos as c','c.idgrado','=','g.idgrado')
-        ->join('detalle_catedra as dc','dc.idcurso','=','c.idcurso')
-        ->join('profesores as pro','pro.idprofesor','=','dc.idprofesor')
-        ->join('periodos as p','p.idperiodo','=','m.idperiodo')
-        ->join('alumnos as a','m.idalumno','=','a.idalumno')
-        ->where('g.grado','like','%'.$buscarpor.'%')
-        ->select('m.idmatricula','m.fecha','p.idperiodo','p.periodo','pro.idprofesor','pro.profesor','c.idcurso','c.curso','ni.nivel','g.grado')->paginate($this::PAGINACION);
 
-        return view('nota.registrosNotas',['nota'=>$notas,'buscarpor'=>$buscarpor]);
-    }
-        
-    
-    public function reporteRegistroNotas($id){
-     $matricula= Matricula::where('idmatricula','=',$id)->first();
-     
-     $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
-      return $pdf->stream('libreta.pdf');
-            
- }
     public function Notas($id){
      $matricula= Matricula::where('idmatricula','=',$id)->first();
      
@@ -106,6 +80,44 @@ class NotaController extends Controller
       return $pdf->stream('libreta.pdf');
             
      }
+    
+    public function registrosNotas(Request $request){
+        
+        $buscarpor=$request->get('buscarpor');
+        $notas=DB::table('secciones as s','s.estado','=','1')
+        ->join('grados as g','g.idgrado','=','s.idgrado')
+        ->join('niveles as ni','ni.idnivel','=','g.idnivel')
+        ->join('cursos as c','c.idgrado','=','g.idgrado')
+        ->join('detalle_catedra as dc','dc.idcurso','=','c.idcurso')
+        ->join('profesores as pro','pro.idprofesor','=','dc.idprofesor')
+        ->where('c.curso','like','%'.$buscarpor.'%')
+        ->select('pro.idprofesor','pro.profesor','c.idcurso','c.curso','ni.nivel','g.grado')->paginate($this::PAGINACION);
+        
+        return view('nota.registrosNotas',['nota'=>$notas,'buscarpor'=>$buscarpor]);
+    }
+        
+    
+    public function reporteRegistroNotas($id){
+        $curso=Curso::where('idcurso','=',$id)->first();
+        $matricula= Matricula::where('idmatricula','=',$id)->first();
+        $alumno=Matricula::where('idalumno','=',$id)->first();
+        $profesor=Detalle_Catedra::where('idprofesor','=',$id)->get();
+        
+        $notas=DB::table('matriculas as m','m.estado','=','1')
+        ->join('secciones as s','s.idseccion','=','m.idseccion')
+        ->join('grados as g','g.idgrado','=','s.idgrado')
+        ->join('cursos as c','c.idgrado','=','g.idgrado')
+        ->join('capacidades as ca','ca.idcurso','=','c.idcurso')
+        ->where('ca.idcurso','=',$id)
+        ->join('notas as n','n.idmatricula','=','m.idmatricula')
+        ->join('alumnos as a','a.idalumno','=','m.idalumno')
+        ->where('c.idcurso','=',$id)
+        ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
+      
+     $pdf = \PDF::loadView('nota.registros', compact('profesor','alumno','notas','matricula','curso',))->setPaper('a4', 'portrait');
+      return $pdf->stream('registros.pdf');
+            
+ }
     
 
     public function byGrado($id){
@@ -178,14 +190,15 @@ class NotaController extends Controller
           
         $data=request()->validate([
             'idalumno'=>'required',
+            'idmatricula'=>'required',
             'idcapacidad'=>'required',
             'nota1'=>'required',
             'nota2'=>'required',
             'nota3'=>'required',
- 
         ],
         [
          'idalumno.required'=>'Seleccione un alumno',
+         'idmatricula.required'=>'Seleccione una matricula',
          'idcapacidad.required'=>'Seleccione una capacidad',
          'nota1.required'=>'ingrese la nota 1',
          'nota2.required'=>'ingrese la nota 2',
@@ -199,6 +212,7 @@ class NotaController extends Controller
         }
     else
     {
+        
     $nota=new Nota();    
     $nota->idmatricula=$request->idmatricula;   
     $nota->idcapacidad=$request->idcapacidad;  

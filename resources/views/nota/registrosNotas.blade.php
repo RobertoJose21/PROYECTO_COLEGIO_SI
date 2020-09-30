@@ -12,7 +12,7 @@
           <input type="checkbox"> Text
         </label>
       </div><form class="form-inline my-2 my-lg-0 float-right col-5">
-        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Grado" aria-label="Search" value="">
+      <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Curso" aria-label="Search" value="{{$buscarpor}}">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       <div class="table-responsive " style="border-radius: 12px;" >
@@ -25,7 +25,6 @@
              <th scope="col">CURSO</th>
              <th scope="col">NIVEL</th>
              <th scope="col">GRADO</th>
-             <th scope="col">PERIODO</th>
              
             <th scope="col">LIBRETA</th>
           </thead>
@@ -39,17 +38,17 @@
               <td>{{$itemnota->curso}}</td>
               <td>{{$itemnota->nivel}}</td>
               <td>{{$itemnota->grado}}</td>
-              <td>{{$itemnota->periodo}}</td>
               <td>
               
-                <a class="btn btn-warning btn-md" href="{{route('nota.libretaNotas',$itemnota->idmatricula)}}" ><i class="fas fa-graduation-cap"></i>Ver Registros</a></td>
+                <a class="btn btn-warning btn-md" href="{{route('nota.registroNotas',$itemnota->idcurso)}}" ><i class="fas fa-graduation-cap"></i>Ver Registros</a></td>
                  
             </tr>
             @endforeach 
          </tbody> 
        </table>
       </div>
-  
+      
+      {{$nota->links()}}
     </div>
   </div>
   <div class="row">
