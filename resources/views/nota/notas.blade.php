@@ -87,16 +87,32 @@
     <table style="width:100%" style="text-align: right" border="0.1px" >
        
         <tbody>
-            
+            @php
+                 $cont=0;
+            @endphp
             @foreach($notitas as $nota)
+            @php
+             $cont=$cont+1;   
+            @endphp
+            
             <tr>
-            <td width=210px><b> {{$nota->curso}}</b></td>
+                
+            @if($cont==1)
+                <td width=210px style="border-top: 0px;" ><b>{{$nota->curso}}</b></td>   
+            @elseif($cont==2||$cont==3) 
+            <td width=210px style="border-top: 0px;"><b> </b></td>   
+            @endif
+
             <td width=230px>{{$nota->capacidad}}</td>
             <td width=55px>{{$nota->nota1}}</td>
             <td width=55px>{{$nota->nota2}}</td>
             <td width=55px>{{$nota->nota3}}</td>
             <td width=87px><b> {{$nota->promedio}}</b></td>
             </tr>
+             
+            @php if($cont==3)
+             $cont=0;
+            @endphp
          @endforeach
         </tbody>
         </table>
