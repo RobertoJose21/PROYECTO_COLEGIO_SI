@@ -78,7 +78,7 @@ class NotaController extends Controller
 
         $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
         return $pdf->stream('libreta.pdf');
-       
+       //aca va mostrar la libreta
     }
 
     public function byGrado($id){
@@ -151,14 +151,15 @@ class NotaController extends Controller
           
         $data=request()->validate([
             'idalumno'=>'required',
+            'idmatricula'=>'required',
             'idcapacidad'=>'required',
             'nota1'=>'required',
             'nota2'=>'required',
             'nota3'=>'required',
- 
         ],
         [
          'idalumno.required'=>'Seleccione un alumno',
+         'idmatricula.required'=>'Seleccione una matricula',
          'idcapacidad.required'=>'Seleccione una capacidad',
          'nota1.required'=>'ingrese la nota 1',
          'nota2.required'=>'ingrese la nota 2',
@@ -172,6 +173,7 @@ class NotaController extends Controller
         }
     else
     {
+        
     $nota=new Nota();    
     $nota->idmatricula=$request->idmatricula;   
     $nota->idcapacidad=$request->idcapacidad;  

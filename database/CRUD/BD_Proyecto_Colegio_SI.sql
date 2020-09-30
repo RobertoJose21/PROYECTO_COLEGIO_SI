@@ -47,12 +47,25 @@ CREATE TABLE profesores
 	PRIMARY KEY (idprofesor)
 );
 
-insert into profesores values(null,'SALAS PEREZ JOSE ','010101','1');
-insert into profesores values(null,'SANCHEZ DIAZ JUAN ','020202','1');
-insert into profesores values(null,'SALOMON CONTRERAS MANUEL ','030303','1');
-insert into profesores values(null,'RODRIGUEZ PEREZ CARLOS ','040404','1');
-insert into profesores values(null,'DIAZ SALAZAR PEDRO ','050505','1');
-insert into profesores values(null,'GONZALES RODIGUEZ LUIS ','060606','1');
+insert into profesores values(null,'SALAS PEREZ ANGIE','030301','1');
+insert into profesores values(null,'SANCHEZ DIAZ CORINA','030302','1');
+insert into profesores values(null,'SALOMON CONTRERAS LUIS OZUNA ','030303','1');
+insert into profesores values(null,'RODRIGUEZ CORREA CARLOS ','030304','1');
+insert into profesores values(null,'DIAZ PALOMINO HERNAN ','030305','1');
+insert into profesores values(null,'GONZALES MENDOZA ADELI ','030306','1');
+insert into profesores values(null,'HUAMAN  LOZADA JOSE CARLOS ','030306','1');
+
+insert into profesores values(null,'ALAYO ALVARES TANIA ','020201','1');
+insert into profesores values(null,'CRUZADO VASQUEZ CINTHIA ','020202','1');
+insert into profesores values(null,'CASTRO DOMINGUEZ MARINA ','020203','1');
+insert into profesores values(null,'RODRIGUEZ PEREZ CARLOS ','020204','1');
+insert into profesores values(null,'GALLARDO SALAZAR PEDRO ','020205','1');
+insert into profesores values(null,'PAREDES VELASQUEZ ALEJANDRO ','020206','1');
+
+insert into profesores values(null,'VERA PEREZ JANETH ','010101','1');
+insert into profesores values(null,'SANCHEZ CONTRERAZ CONSUELO ','010102','1');
+insert into profesores values(null,'DIAZ VALDERRAMA ANA MARIA ','010103','1');
+
 
 CREATE TABLE periodos
 (
@@ -2251,22 +2264,10 @@ CREATE TABLE grados
     FOREIGN KEY (idnivel) REFERENCES niveles(idnivel)
 );
 
-INSERT  grados VALUES(null,'PRIMERO DE SECUNDARIA',3,1);
-INSERT  grados VALUES(null,'SEGUNDO DE SECUNDARIA',3,1);
-INSERT  grados VALUES(null,'TERCERO DE SECUNDARIA',3,1);
-INSERT  grados VALUES(null,'CUARTO DE SECUNDARIA',3,1);
-INSERT  grados VALUES(null,'QUINTO DE SECUNDARIA',3,1);
-
-
-INSERT  grados VALUES(null,'PRIMERO DE PRIMARIA',2,1);
-INSERT  grados VALUES(null,'SEGUNDO DE PRIMARIA',2,1);
-INSERT  grados VALUES(null,'TERCERO DE PRIMARIA',2,1);
-INSERT  grados VALUES(null,'CUARTO DE PRIMARIA',2,1);
-
-INSERT  grados VALUES(null,'3 AÑOS',1,1);
-INSERT  grados VALUES(null,'4 AÑOS',1,1);
-INSERT  grados VALUES(null,'5 AÑOS',1,1);
-
+insert into grados (idgrado,grado,idnivel,estado) values(null,'PRIMERO DE SECUNDARIA',3,1),(null,'SEGUNDO DE SECUNDARIA',3,1),(null,'TERCERO DE SECUNDARIA',3,1),(null,'CUARTO DE SECUNDARIA',3,1),(null,'QUINTO DE SECUNDARIA',3,1);
+insert into grados (idgrado,grado,idnivel,estado) values(null,'PRIMERO DE PRIMARIA',2,1),(null,'SEGUNDO DE PRIMARIA',2,1),(null,'TERCERO DE PRIMARIA',2,1),(null,'CUARTO DE PRIMARIA',2,1),(null,'QUINTO DE PRIMARIA',2,1),(null,'SEXTO DE PRIMARIA',2,1);
+insert into grados (idgrado,grado,idnivel,estado) values(null,'3 AÑOS',1,1),(null,'4 AÑOS',1,1),(null,'5 AÑOS',1,1);
+ 
 CREATE TABLE secciones
 (
 	idseccion            INT AUTO_INCREMENT ,
@@ -2277,31 +2278,11 @@ CREATE TABLE secciones
 	FOREIGN KEY (idgrado) REFERENCES grados(idgrado)
 );
 
-INSERT  secciones VALUES(null,'A',1,1);
-INSERT  secciones VALUES(null,'B',1,1);
-INSERT  secciones VALUES(null,'A',1,2);
-INSERT  secciones VALUES(null,'B',1,2);
-INSERT  secciones VALUES(null,'A',1,3);
-INSERT  secciones VALUES(null,'B',1,3);
-INSERT  secciones VALUES(null,'A',1,4);
-INSERT  secciones VALUES(null,'B',1,4);
-INSERT  secciones VALUES(null,'A',1,5);
-INSERT  secciones VALUES(null,'B',1,5);
+insert into secciones (idseccion,seccion,estado,idgrado) values(null,'A',1,1),(null,'A',1,2),(null,'A',1,3),(null,'A',1,4),(null,'A',1,5);
+insert into secciones (idseccion,seccion,estado,idgrado) values(null,'A',1,6),(null,'A',1,7),(null,'A',1,8),(null,'A',1,9),(null,'A',1,10),(null,'A',1,11);
+insert into secciones (idseccion,seccion,estado,idgrado) values(null,'A',1,12),(null,'A',1,13),(null,'A',1,14);
 
-INSERT  secciones VALUES(null,'A',1,6);
-INSERT  secciones VALUES(null,'B',1,6);
-INSERT  secciones VALUES(null,'A',1,7);
-INSERT  secciones VALUES(null,'B',1,7);
-INSERT  secciones VALUES(null,'A',1,8);
-INSERT  secciones VALUES(null,'B',1,8);
-INSERT  secciones VALUES(null,'C',1,8);
-INSERT  secciones VALUES(null,'B',1,9);
-
-INSERT  secciones VALUES(null,'A',1,10);
-INSERT  secciones VALUES(null,'B',1,11);
-INSERT  secciones VALUES(null,'A',1,12);
-
-
+ 
 CREATE TABLE cursos
 (
 	idgrado              INT NOT NULL,
@@ -2313,12 +2294,23 @@ CREATE TABLE cursos
 	FOREIGN KEY (idgrado) REFERENCES grados(idgrado)
 );
 
-insert into cursos values('1',NULL,'MATEMATICA','1','MA');
-insert into cursos values('1',NULL,'COMUNICACION','1','CO');
-insert into cursos values('2',NULL,'MATEMATICA','1','MA');
-insert into cursos values('2',NULL,'COMUNICACION','1','CO');
-insert into cursos values('2',NULL,'CIENCIA Y AMBIENTE','1','CA');
-insert into cursos values('3',NULL,'ARTE','1','AR');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('1',NULL,'MATEMATICA','1','MA'),('1',NULL,'COMUNICACION','1','CO'),('1',NULL,'CIENCIA TECNOLOGIA Y AMBIENTE','1','CT'),('1',NULL,'PERSONA FAMILIA Y RELACIONES HUMANAS','1','PH'),('1',NULL,'ARTE','1','AR'),('1',NULL,'HISTORIA Y GEOGRAFIA','1','HG'),('1',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('2',NULL,'MATEMATICA','1','MA'),('2',NULL,'COMUNICACION','1','CO'),('2',NULL,'CIENCIA TECNOLOGIA Y AMBIENTE','1','CT'),('2',NULL,'PERSONA FAMILIA Y RELACIONES HUMANAS','1','PH'),('2',NULL,'ARTE','1','AR'),('2',NULL,'HISTORIA Y GEOGRAFIA','1','HG'),('2',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('3',NULL,'MATEMATICA','1','MA'),('3',NULL,'COMUNICACION','1','CO'),('3',NULL,'CIENCIA TECNOLOGIA Y AMBIENTE','1','CT'),('3',NULL,'PERSONA FAMILIA Y RELACIONES HUMANAS','1','PH'),('3',NULL,'ARTE','1','AR'),('3',NULL,'HISTORIA Y GEOGRAFIA','1','HG'),('3',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('4',NULL,'MATEMATICA','1','MA'),('4',NULL,'COMUNICACION','1','CO'),('4',NULL,'CIENCIA TECNOLOGIA Y AMBIENTE','1','CT'),('4',NULL,'PERSONA FAMILIA Y RELACIONES HUMANAS','1','PH'),('4',NULL,'ARTE','1','AR'),('4',NULL,'HISTORIA Y GEOGRAFIA','1','HG'),('4',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('5',NULL,'MATEMATICA','1','MA'),('5',NULL,'COMUNICACION','1','CO'),('5',NULL,'CIENCIA TECNOLOGIA Y AMBIENTE','1','CT'),('5',NULL,'PERSONA FAMILIA Y RELACIONES HUMANAS','1','PH'),('5',NULL,'ARTE','1','AR'),('5',NULL,'HISTORIA Y GEOGRAFIA','1','HG'),('5',NULL,'EDUCACION FISICA','1','EF');
+
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('6',NULL,'MATEMATICA','1','MA'),('6',NULL,'COMUNICACION','1','CO'),('6',NULL,'PERSONAL SOCIAL','1','CT'),('6',NULL,'CIENCIA Y AMBIENTE','1','PH'),('6',NULL,'ARTE','1','AR'),('6',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('7',NULL,'MATEMATICA','1','MA'),('7',NULL,'COMUNICACION','1','CO'),('7',NULL,'PERSONAL SOCIAL','1','CT'),('7',NULL,'CIENCIA Y AMBIENTE','1','PH'),('7',NULL,'ARTE','1','AR'),('7',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('8',NULL,'MATEMATICA','1','MA'),('8',NULL,'COMUNICACION','1','CO'),('8',NULL,'PERSONAL SOCIAL','1','CT'),('8',NULL,'CIENCIA Y AMBIENTE','1','PH'),('8',NULL,'ARTE','1','AR'),('8',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('9',NULL,'MATEMATICA','1','MA'),('9',NULL,'COMUNICACION','1','CO'),('9',NULL,'PERSONAL SOCIAL','1','CT'),('9',NULL,'CIENCIA Y AMBIENTE','1','PH'),('9',NULL,'ARTE','1','AR'),('9',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('10',NULL,'MATEMATICA','1','MA'),('10',NULL,'COMUNICACION','1','CO'),('10',NULL,'PERSONAL SOCIAL','1','CT'),('10',NULL,'CIENCIA Y AMBIENTE','1','PH'),('10',NULL,'ARTE','1','AR'),('10',NULL,'EDUCACION FISICA','1','EF');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('11',NULL,'MATEMATICA','1','MA'),('11',NULL,'COMUNICACION','1','CO'),('11',NULL,'PERSONAL SOCIAL','1','CT'),('11',NULL,'CIENCIA Y AMBIENTE','1','PH'),('11',NULL,'ARTE','1','AR'),('11',NULL,'EDUCACION FISICA','1','EF');
+ 
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('12',NULL,'MATEMATICA','1','MA'),('12',NULL,'COMUNICACION','1','CO'),('12',NULL,'CIENCIA Y AMBIENTE','1','CA'),('12',NULL,'PERSONAL SOCIAL','1','CA');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('13',NULL,'MATEMATICA','1','MA'),('13',NULL,'COMUNICACION','1','CO'),('13',NULL,'CIENCIA Y AMBIENTE','1','CA'),('13',NULL,'PERSONAL SOCIAL','1','CA');
+insert into cursos (idgrado,idcurso,curso,estado,codigocurso) values('14',NULL,'MATEMATICA','1','MA'),('14',NULL,'COMUNICACION','1','CO'),('14',NULL,'CIENCIA Y AMBIENTE','1','CA'),('14',NULL,'PERSONAL SOCIAL','1','CA');
+  
 
 CREATE TABLE capacidades
 (
@@ -2330,24 +2322,23 @@ CREATE TABLE capacidades
 	FOREIGN KEY (idcurso) REFERENCES cursos(idcurso)
 );
 
-insert into capacidades values('1',NULL,'RAZONAMIENTO','1');
-insert into capacidades values('1',NULL,'ANALISIS DE PROBLEMAS','1');
-insert into capacidades values('1',NULL,'RESOLUCION DE PROBLEMAS','1');
-insert into capacidades values('2',NULL,'COMPRENCION LECTORA','1');
-insert into capacidades values('2',NULL,'ANALISIS DE TEXTOS','1');
-insert into capacidades values('2',NULL,'CREACION DE TEXTOS','1');
-insert into capacidades values('3',NULL,'RAZONAMIENTO','1');
-insert into capacidades values('3',NULL,'ANALISIS DE PROBLEMAS','1');
-insert into capacidades values('3',NULL,'RESOLUCION DE PROBLEMAS','1');
-insert into capacidades values('4',NULL,'COMPRENCION LECTORA','1');
-insert into capacidades values('4',NULL,'ANALISIS DE TEXTOS','1');
-insert into capacidades values('4',NULL,'CREACION DE TEXTOS','1');
-insert into capacidades values('5',NULL,'CUIDADO DEL AMBIENTE','1');
-insert into capacidades values('5',NULL,'SOLUCIONES PARA EL AMBIENTE','1');
-insert into capacidades values('5',NULL,'COMPROMISO CON EL AMBIENTE','1');
-insert into capacidades values('6',NULL,'DESARROLLO DE HABILIDADES ARTISTICAS','1');
-insert into capacidades values('6',NULL,'APRECIAXION DEL ARTE','1');
-insert into capacidades values('6',NULL,'COMPROMISO CON EL ARTE','1');
+
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('1',NULL,'RAZONAMIENTO','1'),('1',NULL,'ANALISIS DE PROBLEMAS','1'),('1',NULL,'RESOLUCION DE PROBLEMAS','1'),('2',NULL,'COMPRENCION LECTORA','1'),('2',NULL,'ANALISIS DE TEXTOS','1'),('2',NULL,'CREACION DE TEXTOS','1'),('3',NULL,'INDAGA METODOS CIENTIFICOS','1'),('3',NULL,'SOLUCIONES TECNOLOGICAS','1'),('3',NULL,'COMPROMISO CON EL AMBIENTE','1'),('4',NULL,'RELACIONES INTERPERSONALES','1'),('4',NULL,'CONSTRUCCION DE LA AUTONOMIA','1'),('4',NULL,'DESENVOLVIMIENTO ETICO','1'),('5',NULL,'COMPROMISO CON EL ARTE','1'),('5',NULL,'DESEMPEÑO ARTISTICO','1'),('5',NULL,'APRECION ARTISTICA','1'),('6',NULL,'INTERPRETACIONES HISTORICAS','1'),('6',NULL,'RESPONSABILIDAD ECONOMICA','1'),('6',NULL,'COMPRENDE EL ESPACIO GEOGRAFICO','1'),('7',NULL,'DESEMPEÑO FISICO','1'),('7',NULL,'ACTITUD ANTE EL DEPORTE','1'),('7',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('8',NULL,'RAZONAMIENTO','1'),('8',NULL,'ANALISIS DE PROBLEMAS','1'),('8',NULL,'RESOLUCION DE PROBLEMAS','1'),('9',NULL,'COMPRENCION LECTORA','1'),('9',NULL,'ANALISIS DE TEXTOS','1'),('9',NULL,'CREACION DE TEXTOS','1'),('10',NULL,'INDAGA METODOS CIENTIFICOS','1'),('10',NULL,'SOLUCIONES TECNOLOGICAS','1'),('10',NULL,'COMPROMISO CON EL AMBIENTE','1'),('11',NULL,'RELACIONES INTERPERSONALES','1'),('11',NULL,'CONSTRUCCION DE LA AUTONOMIA','1'),('11',NULL,'DESENVOLVIMIENTO ETICO','1'),('12',NULL,'COMPROMISO CON EL ARTE','1'),('12',NULL,'DESEMPEÑO ARTISTICO','1'),('12',NULL,'APRECION ARTISTICA','1'),('13',NULL,'INTERPRETACIONES HISTORICAS','1'),('13',NULL,'RESPONSABILIDAD ECONOMICA','1'),('13',NULL,'COMPRENDE EL ESPACIO GEOGRAFICO','1'),('14',NULL,'DESEMPEÑO FISICO','1'),('14',NULL,'ACTITUD ANTE EL DEPORTE','1'),('14',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('15',NULL,'RAZONAMIENTO','1'),('15',NULL,'ANALISIS DE PROBLEMAS','1'),('15',NULL,'RESOLUCION DE PROBLEMAS','1'),('16',NULL,'COMPRENCION LECTORA','1'),('16',NULL,'ANALISIS DE TEXTOS','1'),('16',NULL,'CREACION DE TEXTOS','1'),('17',NULL,'INDAGA METODOS CIENTIFICOS','1'),('17',NULL,'SOLUCIONES TECNOLOGICAS','1'),('17',NULL,'COMPROMISO CON EL AMBIENTE','1'),('18',NULL,'RELACIONES INTERPERSONALES','1'),('18',NULL,'CONSTRUCCION DE LA AUTONOMIA','1'),('18',NULL,'DESENVOLVIMIENTO ETICO','1'),('19',NULL,'COMPROMISO CON EL ARTE','1'),('19',NULL,'DESEMPEÑO ARTISTICO','1'),('19',NULL,'APRECION ARTISTICA','1'),('20',NULL,'INTERPRETACIONES HISTORICAS','1'),('20',NULL,'RESPONSABILIDAD ECONOMICA','1'),('20',NULL,'COMPRENDE EL ESPACIO GEOGRAFICO','1'),('21',NULL,'DESEMPEÑO FISICO','1'),('21',NULL,'ACTITUD ANTE EL DEPORTE','1'),('21',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('22',NULL,'RAZONAMIENTO','1'),('22',NULL,'ANALISIS DE PROBLEMAS','1'),('22',NULL,'RESOLUCION DE PROBLEMAS','1'),('23',NULL,'COMPRENCION LECTORA','1'),('23',NULL,'ANALISIS DE TEXTOS','1'),('23',NULL,'CREACION DE TEXTOS','1'),('24',NULL,'INDAGA METODOS CIENTIFICOS','1'),('24',NULL,'SOLUCIONES TECNOLOGICAS','1'),('24',NULL,'COMPROMISO CON EL AMBIENTE','1'),('25',NULL,'RELACIONES INTERPERSONALES','1'),('25',NULL,'CONSTRUCCION DE LA AUTONOMIA','1'),('25',NULL,'DESENVOLVIMIENTO ETICO','1'),('26',NULL,'COMPROMISO CON EL ARTE','1'),('26',NULL,'DESEMPEÑO ARTISTICO','1'),('26',NULL,'APRECION ARTISTICA','1'),('27',NULL,'INTERPRETACIONES HISTORICAS','1'),('27',NULL,'RESPONSABILIDAD ECONOMICA','1'),('27',NULL,'COMPRENDE EL ESPACIO GEOGRAFICO','1'),('28',NULL,'DESEMPEÑO FISICO','1'),('28',NULL,'ACTITUD ANTE EL DEPORTE','1'),('28',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('29',NULL,'RAZONAMIENTO','1'),('29',NULL,'ANALISIS DE PROBLEMAS','1'),('29',NULL,'RESOLUCION DE PROBLEMAS','1'),('30',NULL,'COMPRENCION LECTORA','1'),('30',NULL,'ANALISIS DE TEXTOS','1'),('30',NULL,'CREACION DE TEXTOS','1'),('31',NULL,'INDAGA METODOS CIENTIFICOS','1'),('31',NULL,'SOLUCIONES TECNOLOGICAS','1'),('31',NULL,'COMPROMISO CON EL AMBIENTE','1'),('32',NULL,'RELACIONES INTERPERSONALES','1'),('32',NULL,'CONSTRUCCION DE LA AUTONOMIA','1'),('32',NULL,'DESENVOLVIMIENTO ETICO','1'),('33',NULL,'COMPROMISO CON EL ARTE','1'),('33',NULL,'DESEMPEÑO ARTISTICO','1'),('33',NULL,'APRECION ARTISTICA','1'),('34',NULL,'INTERPRETACIONES HISTORICAS','1'),('34',NULL,'RESPONSABILIDAD ECONOMICA','1'),('34',NULL,'COMPRENDE EL ESPACIO GEOGRAFICO','1'),('35',NULL,'DESEMPEÑO FISICO','1'),('35',NULL,'ACTITUD ANTE EL DEPORTE','1'),('35',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('36',NULL,'RAZONAMIENTO','1'),('36',NULL,'ANALISIS DE PROBLEMAS','1'),('36',NULL,'RESOLUCION DE PROBLEMAS','1'),('37',NULL,'COMPRENCION LECTORA','1'),('37',NULL,'ANALISIS DE TEXTOS','1'),('37',NULL,'CREACION DE TEXTOS','1'),('38',NULL,'CONSTRUYE SU IDENTIDAD','1'),('38',NULL,'CONVIVE Y PARTICIPA','1'),('38',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('39',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('39',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('39',NULL,'IDENTIFICA LA IMPORTANCIA DEL MEDIO AMBIENTE','1'),('40',NULL,'COMPROMISO CON EL ARTE','1'),('40',NULL,'DESEMPEÑO ARTISTICO','1'),('40',NULL,'APRECION ARTISTICA','1'),('41',NULL,'DESEMPEÑO FISICO','1'),('41',NULL,'ACTITUD ANTE EL DEPORTE','1'),('41',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('42',NULL,'RAZONAMIENTO','1'),('42',NULL,'ANALISIS DE PROBLEMAS','1'),('42',NULL,'RESOLUCION DE PROBLEMAS','1'),('43',NULL,'COMPRENCION LECTORA','1'),('43',NULL,'ANALISIS DE TEXTOS','1'),('43',NULL,'CREACION DE TEXTOS','1'),('44',NULL,'CONSTRUYE SU IDENTIDAD','1'),('44',NULL,'CONVIVE Y PARTICIPA','1'),('44',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('45',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('45',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('45',NULL,'IDENTIFICA LA IMPORTANCIA DEL MEDIO AMBIENTE','1'),('46',NULL,'COMPROMISO CON EL ARTE','1'),('46',NULL,'DESEMPEÑO ARTISTICO','1'),('46',NULL,'APRECION ARTISTICA','1'),('47',NULL,'DESEMPEÑO FISICO','1'),('47',NULL,'ACTITUD ANTE EL DEPORTE','1'),('47',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('48',NULL,'RAZONAMIENTO','1'),('48',NULL,'ANALISIS DE PROBLEMAS','1'),('48',NULL,'RESOLUCION DE PROBLEMAS','1'),('49',NULL,'COMPRENCION LECTORA','1'),('49',NULL,'ANALISIS DE TEXTOS','1'),('49',NULL,'CREACION DE TEXTOS','1'),('50',NULL,'CONSTRUYE SU IDENTIDAD','1'),('50',NULL,'CONVIVE Y PARTICIPA','1'),('50',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('51',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('51',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('51',NULL,'IDENTIFICA LA IMPORTANCIA DEL MEDIO AMBIENTE','1'),('52',NULL,'COMPROMISO CON EL ARTE','1'),('52',NULL,'DESEMPEÑO ARTISTICO','1'),('52',NULL,'APRECION ARTISTICA','1'),('53',NULL,'DESEMPEÑO FISICO','1'),('53',NULL,'ACTITUD ANTE EL DEPORTE','1'),('53',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('54',NULL,'RAZONAMIENTO','1'),('54',NULL,'ANALISIS DE PROBLEMAS','1'),('54',NULL,'RESOLUCION DE PROBLEMAS','1'),('55',NULL,'COMPRENCION LECTORA','1'),('55',NULL,'ANALISIS DE TEXTOS','1'),('55',NULL,'CREACION DE TEXTOS','1'),('56',NULL,'CONSTRUYE SU IDENTIDAD','1'),('56',NULL,'CONVIVE Y PARTICIPA','1'),('56',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('57',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('57',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('57',NULL,'IDENTIFICA LA IMPORTANCIA DEL MEDIO AMBIENTE','1'),('58',NULL,'COMPROMISO CON EL ARTE','1'),('58',NULL,'DESEMPEÑO ARTISTICO','1'),('58',NULL,'APRECION ARTISTICA','1'),('59',NULL,'DESEMPEÑO FISICO','1'),('59',NULL,'ACTITUD ANTE EL DEPORTE','1'),('59',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('60',NULL,'RAZONAMIENTO','1'),('60',NULL,'ANALISIS DE PROBLEMAS','1'),('60',NULL,'RESOLUCION DE PROBLEMAS','1'),('61',NULL,'COMPRENCION LECTORA','1'),('61',NULL,'ANALISIS DE TEXTOS','1'),('61',NULL,'CREACION DE TEXTOS','1'),('62',NULL,'CONSTRUYE SU IDENTIDAD','1'),('62',NULL,'CONVIVE Y PARTICIPA','1'),('62',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('63',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('63',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('63',NULL,'IDENTIFICA LA IMPORTANCIA DEL MEDIO AMBIENTE','1'),('64',NULL,'COMPROMISO CON EL ARTE','1'),('64',NULL,'DESEMPEÑO ARTISTICO','1'),('64',NULL,'APRECION ARTISTICA','1'),('65',NULL,'DESEMPEÑO FISICO','1'),('65',NULL,'ACTITUD ANTE EL DEPORTE','1'),('65',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('66',NULL,'RAZONAMIENTO','1'),('66',NULL,'ANALISIS DE PROBLEMAS','1'),('66',NULL,'RESOLUCION DE PROBLEMAS','1'),('67',NULL,'COMPRENCION LECTORA','1'),('67',NULL,'ANALISIS DE TEXTOS','1'),('67',NULL,'CREACION DE TEXTOS','1'),('68',NULL,'CONSTRUYE SU IDENTIDAD','1'),('68',NULL,'CONVIVE Y PARTICIPA','1'),('68',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('69',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('69',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('69',NULL,'IDENTIFICA LA IMPORTANCIA DEL MEDIO AMBIENTE','1'),('70',NULL,'COMPROMISO CON EL ARTE','1'),('70',NULL,'DESEMPEÑO ARTISTICO','1'),('70',NULL,'APRECION ARTISTICA','1'),('71',NULL,'DESEMPEÑO FISICO','1'),('71',NULL,'ACTITUD ANTE EL DEPORTE','1'),('71',NULL,'CONOCIMIENTO SOBRE LOS DEPORTES','1');
+
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('72',NULL,'RAZONAMIENTO','1'),('72',NULL,'ANALISIS DE PROBLEMAS','1'),('72',NULL,'RESOLUCION DE PROBLEMAS','1'),('73',NULL,'COMPRENCION LECTORA','1'),('73',NULL,'ANALISIS DE TEXTOS','1'),('73',NULL,'CREACION DE TEXTOS','1'),('74',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('74',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('74',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('75',NULL,'CONSTRUYE SU IDENTIDAD','1'),('75',NULL,'CONVIVE Y PARTICIPA','1'),('75',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('76',NULL,'RAZONAMIENTO','1'),('76',NULL,'ANALISIS DE PROBLEMAS','1'),('76',NULL,'RESOLUCION DE PROBLEMAS','1'),('77',NULL,'COMPRENCION LECTORA','1'),('77',NULL,'ANALISIS DE TEXTOS','1'),('77',NULL,'CREACION DE TEXTOS','1'),('78',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('78',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('78',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('79',NULL,'CONSTRUYE SU IDENTIDAD','1'),('79',NULL,'CONVIVE Y PARTICIPA','1'),('79',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1');
+insert into capacidades (idcurso,idcapacidad,capacidad,estado) values('80',NULL,'RAZONAMIENTO','1'),('80',NULL,'ANALISIS DE PROBLEMAS','1'),('80',NULL,'RESOLUCION DE PROBLEMAS','1'),('81',NULL,'COMPRENCION LECTORA','1'),('81',NULL,'ANALISIS DE TEXTOS','1'),('81',NULL,'CREACION DE TEXTOS','1'),('82',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1'),('82',NULL,'CUIDA EL MEDIO AMBIENTE','1'),('82',NULL,'SE IDENTIFICA CON EL MEDIO AMBIENTE','1'),('83',NULL,'CONSTRUYE SU IDENTIDAD','1'),('83',NULL,'CONVIVE Y PARTICIPA','1'),('83',NULL,'GESTIONA EL AMBIENTE Y LA ECONOMIA','1');
 
 CREATE TABLE matriculas
 (
@@ -2377,12 +2368,11 @@ CREATE TABLE detalle_catedra
     FOREIGN KEY (idprofesor) REFERENCES profesores(idprofesor)
 );
  
-insert into detalle_catedra values('1','1','1');
-insert into detalle_catedra values('2','2','1');
-insert into detalle_catedra values('3','3','1');
-insert into detalle_catedra values('4','4','1');
-insert into detalle_catedra values('5','5','1');
-insert into detalle_catedra values('6','6','1');
+insert into detalle_catedra(idcurso,idprofesor,estado) values('1','1','1'),('2','2','1'),('3','3','1'),('4','4','1'),('5','5','1'),('6','6','1'),('7','7','1'),('8','1','1'),('9','2','1'),('10','3','1'),('11','4','1'),('12','5','1'),('13','6','1'),('14','7','1'),('15','1','1'),('16','2','1'),('17','3','1'),('18','4','1'),('19','5','1'),('20','6','1'),('21','7','1'),('22','1','1'),('23','2','1'),('24','3','1'),('25','4','1'),('26','5','1'),('27','6','1'),('28','7','1'),('29','1','1'),('30','2','1'),('31','3','1'),('32','4','1'),('33','5','1'),('34','6','1'),('35','7','1');
+insert into detalle_catedra(idcurso,idprofesor,estado) values('36','8','1'),('37','8','1'),('38','8','1'),('39','8','1'),('40','8','1'),('41','8','1'),('42','9','1'),('43','9','1'),('44','9','1'),('45','9','1'),('46','9','1'),('47','9','1'),('48','10','1'),('49','10','1'),('50','10','1'),('51','10','1'),('52','10','1'),('53','10','1'),('54','11','1'),('55','11','1'),('56','11','1'),('57','11','1'),('58','11','1'),('59','11','1'),('60','12','1'),('61','12','1'),('62','12','1'),('63','12','1'),('64','12','1'),('65','12','1'),('66','13','1'),('67','13','1'),('68','13','1'),('69','13','1'),('70','13','1'),('71','13','1');
+insert into detalle_catedra(idcurso,idprofesor,estado) values('72','14','1'),('73','14','1'),('74','14','1'),('75','14','1'),('76','15','1'),('77','15','1'),('78','15','1'),('79','15','1'),('80','16','1'),('81','16','1'),('82','16','1'),('83','16','1');
+
+ 
 
 
 CREATE TABLE notas
