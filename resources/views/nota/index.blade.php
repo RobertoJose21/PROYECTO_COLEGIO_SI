@@ -169,8 +169,11 @@ table tr:hover {
   <div class="col-4">
     
     <a href="{{route('nota.libretas')}}" class="btn btn-success" ><i class="fas fa-graduation-cap"></i>_Ver Libretas</a>
-          
+  </div>
+
+  <div class="col-4">
     
+    <a href="{{route('nota.registros')}}" class="btn btn-success" ><i class="fa fa-book"></i>_Ver Registros de Notas</a>
   </div>
 </div>
   

@@ -62,24 +62,51 @@ class NotaController extends Controller
         ->join('alumnos as a','m.idalumno','=','a.idalumno')
         ->where('a.apellidos','like','%'.$buscarpor.'%')
         ->select('m.idmatricula','m.fecha','p.idperiodo','p.periodo','a.nombres','a.apellidos','a.idalumno')->paginate($this::PAGINACION);
-
-        /*$nota=Nota::where('estado','=','1')->join('matriculas m','m.idmatricula','=','notas.idmatricula')
-        ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);
-   // este va ser el cambio xdg
-        
-        $periodo=Periodo::where('estado','=','1')->get();
-        $matricula=Matricula::where('estado','=','1')->get();
-        $alumno=Alumno::where('estado','=','1')->get();*/
         return view('nota.libretas',['nota'=>$notas,'buscarpor'=>$buscarpor]);
     }
 
-    public function libretaNotas($id){
+       public function libretaNotas($id){
         $matricula= Matricula::where('idmatricula','=',$id)->first();
-
+        
         $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
-        return $pdf->stream('libreta.pdf');
-       
+         return $pdf->stream('libreta.pdf');
+               
     }
+    
+    public function registrosNotas(Request $request){
+        
+        $buscarpor=$request->get('buscarpor');
+        $notas=DB::table('matriculas as m','n.estado','=','1')
+        ->join('secciones as s','s.idseccion','=','m.idseccion')
+        ->join('grados as g','g.idgrado','=','s.idseccion')
+        ->join('niveles as ni','ni.idnivel','=','g.idnivel')
+        ->join('cursos as c','c.idgrado','=','g.idgrado')
+        ->join('detalle_catedra as dc','dc.idcurso','=','c.idcurso')
+        ->join('profesores as pro','pro.idprofesor','=','dc.idprofesor')
+        ->join('periodos as p','p.idperiodo','=','m.idperiodo')
+        ->join('alumnos as a','m.idalumno','=','a.idalumno')
+        ->where('g.grado','like','%'.$buscarpor.'%')
+        ->select('m.idmatricula','m.fecha','p.idperiodo','p.periodo','pro.idprofesor','pro.profesor','c.idcurso','c.curso','ni.nivel','g.grado')->paginate($this::PAGINACION);
+
+        return view('nota.registrosNotas',['nota'=>$notas,'buscarpor'=>$buscarpor]);
+    }
+        
+    
+    public function reporteRegistroNotas($id){
+     $matricula= Matricula::where('idmatricula','=',$id)->first();
+     
+     $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
+      return $pdf->stream('libreta.pdf');
+            
+ }
+    public function Notas($id){
+     $matricula= Matricula::where('idmatricula','=',$id)->first();
+     
+     $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
+      return $pdf->stream('libreta.pdf');
+            
+     }
+    
 
     public function byGrado($id){
         return Grado::where('estado','=','1')->where('idnivel','=',$id)->get();
