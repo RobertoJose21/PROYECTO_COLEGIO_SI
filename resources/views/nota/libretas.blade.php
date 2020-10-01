@@ -26,10 +26,10 @@
              
             <th scope="col">LIBRETA</th>
           </thead>
-          <tbody> 
+          <tbody class=" text-danger"> 
             @foreach($nota as $itemnota)  
             <tr>
-              <td>{{$itemnota->idalumno}}</td>
+              <td >{{$itemnota->idalumno}}</td>
               <td>{{$itemnota->nombres}},{{$itemnota->apellidos}}</td>
               <td>{{$itemnota->idmatricula}}</td>
               <td>{{$itemnota->fecha}}</td>

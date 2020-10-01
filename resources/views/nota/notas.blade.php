@@ -72,11 +72,10 @@
      
     </table>
     <div style="page-break-after:always;"></div>
-
     <table style="width:100%" style="text-align: center" border="0.1px">
         <thead>
             <tr>
-            <th width=210px>CURSOS</th>
+           
             <th  width=230px>CAPACIDADES</th>
             <th  width=55px>NOTA1</th>
             <th width=55px>NOTA2</th>
@@ -84,39 +83,30 @@
             <th width=87px>PROMEDIO</th></tr>
         </thead>
     </table>
-    <table style="width:100%" style="text-align: right" border="0.1px" >
-       
-        <tbody>
-            @php
-                 $cont=0;
-            @endphp
-            @foreach($notitas as $nota)
-            @php
-             $cont=$cont+1;   
-            @endphp
-            
-            <tr>
-                
-            @if($cont==1)
-                <td width=210px style="border-top: 0px;" ><b>{{$nota->curso}}</b></td>   
-            @elseif($cont==2||$cont==3) 
-            <td width=210px style="border-top: 0px;"><b> </b></td>   
-            @endif
+    <table style="width:100%" style="text-align: center" border="0.1px">
+        @foreach($cursos as $cur)
+        <tr><td><b>{{$cur->curso}}</b>  </td>
+         </tr>
+         @foreach($notitas as $not)
+        @if(($cur->idcurso) == ($not->idcurso))
+         <tr>
+           <td>{{$not->capacidad}}</td>
+           <td>{{$not->nota1}}</td>
+           <td>{{$not->nota2}}</td>
+           <td>{{$not->nota3}}</td>
+           <td>{{$not->promedio}}</td>
+            </tr>  
+        @endif
 
-            <td width=230px>{{$nota->capacidad}}</td>
-            <td width=55px>{{$nota->nota1}}</td>
-            <td width=55px>{{$nota->nota2}}</td>
-            <td width=55px>{{$nota->nota3}}</td>
-            <td width=87px><b> {{$nota->promedio}}</b></td>
-            </tr>
-             
-            @php if($cont==3)
-             $cont=0;
-            @endphp
          @endforeach
-        </tbody>
-        </table>
+        @endforeach
+        
+    </table>
 
+
+<br><br><br><br>
+
+ 
     </div>
 </body>
 </html>
