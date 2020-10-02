@@ -88,40 +88,135 @@
 
 <div class="container-fluid">
     <h3>LISTA DE CATEDRAS - REGISTRADAS</h3>
-<div class="row" style="text-align: center">
-    <div class="col"> 
-        <label for="obra">CURSO</label>
 
-        <select type="text" name="idtipodeobra" class="browser-default custom-select" required="">
-            @foreach($cursos as $curso)
-                <option value="{{$curso->idcurso}}" 
-                @if($catedra[0]->idcurso==$curso->idcurso)
-                    selected="selected"
-                @endif
-                >{{$curso->curso}}</option>
-            @endforeach
-        </select>
+    @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
+   <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+     {{ session('datos') }}
+       <button type="button" class="close"  data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+ </div>
+@endif
 
+    <div class="form-group">
+		<form method="POST" action="{{ route('catedra.update',$catedra->id) }}">
+			@csrf
+        <input name="_method" type="hidden" value="PATCH">
+        
+    <div class="row" style="text-align: center">
+        <div class="col-3"></div>
+        <div class=" col-6 text-center"> 
+            <label for="profesor">PROFESOR</label>
+    
+            <select type="text" name="idprofesor" class="form-control" style="border-radius: 40px;" required="">
+                @foreach($profesores as $profesor)
+                    <option value="{{$profesor->idprofesor}}" 
+                    @if($catedra->profesor->idprofesor==$profesor->idprofesor)
+                        selected="selected"
+                    @endif
+                    >{{$profesor->profesor}}</option>
+                @endforeach
+            </select>
+    
+        </div>
+        <div class="col-3"></div>
     </div>
-    <div class="col"> 
-        <label for="obra">PROFESOR</label>
-
-        <select type="text" name="idtipodeobra" class="browser-default custom-select" required="">
-            @foreach($profesores as $profesor)
-                <option value="{{$profesor->idprofesor}}" 
-                @if($catedra[0]->idprofesor==$profesor->idprofesor)
-                    selected="selected"
-                @endif
-                >{{$profesor->profesor}}</option>
-            @endforeach
-        </select>
-
+    <br><br>
+<div class="row  " style="text-align: center">
+    <div class="  col-3 text-center">
+        <label for="">NIVELES</label>
+            <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;" required>
+              <option value="{{$catedra->curso->grado->nivel->idnivel}}" disabled selected>{{$catedra->curso->grado->nivel->nivel}}</option>
+                @foreach($nivel as $itemnivel)
+                <option value="{{$itemnivel['idnivel']}}">{{$itemnivel['nivel']}}</option>
+                @endforeach
+            </select>
+      </div>
+      
+    
+      <div class=" col-4 text-center">
+        <label for="">GRADOS</label>
+             
+              <select  name="idgrado" id="idgrado"  class="form-control" style="border-radius: 40px;" disabled required>
+                <option value="{{$catedra->curso->grado->idgrado}}" selected>{{$catedra->curso->grado->grado}}</option>
+            </select>
+            
+      </div>  
+       
+      
+    <div class="  col-4 text-center">
+        <label for="">CURSO</label>
+            <select class="form-control" name="idcurso" id="idcurso" style="border-radius: 40px;"  disabled required>
+              <option value="{{$catedra->curso->idcurso}}" selected>{{$catedra->curso->curso}}</option> 
+              
+            </select>
+        </div>
+    
+       
+    
     </div>
-</div>
+    <br><br>
 
+
+    <br>
+    <div class="row" style="text-align: center">
+        <div class="col-12">
+        <input type="submit" value="Guardar" id="Guardar" class="btn btn-success" onclick="return confirm('Guardar ?')">&nbsp
+        <a href="{{route('catedra.index')}}" class="btn btn-primary">Volver</a>
+        <br> 
+        </div> </div>
+<br> <br>
+  
+		</form>
+        <br><br><br><br>
 
     
 </div>
 
 
 @endsection
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+    var c=0;
+    //para el combobox grado
+        $(document).ready(function(){
+          $("#idnivel").change(function(){
+            var nivel = $(this).val();
+                $('#idgrado').removeAttr('disabled');
+            $.get('../../../gradobyniveles/'+nivel, function(data){
+              console.log(data);
+                var producto_select = '<option value="" disabled selected>Seleccione un Grado</option>'
+                  for (var i=0; i<data.length;i++)
+                    producto_select+='<option value="'+data[i].idgrado+'">'+data[i].grado+'</option>';
+                  $("#idgrado").html(producto_select);
+    
+            });
+          });
+    
+          //para el combobox seccion
+          $("#idgrado").change(function(){
+            var grado = $(this).val();
+            $("#idcurso").removeAttr('disabled');
+            $.get('../../../cursosbygrados/'+grado, function(data){
+              console.log(data);
+                var producto_select = '<option value="" disabled selected>Seleccione un Curso</option>';
+                if(data.length>=1)
+                  for (var i=0; i<data.length;i++)
+                    producto_select+='<option value="'+data[i].idcurso+'">'+data[i].curso+'</option>';
+                else
+                    producto_select+='<option value="" disabled selected>Ningun Curso Encontrado</option>';
+    
+                $("#idcurso").html(producto_select);
+    
+            });
+            
+        });
+        
+    });
+
+</script>

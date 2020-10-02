@@ -85,15 +85,22 @@ class Detalle_CatedraController extends Controller
         try{
             DB::beginTransaction();
               //$profesor=Profesor::find($request->idprofesor);
+              $catedrita=Detalle_Catedra::all();
               $cursos=$request->idcursos;
             foreach ($cursos as $curso)
-            {
+            {   try{$idcursito=$curso[0]*10+$curso[1];}
+                catch(\Exception $e){$idcursito=$curso[0]; }
+                    foreach($catedrita as $cat){
+                        if($cat->idcurso == $idcursito) {
+                            return redirect()->route('catedra.create')->with('datos','Uno de Los Cursos Ya Esta Asignado a un Profesor...!');
+                        }
+                    }
                 $catedra=new Detalle_Catedra();
                 $catedra->idprofesor=$request->idprofesor;
-                try{$catedra->idcurso=$curso[0]*10+$curso[1]; }
-                catch(\Exception $e){$catedra->idcurso=$curso[0]; } 
-                 //el id curso solo tiene un digito
-                //para 2 digitos se agregaria *10+$curso[1]
+                try{$catedra->idcurso=$curso[0]*10+$curso[1]; }   //para 2 digitos se agregaria *10+$curso[1]
+                catch(\Exception $e){$catedra->idcurso=$curso[0]; }  //el id curso solo tiene un digito
+                
+               
                 $catedra->estado='1';
                 $catedra->save();
             }
@@ -126,14 +133,15 @@ class Detalle_CatedraController extends Controller
      */
     public function edit($id)
     {
-      /* $catedra=DB::table('detalle_catedra as dc','dc.estado','=','1')
+       /*$catedra=DB::table('detalle_catedra as dc','dc.estado','=','1')
        ->where('dc.id','=',$id)
        ->select('dc.idcurso','dc.idprofesor','dc.id','dc.idprofesor')->get();*/
-       $catedra=Detalle_Catedra::findOrfail($id);
+      $catedra=Detalle_Catedra::findOrfail($id);
        $cursos= Curso::where('estado','=','1')->get();
        $profesores= Profesor::where('estado','=','1')->get();
+       $nivel= Nivel::where('estado','=','1')->get();
        
-       return view( 'catedra.edit',['catedra'=>$catedra,'cursos'=>$cursos,'profesores'=>$profesores]);
+       return view( 'catedra.edit',['nivel'=>$nivel,'catedra'=>$catedra,'cursos'=>$cursos,'profesores'=>$profesores]);
     }
 
     /**
@@ -145,8 +153,19 @@ class Detalle_CatedraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Detalle_Catedra::find($id)->update($request->all());
-        return redirect()->route('catedra.index');
+       $catedritas = Detalle_Catedra::all();
+       $catedra = Detalle_Catedra::findOrfail($id);
+      if($catedra->idcurso!=$request->idcurso){
+        foreach($catedritas as $cat){ 
+           if( $cat->idcurso == $request->idcurso){
+            return redirect()->route('catedra.edit',$catedra->id)->with('datos','Este Curso Ya Tiene un Profesor Asignado...!');;
+            }
+        } }
+       
+       $catedra->idprofesor=$request->idprofesor;
+       $catedra->idcurso=$request->idcurso;
+       $catedra->save();
+        return redirect()->route('catedra.index')->with('datos','Registro Catedra Actualizado...!');
 
     }
 
@@ -158,9 +177,10 @@ class Detalle_CatedraController extends Controller
      */
     public function destroy($id)
     {
-        $catedra = Detalle_Catedra::findOrfail($id);
-        $catedra->estado='0';
-        $catedra->save();
+        Detalle_Catedra::find($id)->delete();
+        //$catedra = Detalle_Catedra::findOrfail($id);
+        //$catedra->estado='0';
+        //$catedra->save();
         return redirect()->route('catedra.index')->with('datos','Registro Catedra Eliminado...!');
     }
 }

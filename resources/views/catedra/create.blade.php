@@ -119,8 +119,7 @@
 <br><br>
     
 
-
-    <div class="row  " style="text-align: center">
+<div class="row  " style="text-align: center">
 <div class="  col-3 text-center">
     <label for="">NIVELES</label>
         <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;">
