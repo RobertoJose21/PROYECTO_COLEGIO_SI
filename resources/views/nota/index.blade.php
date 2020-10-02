@@ -369,13 +369,14 @@ var c=0;
             $('#fila'+x).remove();
             }
             c=0;
+               periodo=document.getElementById('idperiodo').value;
           
              for (var i=0; i<data.length;i++){
+                if(periodo==data[i].idperiodo){
                 c=i;
-             
-              fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
+                fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
  
-            	$('#tabla1').append(fila);
+            	  $('#tabla1').append(fila);}
 
             fila='';
    

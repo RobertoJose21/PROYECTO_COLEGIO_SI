@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Libreta de Notas</title>
+    
+       <title>Libreta de Notas</title>
 </head>
 <body>
     
@@ -72,41 +73,41 @@
      
     </table>
     <div style="page-break-after:always;"></div>
-    <table style="width:100%" style="text-align: center" border="0.1px">
+    <table style="width:100%" style="text-align: center" border="1px">
         <thead>
             <tr>
            
-            <th  width=230px>CAPACIDADES</th>
-            <th  width=55px>NOTA1</th>
-            <th width=55px>NOTA2</th>
-            <th width=55px>NOTA3</th>
-            <th width=87px>PROMEDIO</th></tr>
+            <th  width=310px>CURSO/CAPACIDADES</th>
+            <th  width=30px>N1</th>
+            <th width=30px>N2</th>
+            <th width=30px>N3</th>
+            <th width=30px>PC</th></tr>
         </thead>
     </table>
-    <table style="width:100%" style="text-align: center" border="0.1px">
+    <table style="width:100%" style="text-align: center" border="1px">
+       
         @foreach($cursos as $cur)
-        <tr><td><b>{{$cur->curso}}</b>  </td>
+        <tr  ><td colspan="5"><b>{{$cur->curso}}</b>  </td> 
          </tr>
+         @php  $PF=0 @endphp
+         
          @foreach($notitas as $not)
         @if(($cur->idcurso) == ($not->idcurso))
          <tr>
-           <td>{{$not->capacidad}}</td>
-           <td>{{$not->nota1}}</td>
-           <td>{{$not->nota2}}</td>
-           <td>{{$not->nota3}}</td>
-           <td>{{$not->promedio}}</td>
-            </tr>  
+           
+           <td width=310px>{{$not->capacidad}}</td>
+           <td border="1px" width=30px>{{$not->nota1}}</td>
+           <td border="1px" width=30px>{{$not->nota2}}</td>
+           <td border="1px" width=30px>{{$not->nota3}}</td>
+           <td border="1px" width=30px><b> {{$not->promedio}} </b></td>
+           @php  $PF=$PF+($not->promedio)/3 @endphp
+           
+           </tr>  
         @endif
-
-         @endforeach
         @endforeach
-        
+           <tr><td colspan="4" style="text-align: right"> <b>Promedio Final :</b></td> <td width=30px><b> {{round($PF)}}</b></td></tr>
+        @endforeach       
     </table>
-
-
-<br><br><br><br>
-
- 
     </div>
 </body>
 </html>
