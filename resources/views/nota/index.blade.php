@@ -239,14 +239,7 @@ table tr:hover {
   <div class="col-12">
     <h3 class="text-center">LISTADO DE NOTAS</h3>
     <div class="col-12"> &nbsp;</div>
-    <!--<div class="btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-primary">
-        <input type="checkbox"> Text
-      </label>
-    </div><form class="form-inline my-2 my-lg-0 float-right col-4">
-      <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value="{{$buscarpor}}">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>-->
+     
     <div class="table-responsive " style="border-radius: 12px;" >
       <table class="table  table-bordred" name="tabla1" id="tabla1"  >
         <thead class="thead-dark text-center"  >
@@ -334,7 +327,7 @@ var c=0;
       $("#idcurso").change(function(){
         var curso = $(this).val();
         $("#idcapacidad").removeAttr('disabled');
-       // $("#idprofesor").removeAttr('disabled');
+        
         $.get('../capacidadbycursos/'+curso, function(data){
           console.log(data);
             var producto_select = '<option value="" disabled selected>Seleccione una Capacidad</option>';
@@ -364,7 +357,7 @@ var c=0;
 
    
   
-//para mostrar las notas por capacidades
+//para mostrar las notas de alumnos por capacidades 
       $("#idcapacidad").change(function(){
         var capacidad = $(this).val();
         
@@ -377,9 +370,7 @@ var c=0;
             }
             c=0;
           
-               
-            
-              for (var i=0; i<data.length;i++){
+             for (var i=0; i<data.length;i++){
                 c=i;
              
               fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
@@ -411,7 +402,7 @@ function Editar(idnota) {                      //para el editar una nota
        };
 
     
-    function guardar() { 
+    function guardar() { //aun no se utiliza
 
       var  nota1=document.getElementById('editarnota1').value;
       var  nota2=document.getElementById('editarnota2').value;
