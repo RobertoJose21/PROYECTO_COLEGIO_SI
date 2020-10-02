@@ -2,7 +2,6 @@ drop database if exists DBproyectocolegio;
 create database DBproyectocolegio;
 use DBproyectocolegio;
 
-
 CREATE TABLE users (
   id int(11) AUTO_INCREMENT,
   name varchar(50) NULL,
