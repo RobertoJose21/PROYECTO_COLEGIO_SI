@@ -29,7 +29,7 @@
             <th scope="col">LIBRETA</th>
           </thead>
           <tbody> 
-            @foreach($nota as $itemnota)  
+            @foreach($notas as $itemnota)  
             <tr>
               
               <td>{{$itemnota->idprofesor}}</td>
@@ -48,7 +48,7 @@
        </table>
       </div>
       
-      {{$nota->links()}}
+      {{$notas->links()}}
     </div>
   </div>
   <div class="row">

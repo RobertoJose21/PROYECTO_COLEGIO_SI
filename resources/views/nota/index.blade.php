@@ -188,43 +188,43 @@ table tr:hover {
           </div>
           <div class="modal-body">
 
-            <div class="form-group">
-            <form method="post" action="{{route('nota.store')}}">
-     
-              @csrf
-              <div class="form-row">
-                  
-                <div class="  col col-xs-1 text-center">
-                  <label for="id" class="text-black">ID</label>
-              <input type="number"  class="form-control text-success"   id="idnota" name="idnota"   disabled   >
-              </div>
-                  
-                  <div class="  col-md-3 text-center">
-                      <label for="id" class="text-black">NOTA 1 :</label>
-                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"   >
+                <div class="form-group">
+                <form method="post" action="{{route('nota.store')}}">
+        
+                  @csrf
+                  <div class="form-row">
+                      
+                    <div class="  col col-xs-1 text-center">
+                      <label for="id" class="text-black">ID</label>
+                  <input type="number"  class="form-control text-success"   id="idnota" name="idnota"   disabled   >
                   </div>
-                  <div class="  col-md-3 text-center">
-                      <label for="id" class="text-black">NOTA 2 :</label>
-                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2"  >
-                  </div>
-                  <div class="  col-md-3 text-center">
-                      <label for="id" class="text-black">NOTA 3 :</label>
-                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  >
-                  </div>
-               
-                
-                   
+                      
+                      <div class="  col-md-3 text-center">
+                          <label for="id" class="text-black">NOTA 1 :</label>
+                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"   >
+                      </div>
+                      <div class="  col-md-3 text-center">
+                          <label for="id" class="text-black">NOTA 2 :</label>
+                          <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2"  >
+                      </div>
+                      <div class="  col-md-3 text-center">
+                          <label for="id" class="text-black">NOTA 3 :</label>
+                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  >
+                      </div>
                   
-              </div>
+                    
+                      
+                      
+                  </div>
+                  
+                  </div>
               
+                
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> GRABAR</button><!--no hace nada-->
+                  <button type="button" class="btn btn-warning" data-dismiss="modal">CANCELAR</button>
+              </form>
               </div>
-          
-             
-              <button type="submit" class="btn btn-primary"    ><i class="fas fa-save"></i> GRABAR</button><!--no hace nada-->
-              <button type="button" class="btn btn-warning" data-dismiss="modal">CANCELAR</button>
-          </form>
-          </div>
-          </div>
+              </div>
           <div class="modal-footer">
            
           </div>
