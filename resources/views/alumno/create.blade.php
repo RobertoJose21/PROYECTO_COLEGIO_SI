@@ -301,7 +301,7 @@
             //var m = today.getMonth();
             //console.log(y-3)
             //console.log(today);
-            var anioescolar= y-3 ;  
+            var anioescolar= y-2 ;  
             var aniopermitido=y-18;
             //var mesescolar= m + 1;
             console.log(anioescolar);  
