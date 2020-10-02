@@ -67,27 +67,9 @@ class NotaController extends Controller
 
        public function libretaNotas($id){
         $matricula= Matricula::where('idmatricula','=',$id)->first();
-                            ////richard no borres mi funcion :V
-        $notita = DB::table('matriculas as m','m.estado','=','1')->where('m.idmatricula','=',$id)
-        ->join('secciones as s','s.idseccion','=','m.idseccion')
-        ->join('grados as g','g.idgrado','=','s.idgrado')
-        ->join('cursos as c','c.idgrado','=','g.idgrado')
-        ->join('capacidades as ca','ca.idcurso','=','c.idcurso')
-        ->join('notas as n','n.idcapacidad','=','ca.idcapacidad')
-        ->where('n.idmatricula','=',$id)
-        ->select('c.curso','ca.idcurso','ca.capacidad','n.promedio','n.nota1','n.nota2','n.nota3')
-        ->get();
-
-        $cursos = DB::table('cursos as c','c.estado','=','1')
-        ->join('grados as g','g.idgrado','=','c.idgrado')
-        ->join('secciones as s','s.idgrado','=','g.idgrado')
-        ->join('matriculas as m','m.idseccion','=','s.idseccion')
-        ->where('m.idmatricula','=',$id)
-        ->select('c.idcurso','c.curso')->get();
-
-
-        $pdf = \PDF::loadView('nota.notas', ['cursos'=>$cursos,'matricula'=>$matricula,'notitas'=>$notita]);
-        return $pdf->stream('libreta.pdf');
+        
+        $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
+         return $pdf->stream('libreta.pdf');
                
     }
 
@@ -108,37 +90,33 @@ class NotaController extends Controller
         ->join('cursos as c','c.idgrado','=','g.idgrado')
         ->join('detalle_catedra as dc','dc.idcurso','=','c.idcurso')
         ->join('profesores as pro','pro.idprofesor','=','dc.idprofesor')
-        ->where('g.grado','like','%'.$buscarpor.'%')
-        ->select('pro.idprofesor','pro.profesor','c.idcurso','c.curso','ni.nivel','g.grado')->get();//paginate($this::PAGINACION);
+        ->where('c.curso','like','%'.$buscarpor.'%')
+        ->select('pro.idprofesor','pro.profesor','c.idcurso','c.curso','ni.nivel','g.grado')->paginate($this::PAGINACION);
         
-        return view('nota.registrosNotas',['notas'=>$notas,'buscarpor'=>$buscarpor]);
+        return view('nota.registrosNotas',['nota'=>$notas,'buscarpor'=>$buscarpor]);
     }
         
     
     public function reporteRegistroNotas($id){
-
         $curso=Curso::where('idcurso','=',$id)->first();
-       
-        //$alumno=Matricula::where('idalumno','=',$id)->first();
-        //$profesor=Detalle_Catedra::where('idprofesor','=',$id)->get();
         $matricula= Matricula::where('idmatricula','=',$id)->first();
-
-        $nota=DB::table('matriculas as m','m.estado','=','1')
-        ->join('alumnos as a','a.idalumno','=','m.idalumno')
-        ->join('notas as n','n.idmatricula','=','m.idmatricula')
+        $alumno=Matricula::where('idalumno','=',$id)->first();
+        $profesor=Detalle_Catedra::where('idprofesor','=',$id)->get();
+        
+        $notas=DB::table('matriculas as m','m.estado','=','1')
         ->join('secciones as s','s.idseccion','=','m.idseccion')
         ->join('grados as g','g.idgrado','=','s.idgrado')
         ->join('cursos as c','c.idgrado','=','g.idgrado')
-        ->where('c.idcurso','=',$id)
-        
-        ->join('capacidades as ca','ca.idcapacidad','=','n.idcapacidad')
+        ->join('capacidades as ca','ca.idcurso','=','c.idcurso')
         ->where('ca.idcurso','=',$id)
-        
-        
-        ->select('m.idmatricula','n.nota1','ca.capacidad','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->paginate($this::PAGINACION);
+        ->join('notas as n','n.idmatricula','=','m.idmatricula')
+        ->join('alumnos as a','a.idalumno','=','m.idalumno')
+        ->where('c.idcurso','=',$id)
+        ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
       
-     $pdf = \PDF::loadView('nota.registros',['curso'=>$curso,'notas'=>$nota,'matricula'=>$matricula,])->setPaper('a4', 'portrait');
-    return $pdf->stream('registros.pdf');      
+     $pdf = \PDF::loadView('nota.registros', compact('profesor','alumno','notas','matricula','curso',))->setPaper('a4', 'portrait');
+      return $pdf->stream('registros.pdf');
+            
     }
     
 
@@ -249,13 +227,23 @@ class NotaController extends Controller
    }
     }
 
-     
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         //
     }
 
-    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     
     public function edit($nota_id)
     {
@@ -264,9 +252,15 @@ class NotaController extends Controller
         return view('nota.edit',compact('nota','alumno'));
     }
 
-     
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
 
-    public function actualizar(Request $request) //para editar una nota
+    public function actualizar(Request $request)
     {
         $data=request()->validate([
             'idnota'=>'required',

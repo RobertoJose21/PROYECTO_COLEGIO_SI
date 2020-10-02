@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Seccion;   //no olvidar poner esto
 use Illuminate\Http\Request;
 use App\Grado;
+use DB;
 
 
 class SeccionController extends Controller
@@ -50,14 +51,27 @@ class SeccionController extends Controller
             [
                 'seccion.required'=>'Ingrese seccion ',
                 'seccion.max'=>'Máximo 1 caracter para seccion'
-            ]);
+                ]);
+                
 
-        $seccion=new Seccion();    //instanciamos nuestro modelo categoria
-        $seccion->seccion=$request->seccion;  //designamos el valor de descripcion
-        $seccion->idgrado=$request->idgrado;  //designamos el valor de descripcion
-        $seccion->estado='1';   //campo de descripcion
-        $seccion->save();       
-        return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado...!'); 
+                
+                $seccion=new Seccion();    //instanciamos nuestro modelo categoria
+                $seccion->seccion=$request->seccion;  //designamos el valor de descripcion
+                $seccion->idgrado=$request->idgrado;  //designamos el valor de descripcion
+                $seccion->estado='1';   //campo de descripcion
+                
+                if((DB::table('secciones as s','s.estado','=','1')->where('s.seccion','=',$request->seccion))->where('s.idgrado','=',$request->idgrado)->count()>=1)
+                {
+                    return redirect()->route('seccion.create')->with('datos','Esta Seccion ya esta asignado a ese grado...!');
+                }
+                
+                else
+                {
+                  $seccion->save();     
+                  return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado...!'); 
+
+                 }
+
     }
 
     /**
@@ -79,8 +93,8 @@ class SeccionController extends Controller
      */
     public function edit($id)
     {
-        $grado=Nivel::where('estado','=','1')->get();
-        $seccion=Grado::findOrfail($id);
+        $grado=Grado::where('estado','=','1')->get();
+        $seccion=Seccion::findOrfail($id);
         
         return view('seccion.edit',compact('seccion','grado'));
     }
@@ -107,8 +121,16 @@ class SeccionController extends Controller
         $seccion->idgrado=$request->idgrado;  //designamos el valor de descripcion
     
         $seccion->estado='1';   //campo de descripcion
-        $seccion->save();  
-        return redirect()->route('seccion.index')->with('datos','Registro Actualizado...!');
+
+        if((DB::table('secciones as s','s.estado','=','1')->where('s.seccion','=',$request->seccion))->where('s.idgrado','=',$request->idgrado)->count()>=1)
+                {
+                    return redirect()->route('seccion.edit',$seccion->idseccion)->with('datos','Esta Seccion ya esta asignado a ese grado...!');
+                }
+                else{
+
+                    $seccion->save();  
+                    return redirect()->route('seccion.index')->with('datos','Registro Actualizado...!');
+                }
     }
 
 

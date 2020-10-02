@@ -46,7 +46,6 @@
        </table>
       </div>
       
-      {{$notas->links()}}
     </div>
   </div>
   <div class="row">

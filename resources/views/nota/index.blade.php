@@ -196,7 +196,7 @@ table tr:hover {
                       
                     <div class="  col col-xs-1 text-center">
                       <label for="id" class="text-black">ID</label>
-                  <input type="number"  class="form-control text-success"   id="idnota" name="idnota"   disabled   >
+                  <input type="number"  class="form-control text-success"   id="idnota" name="idnota"      >
                   </div>
                       
                       <div class="  col-md-3 text-center">
