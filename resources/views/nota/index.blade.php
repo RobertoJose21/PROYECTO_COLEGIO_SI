@@ -133,7 +133,7 @@ table tr:hover {
       <div class="   col-2 text-center">
         <label for="">SECCIONES</label>
             <select class="form-control" name="idseccion" id="idseccion" style="border-radius: 40px;" disabled required>
-              <option value="" selected>Seleccione un Grado</option> 
+              <option value="" selected>Seleccione una Seccion</option> 
             </select>
       </div>
   </div><br>
@@ -142,7 +142,7 @@ table tr:hover {
   <div class="  col-4 text-center">
     <label for="">CURSO</label>
         <select class="form-control" name="idcurso" id="idcurso" style="border-radius: 40px;" disabled required>
-          <option value="" selected>Seleccione un Grado</option> 
+          <option value="" selected>Seleccione un curso</option> 
           
         </select>
   </div>

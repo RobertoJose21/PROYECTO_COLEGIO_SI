@@ -16,7 +16,7 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    const PAGINACION=3;
+    const PAGINACION=5;
     
     public function index(Request $request)
         {

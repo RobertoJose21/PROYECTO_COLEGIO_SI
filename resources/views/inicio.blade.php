@@ -49,7 +49,7 @@
       </div>
      
     <div class="col-lg-6">
-      <a class="portfolio-item" href="/alumno">
+      <a class="portfolio-item" href="/catedra">
         <div class="caption">
           <div class="caption-content">
             <div class="h2">CATEDRA</div>

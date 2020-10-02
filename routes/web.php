@@ -59,6 +59,7 @@ Route::resource('nivel','NivelController');
 Route::resource('grado','GradoController');
 Route::resource('seccion','SeccionController');
 Route::resource('periodo','PeriodoController');
+Route::resource('catedra','Detalle_CatedraController');
 
 
 
