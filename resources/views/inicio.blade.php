@@ -66,7 +66,7 @@
   
 <div class="row no-gutters">
   <div class="col-lg-6">
-    <a class="portfolio-item" href="/alumno">
+    <a class="portfolio-item" href="/profesor">
       <div class="caption">
         <div class="caption-content">
           <div class="h2">PROFESOR</div>

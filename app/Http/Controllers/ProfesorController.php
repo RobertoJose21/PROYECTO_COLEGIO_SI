@@ -3,82 +3,95 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Profesor;
+use App\Detalle_Catedra;
+use DB;
 class ProfesorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    const PAGINACION=5;
+
+    public function index(Request $request)
     {
-        //
+            $buscarpor=$request->get('buscarpor');
+            $profesor=Profesor::where('estado','=','1')->where('profesor','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);           
+            if (Profesor::where('estado','=','1')) {
+                $estadoprof='REGISTRADO';
+            }
+            else
+            {
+                $estadoprof='NO REGISTRADO';
+            }
+            return view('profesor.index',['profesor'=>$profesor,'buscarpor'=>$buscarpor,'estadoprof'=>$estadoprof]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        $profesor=Profesor::where('estado','=','1')->get(); 
+        return view('profesor.create',compact('profesor'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $data=request()->validate([
+            'codigoprofesor'=>'required|max:18',
+            'profesor'=>'required|max:50',
+         ],[
+            'codigoprofesor.required'=>'Ingrese el codigo del profesor',
+            'codigoprofesor.max'=>'Maximo 18 caracteres para el codigo',
+            'profesor.required'=>'Ingrese el nombre del profesor',
+            'profesor.max'=>'Maximo 50 caracteres para el nombre del profesor',
+    ]);
+
+        $profesor=new Profesor();
+        $profesor->codigoprofesor=$request->codigoprofesor;
+        $profesor->profesor=$request->profesor;
+        $profesor->estado='1';
+        $profesor->save();
+        return redirect()->route('profesor.index')->with('datos', 'Profesor Creado correctamente!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $profesor=Profesor::findOrFail($id);
+        return view('profesor.edit',compact('profesor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        $data=request()->validate([
+            'codigoprofesor'=>'required|max:18',
+            'profesor'=>'required|max:50',
+        ],[
+            'codigoprofesor.required'=>'Ingrese el codigo del profesor',
+            'codigoprofesor.max'=>'Maximo 18 caracteres para el codigo',
+            'profesor.required'=>'Ingrese el nombre del profesor',
+            'profesor.max'=>'Maximo 50 caracteres para el nombre del profesor',
+    ]);
+        $profesor=Profesor::findOrFail($id);
+        $profesor->codigoprofesor=$request->codigoprofesor;
+        $profesor->profesor=$request->profesor;
+        $profesor->save();
+    return redirect()->route('profesor.index')->with('datos', 'Profesor editado correctamente!');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        
+        $profesor=Profesor::find($id);
+        $profesor->estado='0';
+        $profesor->save();
+        return redirect()->route('profesor.index')->with('datos', 'Profesor eliminado');
     }
 }
