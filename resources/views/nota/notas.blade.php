@@ -70,7 +70,8 @@
         </div>        
 
     </div>
-     
+</div>
+<!--  para las libretas  -->
     </table>
     <div style="page-break-after:always;"></div>
     <table style="width:100%" style="text-align: center" border="1px">
