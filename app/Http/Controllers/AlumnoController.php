@@ -129,6 +129,7 @@ class AlumnoController extends Controller
     public function update(Request $request, $id)
     {
         $data=request()->validate([
+            'codigoalumno'=>'required|max:10',
             'nombres'=>'required|max:50',
             'apellidos'=>'required|max:50',
             'lenguamaterna'=>'required|max:50',
@@ -139,6 +140,8 @@ class AlumnoController extends Controller
             'dni'=>'required|max:8',
             'codigoalumno'=>'required|max:10',
         ],[
+            'codigoalumno.required'=>'Ingrese el codigo del alumno',
+            'codigoalumno.max'=>'Maximo 10 caracteres para el codigo',
             'nombres.required'=>'Ingrese el nombre del alumno',
             'nombres.max'=>'Maximo 50 caracteres para el nombre',
             'apellidos.required'=>'Ingrese el apellido del alumno',

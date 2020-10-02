@@ -266,7 +266,7 @@ class NotaController extends Controller
 
      
 
-    public function actualizar(Request $request)
+    public function actualizar(Request $request) //para editar una nota
     {
         $data=request()->validate([
             'idnota'=>'required',
