@@ -189,27 +189,27 @@ table tr:hover {
           <div class="modal-body">
 
             <div class="form-group">
-            <form method="post" action="{{route('nota.store')}}">
+            <form method="post" action="{{route('nota.actualizar')}}">
      
               @csrf
               <div class="form-row">
                   
                 <div class="  col col-xs-1 text-center">
                   <label for="id" class="text-black">ID</label>
-              <input type="number"  class="form-control text-success"   id="idnota" name="idnota"   disabled   >
+              <input type="number"  class="form-control text-success"   id="idnota" name="idnota" readonly  required >
               </div>
                   
                   <div class="  col-md-3 text-center">
                       <label for="id" class="text-black">NOTA 1 :</label>
-                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"   >
+                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"  required >
                   </div>
                   <div class="  col-md-3 text-center">
                       <label for="id" class="text-black">NOTA 2 :</label>
-                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2"  >
+                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2" required >
                   </div>
                   <div class="  col-md-3 text-center">
                       <label for="id" class="text-black">NOTA 3 :</label>
-                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  >
+                  <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  required>
                   </div>
                
                 
@@ -376,14 +376,17 @@ var c=0;
             c=0;
           
               for (var i=0; i<data.length;i++){
-                 c=i;
-                var ind=data[i].idnota;
+              c=i;
+              var ind=data[i].idnota;
               fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
  
             	$('#tabla1').append(fila);
+////
+          
+
               fila='';
              
-              }
+            }
             
         });
       });
@@ -398,11 +401,11 @@ function Editar(idnota) {                      //para el editar una nota
           $("#editarnota1").val(data[0].nota1);
           $("#editarnota2").val(data[0].nota2);
           $("#editarnota3").val(data[0].nota3);
-          $("#idnota").val(idnota);
+          $("#idnota").val(data[0].idnota);
         });
      $('#modal_editar').modal('show');
     
-     $("#editarnota1").placeholder(idnota);
+     ///$("#editarnota1").placeholder(idnota);
        };
 
     
