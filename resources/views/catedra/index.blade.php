@@ -108,7 +108,7 @@
     </form>  <!--buscador por -->
 
 </nav> 
-
+ <!--   esta es la vistasa de la catedra xd-->
   
   <div class="table-responsive " style="border-radius: 12px;" >
     <table class="table" style="border-radius: 12px;" >
