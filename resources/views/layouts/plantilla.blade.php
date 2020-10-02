@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
- <link rel="apple-touch-icon" sizes="76x76"  href="/img/apple-icon.png">
- <link rel="icon" type="image/png" href="/img/centrotpf.png">  <!--logo arriba--> 
+ <link rel="apple-touch-icon" sizes="76x76"  href="../img/apple-icon.png">
+ <link rel="icon" type="../image/png" href="../img/centrotpf.png">  <!--logo arriba--> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     THE ONE
@@ -14,27 +14,28 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"  />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS  -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0">-->
-  <link rel="stylesheet" href="/css/demo.css">
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <!--   
+    <link rel="stylesheet" href="/css/now-ui-kit.css?v=1.3.0"> -->
+  <link rel="stylesheet" href="../../css/demo.css">
   <!-- LOGIN PROF -->
 
-  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../../adminlte/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <link rel="stylesheet" href="/css/login.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../../css/login.css">
+  <link rel="stylesheet" href="../../css/style.css">
   <!-- MENÚ -->
 
   <!-- Bootstrap Core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap02.min.css" >
+  <link rel="stylesheet" href="../../css/bootstrap02.min.css" >
 
   <!-- Custom Fonts -->
-  <link rel="stylesheet" href="/css/all.min.css"  type="text/css">
+  <link rel="stylesheet" href="../../css/all.min.css"  type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" type="text/css">
-  <link rel="stylesheet" href="/css/simple-line-icons.css" >
+  <link rel="stylesheet" href="../../css/simple-line-icons.css" >
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/stylish-portfolio.min.css" >
+  <link rel="stylesheet" href="../../css/stylish-portfolio.min.css" >
 
 </head>
 
@@ -54,38 +55,12 @@
           
           <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" rel="tooltip" title="Inicio" data-placement="bottom" href="/inicio">
-                <img class="img-fluid" src="/img/inicio.png">
+                <img class="img-fluid" src="../../img/inicio.png">
                 
                  
             </a>
           </li>
 
-          <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/nivel">
-              <h5> NIVELES</h5>
-                
-             
-            </a>
-          </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/grado">
-              <h5> GRADOS</h5>
-                
-             
-            </a>
-          </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/seccion">
-              <h5> SECCIONES</h5>
-                
-             
-            </a>
-          </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/periodo">
-              <h5> PERIODOS</h5>
-                
-             
             </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
@@ -129,7 +104,7 @@
           
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="Salir" data-placement="bottom" href="../" >
-                <img class="img-fluid" src="/img/salir.png">
+                <img class="img-fluid" src="../../img/salir.png">
                 
                 
             </a>
@@ -142,7 +117,7 @@
   <!-- FIN  NAVBARRA -->
 
   <div class="page-header clear-filter" filter-color="black"> <!-- inidio y fin de fondo  -->
-    <div class="page-header-image" style="background-image:url(/img/innova.jpg)"> </div> <!-- fondo  -->
+    <div class="page-header-image" style="background-image:url(../../img/innova.jpg)"> </div> <!-- fondo  -->
     <!-- centro -->
     
 
@@ -167,7 +142,7 @@
       
         
     <div class="page-header clear-filter" >
-      <div class="page-header-image" style="background-image:url(/img/portfolio-1.jpg)"> </div> <!-- fondo  -->
+      <div class="page-header-image" style="background-image:url(../../img/portfolio-1.jpg)"> </div> <!-- fondo  -->
       <div class="content">
   
         
@@ -191,14 +166,14 @@
         </a>
 
         <!-- Bootstrap core JavaScript -->
-        <script src="/adminlte/dist/js/menu/jquery.min.js"></script>
-        <script src="/adminlte/dist/js/menu/bootstrap.bundle.min.js"></script>
+        <script src="../../adminlte/dist/js/menu/jquery.min.js"></script>
+        <script src="../../adminlte/dist/js/menu/bootstrap.bundle.min.js"></script>
 
         <!-- Plugin JavaScript -->
-        <script src="/adminlte/dist/js/menu/jquery.easing.min.js"></script>
+        <script src="../../adminlte/dist/js/menu/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for this template -->
-        <script src="/adminlte/dist/js/menu/stylish-portfolio.min.js"></script>
+        <script src="../../adminlte/dist/js/menu/stylish-portfolio.min.js"></script>
 
 
         <!-- fin centro -->

@@ -2,7 +2,6 @@ drop database if exists DBproyectocolegio;
 create database DBproyectocolegio;
 use DBproyectocolegio;
 
-
 CREATE TABLE users (
   id int(11) AUTO_INCREMENT,
   name varchar(50) NULL,
@@ -22,8 +21,6 @@ CREATE TABLE paises
 );
 
 insert into paises values(null,'PERU','1');
-insert into paises values(null,'BRASIL','1');
-
  
 CREATE TABLE niveles
 (
@@ -2250,8 +2247,24 @@ CREATE TABLE alumnos
 
 insert into alumnos values(null,'130101','1023478738','75748511','VALVERDE ROSAS','JUAN ALBERTO','MASCULINO','2002-01-21','CASTELLANO','SOLTERO','CATOLICA','SAN JUAN','Av. Húsares de Junín, 690','948367245','BUS','10','LADRILLO Y/O CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','4','6','PROMOVIDO','1');
 insert into alumnos values(null,'130601','1023478523','87563422','CALDERON MENDEZ','LUIS LEONNOR','MASCULINO','2015-05-11','CASTELLANO','SOLTERO','CATOLICA','JOSE OLAYA','Calle Santiago Huaco Medina','946745982','MOTO','8','LADRILLO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO SIN AGUA CORRIENTE','5','6','PROMOVIDO','1');
-insert into alumnos values(null,'061305','1023478620','65489244','ARENAS GUERRERO','PERLA ALEJANDRA','FEMENINO','2008-03-12','CASTELLANO','SOLTERO','CATOLICA','MANUEL COX','CALLE CESAR PINGLO','946734829','TAXI','5','LADRILLO Y CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','6','10','PROMOVIDO','1');
-
+insert into alumnos values(null,'061305','1023478620','29389444','ARENAS GUERRERO','PERLA ALEJANDRA','FEMENINO','2005-01-12','CASTELLANO','SOLTERO','CRISTIANA','MANUEL COX','3668 Williamson Course','946734829','TAXI','5','LADRILLO Y CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','5','10','RETIRADO','1');
+insert into alumnos values(null,'060506','4552655064','70871474','MUÑOZ ION','JOSE LUIS','MASCULINO','2010-02-14','CASTELLANO','SOLTERO','CATOLICA','ALPAMAYO','761 Erdman Drive','921315345','MICRO','12','LADRILLO Y CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO CON AGUA CORRIENTE','6','10','EXPULSADO','1');
+insert into alumnos values(null,'130502','2932436529','72188398','MORON SANCHEZ','FATIMA DALESHKA','FEMENINO','2002-03-11','CASTELLANO','SOLTERO','CRISTIANA','ANTONIO RAYMONDI','46170 Gudrun Via','934534323','TAXI','5','LADRILLO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO SIN AGUA CORRIENTE','2','1','PROMOVIDO','1');
+insert into alumnos values(null,'100703','7529127274','73590558','VINUESA TORRICO','SEBASTIAN ALEJANDRO','MASCULINO','2005-04-28','CASTELLANO','SOLTERO','CATOLICA','Cambridge College Lima','7362 A, Avenida','975545634','MICRO','10','CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','3','2','PROMOVIDO','1');
+insert into alumnos values(null,'090411','7123514087','75678691','GAITAN MARISCAL','MARIA CARMEN','FEMENINO','2013-05-11','CASTELLANO','SOLTERO','CRISTIANA','José Antonio Encinas','Avenida Argentina 6304','932942934','TAXI','4','CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','4','5','ACEPTADO','1');
+insert into alumnos values(null,'220702','3563827930','70190949','CABALLERO ASENJO','IVAN','MASCULINO','2003-06-16','CASTELLANO','SOLTERO','CATOLICA','Markham College','Avenida Mexico 454','929355384','MICRO','12','LADRILLO Y CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO SIN AGUA CORRIENTE','5','6','PROMOVIDO','1');
+insert into alumnos values(null,'210307','5867636075','78412857','NEBOT ALBARRAN','LUISA MARGARITA','FEMENINO','2007-07-19','CASTELLANO','SOLTERO','CATOLICA','Martín Adán','Jiron Lino Cornejo 220  Int. 115','929389289','MOTO','20','CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO SIN AGUA CORRIENTE','5','8','PROMOVIDO','1');
+insert into alumnos values(null,'060312','7278530971','74011407','VALDES URIARTE','JAIME NAHUEL','MASCULINO','2001-04-10','CASTELLANO','SOLTERO','CRISTIANA','Martín Adán','Mz H LT 16  APV EL PRADO','994995934','MICRO','20','CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','3','2','ACEPTADO','1');
+insert into alumnos values(null,'021707','4866774382','75392595','CAMARASA GUAL','MARIA VICTORIA','FEMENINO','2009-02-19','CASTELLANO','SOLTERO','CATOLICA','Pestalozzi','Calle Z 350  Urb. Santa Rosa de Surco','987329685','MICRO','30','LADRILLO Y CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO SIN AGUA CORRIENTE','4','3','EXPULSADO','1');
+insert into alumnos values(null,'200206','5006551755','71063005','PALOMINO GASCO','JOSE ANGEL','MASCULINO','2011-06-20','CASTELLANO','SOLTERO','CRISTIANA','San Ignacio de Recalde','Calle Paz Soldán 323  Miraflores','985936498','MICRO','45','CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','5','3','PROMOVIDO','1');
+insert into alumnos values(null,'030610','2287255619','77906641','QUINTANA CABALLERO','MARIA JESUS','FEMENINO','2012-08-21','CASTELLANO','SOLTERO','CATOLICA','Santa Margarita','Calle 2 Mz. C  Urb. Industrial La Merced','9098763859','MOTO','10','LADRILLO Y CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO SIN AGUA CORRIENTE','6','8','ACEPTADO','1');
+insert into alumnos values(null,'140112','0953585511','76177780','BOU BERMUDEZ','CESAR MANUEL','MASCULINO','2018-04-22','CASTELLANO','SOLTERO','CRISTIANA','León Pinelo','Avenida Naciones Unidas 1729  Chacra Ríos Norte','965948702','MICRO','20','LADRILLO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO SIN AGUA CORRIENTE','8','10','EXPULSADO','1');
+insert into alumnos values(null,'150702','4792872916','71582383','RIOJA ESCOBEDO','LAURA ISABEL','FEMENINO','1998-09-23','CASTELLANO','SOLTERO','CATOLICA','Santa Úrsula','Avenida Colombia 465  Of. 402','946386097','TAXI','5','LADRILLO Y CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','6','9','ACEPTADO','1');
+insert into alumnos values(null,'061102','9268515392','70622504','ROIG ANTONIO','JOSEP FELIX','MASCULINO','2002-11-24','CASTELLANO','SOLTERO','CRISTIANA','Enrique Meiggs','AV. Benito Juarez 234','927586935','MICRO','15','LADRILLO Y CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO SIN AGUA CORRIENTE','2','1','PROMOVIDO','1');
+insert into alumnos values(null,'090615','4349552284','79059941','ALIAGA TORRENTE','ROSA MONICA','FEMENINO','2008-12-25','CASTELLANO','SOLTERO','CATOLICA','San José','Chancay cdra 2','9896758434','MICRO','25','LADRILLO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','3','3','ACEPTADO','1');
+insert into alumnos values(null,'200502','3777280161','77190125','OJEDA ROSALES','JUAN MANUEL','MASCULINO','2016-07-18','CASTELLANO','SOLTERO','CATOLICA','JUAN XXIII','Av. 5 lt 16 parque Indutrial','985689340','TAXI','15','LADRILLO Y CEMENTO','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO CON AGUA CORRIENTE','6','4','PROMOVIDO','1');
+insert into alumnos values(null,'130608','5971891286','73629081','VILLALBA PINTADO','ANDREA ELENA','FEMENINO','2017-08-11','CASTELLANO','SOLTERO','CRISTIANA','Franklin D. Roosevelt','Chocrane 269','954637852','MOTO','10','LADRILLO ','INSTALACION DOMICILIARIA','INSTALACION COMPARTIDA','INSTALACION PUBLICA','INODORO SIN AGUA CORRIENTE','3','2','ACEPTADO','1');
+insert into alumnos values(null,'120801','7999534640','77669030','CORONEL ARREBOLA','JUAN LUIS','MASCULINO','2014-010-10','CASTELLANO','SOLTERO','CATOLICA','CLARETIANO','Juan Pablo 475','923425446','MOTO','10','CEMENTO','INSTALACION PUBLICA','INSTALACION COMPARTIDA','INSTALACION DOMICILIARIA','INODORO SIN AGUA CORRIENTE','5','7','EXPULSADO','1');
 
   
 CREATE TABLE grados
@@ -2359,18 +2372,18 @@ insert into matriculas values('2','4',null,'2020/02/20','3','1');
 insert into matriculas values('3','4',null,'2020/02/24','1','1');
 
 CREATE TABLE detalle_catedra
-(
+(   id                   INT AUTO_INCREMENT ,
 	idcurso              INT NOT NULL,
 	idprofesor           INT NOT NULL,
 	estado               CHAR(1) NOT NULL,
-	PRIMARY KEY (idcurso,idprofesor),
+	PRIMARY KEY (id),
 	FOREIGN KEY (idcurso) REFERENCES cursos(idcurso),
     FOREIGN KEY (idprofesor) REFERENCES profesores(idprofesor)
 );
  
-insert into detalle_catedra(idcurso,idprofesor,estado) values('1','1','1'),('2','2','1'),('3','3','1'),('4','4','1'),('5','5','1'),('6','6','1'),('7','7','1'),('8','1','1'),('9','2','1'),('10','3','1'),('11','4','1'),('12','5','1'),('13','6','1'),('14','7','1'),('15','1','1'),('16','2','1'),('17','3','1'),('18','4','1'),('19','5','1'),('20','6','1'),('21','7','1'),('22','1','1'),('23','2','1'),('24','3','1'),('25','4','1'),('26','5','1'),('27','6','1'),('28','7','1'),('29','1','1'),('30','2','1'),('31','3','1'),('32','4','1'),('33','5','1'),('34','6','1'),('35','7','1');
-insert into detalle_catedra(idcurso,idprofesor,estado) values('36','8','1'),('37','8','1'),('38','8','1'),('39','8','1'),('40','8','1'),('41','8','1'),('42','9','1'),('43','9','1'),('44','9','1'),('45','9','1'),('46','9','1'),('47','9','1'),('48','10','1'),('49','10','1'),('50','10','1'),('51','10','1'),('52','10','1'),('53','10','1'),('54','11','1'),('55','11','1'),('56','11','1'),('57','11','1'),('58','11','1'),('59','11','1'),('60','12','1'),('61','12','1'),('62','12','1'),('63','12','1'),('64','12','1'),('65','12','1'),('66','13','1'),('67','13','1'),('68','13','1'),('69','13','1'),('70','13','1'),('71','13','1');
-insert into detalle_catedra(idcurso,idprofesor,estado) values('72','14','1'),('73','14','1'),('74','14','1'),('75','14','1'),('76','15','1'),('77','15','1'),('78','15','1'),('79','15','1'),('80','16','1'),('81','16','1'),('82','16','1'),('83','16','1');
+insert into detalle_catedra(id,idcurso,idprofesor,estado) values(null,'1','1','1'),(null,'2','2','1'),(null,'3','3','1'),(null,'4','4','1'),(null,'5','5','1'),(null,'6','6','1'),(null,'7','7','1'),(null,'8','1','1'),(null,'9','2','1'),(null,'10','3','1'),(null,'11','4','1'),(null,'12','5','1'),(null,'13','6','1'),(null,'14','7','1'),(null,'15','1','1'),(null,'16','2','1'),(null,'17','3','1'),(null,'18','4','1'),(null,'19','5','1'),(null,'20','6','1'),(null,'21','7','1'),(null,'22','1','1'),(null,'23','2','1'),(null,'24','3','1'),(null,'25','4','1'),(null,'26','5','1'),(null,'27','6','1'),(null,'28','7','1'),(null,'29','1','1'),(null,'30','2','1'),(null,'31','3','1'),(null,'32','4','1'),(null,'33','5','1'),(null,'34','6','1'),(null,'35','7','1');
+insert into detalle_catedra(id,idcurso,idprofesor,estado) values(null,'36','8','1'),(null,'37','8','1'),(null,'38','8','1'),(null,'39','8','1'),(null,'40','8','1'),(null,'41','8','1'),(null,'42','9','1'),(null,'43','9','1'),(null,'44','9','1'),(null,'45','9','1'),(null,'46','9','1'),(null,'47','9','1'),(null,'48','10','1'),(null,'49','10','1'),(null,'50','10','1'),(null,'51','10','1'),(null,'52','10','1'),(null,'53','10','1'),(null,'54','11','1'),(null,'55','11','1'),(null,'56','11','1'),(null,'57','11','1'),(null,'58','11','1'),(null,'59','11','1'),(null,'60','12','1'),(null,'61','12','1'),(null,'62','12','1'),(null,'63','12','1'),(null,'64','12','1'),(null,'65','12','1'),(null,'66','13','1'),(null,'67','13','1'),(null,'68','13','1'),(null,'69','13','1'),(null,'70','13','1'),(null,'71','13','1');
+insert into detalle_catedra(id,idcurso,idprofesor,estado) values(null,'72','14','1'),(null,'73','14','1'),(null,'74','14','1'),(null,'75','14','1'),(null,'76','15','1'),(null,'77','15','1'),(null,'78','15','1'),(null,'79','15','1'),(null,'80','16','1'),(null,'81','16','1'),(null,'82','16','1'),(null,'83','16','1');
 
  
 

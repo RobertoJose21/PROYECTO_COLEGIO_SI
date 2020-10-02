@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Detalle_Catedra extends Model
 {
+   // protected $primaryKey = ['idcurso','idprofesor'];
     public $table = 'detalle_catedra';
     public $timestamps=false;
+
     protected $fillable = ['idcurso','idprofesor'];
 
     public function curso(){

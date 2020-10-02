@@ -16,7 +16,7 @@
               <p class="mb-0">Realiza la matricula, ahora!</p>
             </div>
           </div>
-          <img class="img-fluid" src="img/matriculas.jpg" alt="">
+          <img class="img-fluid" src="/img/matriculas.jpg" alt="">
         </a>
       </div>
 
@@ -28,12 +28,14 @@
               <p class="mb-0">Verifica el registro de notas</p>
             </div>
           </div>
-          <img class="img-fluid" src="img/colegiofondo01.jpg" alt="">
+          <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
         </a>
       </div>          
       
     </div>
+    
     <div class="row no-gutters">
+
       <div class="col-lg-6">
         <a class="portfolio-item" href="/alumno">
           <div class="caption">
@@ -42,10 +44,50 @@
               <p class="mb-0">Registra aquí los Alumnos</p>
             </div>
           </div>
-          <img class="img-fluid" src="img/colegiofondo01.jpg" alt="">
+          <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
         </a>
       </div>
+     
+    <div class="col-lg-6">
+      <a class="portfolio-item" href="/catedra">
+        <div class="caption">
+          <div class="caption-content">
+            <div class="h2">CATEDRA</div>
+            <p class="mb-0">Registra Las Catedras</p>
+          </div>
+        </div>
+        <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+      </a>
     </div>
+
   </div>
+   
+ 
+  
+<div class="row no-gutters">
+  <div class="col-lg-6">
+    <a class="portfolio-item" href="/profesor">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">PROFESOR</div>
+          <p class="mb-0">Registra aquí los Profesores</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
+  </div>
+  <div class="col-lg-6">
+    <a class="portfolio-item" href="/alumno">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">SECCIONES</div>
+          <p class="mb-0">Registra aquí las Secciones</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
+  </div>
+</div>
+ 
 
 @endsection
