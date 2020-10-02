@@ -79,7 +79,7 @@ class Detalle_CatedraController extends Controller
         ],
         [
             'idcurso.required'=>'Seleccione Un Curso', 
-            'idcurso.required'=>'Seleccione Un Profesor',  
+            'idprofesor.required'=>'Seleccione Un Profesor',  
         ]);
 
         try{
@@ -133,9 +133,7 @@ class Detalle_CatedraController extends Controller
      */
     public function edit($id)
     {
-       /*$catedra=DB::table('detalle_catedra as dc','dc.estado','=','1')
-       ->where('dc.id','=',$id)
-       ->select('dc.idcurso','dc.idprofesor','dc.id','dc.idprofesor')->get();*/
+      
       $catedra=Detalle_Catedra::findOrfail($id);
        $cursos= Curso::where('estado','=','1')->get();
        $profesores= Profesor::where('estado','=','1')->get();
@@ -153,6 +151,16 @@ class Detalle_CatedraController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data=request()->validate([
+            'idcurso'=>'required',   
+            'idprofesor'=>'required',      
+        ],
+        [
+            'idcurso.required'=>'Seleccione Un Curso', 
+            'idprofesor.required'=>'Seleccione Un Profesor',  
+        ]);
+     
+        
        $catedritas = Detalle_Catedra::all();
        $catedra = Detalle_Catedra::findOrfail($id);
       if($catedra->idcurso!=$request->idcurso){
