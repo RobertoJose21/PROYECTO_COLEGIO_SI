@@ -3,7 +3,7 @@
 @section('contenido')
 
 <div class="container">
-    <h2> AGREGAR UNA NOTA A UN ALUMNO -  </h2>
+<h2 style="text-align: center"> AGREGAR UNA NOTA A UN ALUMNO </h2> 
     
   @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
   <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">

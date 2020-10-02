@@ -131,8 +131,14 @@ class MatriculaController extends Controller
     public function show($id)
     {
         $matricula= Matricula::where('idmatricula','=',$id)->first();
-
-        $pdf = \PDF::loadView('matricula.rpmatricula', compact('matricula'))->setPaper('a4', 'landscape');
+        $cursos = DB::table('cursos as c','c.estado','=','1')
+        ->join('detalle_catedra as dc','c.idcurso','=','dc.idcurso')
+        ->join('profesores as p','p.idprofesor','=','dc.idprofesor')
+        ->join('grados as g','c.idgrado','=','g.idgrado')
+        ->join('secciones as s','g.idgrado','=','s.idgrado')
+        ->join('matriculas as m','m.idseccion','=','s.idseccion')
+        ->where('m.idmatricula','=',$id)->get();
+        $pdf = \PDF::loadView('matricula.rpmatricula', compact('matricula','cursos'))->setPaper('a4', 'portrait');
         return $pdf->stream('matricula.pdf');
 
     }
