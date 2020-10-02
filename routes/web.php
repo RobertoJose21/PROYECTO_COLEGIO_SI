@@ -60,14 +60,16 @@ Route::resource('grado','GradoController');
 Route::resource('seccion','SeccionController');
 Route::resource('periodo','PeriodoController');
 Route::resource('catedra','Detalle_CatedraController');
-
-
-
+Route::resource('profesor','ProfesorController');
 Route::resource('matricula', 'MatriculaController');  //para darle un mejor nombre a als categorias
 
 Route::get('cancelarMatricula', function () {
     return redirect()->route('matricula.index')->with('datos','Accion cancelada..!');
 })->name('cancelarMatricula');  //le damos nombre a la ruta
+
+Route::get('cancelarProfesor', function () {
+    return redirect()->route('profesor.index')->with('datos','Accion cancelada..!');
+})->name('cancelarProfesor');  //le damos nombre a la ruta
 
 Route::get('/matricula/{numeromatricula}/confirmar', 'MatriculaController@confirmar')->name('matricula.confirmar');
 
