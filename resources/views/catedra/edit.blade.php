@@ -88,7 +88,7 @@
 
 <div class="container-fluid">
     <h3>LISTA DE CATEDRAS - REGISTRADAS</h3>
-
+                                              <!-- la catedra ya esta todo listo  -->
     @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
      {{ session('datos') }}
