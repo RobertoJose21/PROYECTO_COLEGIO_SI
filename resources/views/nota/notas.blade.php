@@ -71,7 +71,7 @@
 
     </div>
 </div>
-<!--  para las libretas  -->
+<!--  para las libretas  de los alumnos-->
     </table>
     <div style="page-break-after:always;"></div>
     <table style="width:100%" style="text-align: center" border="1px">
