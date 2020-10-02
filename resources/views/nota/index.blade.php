@@ -311,6 +311,7 @@ var c=0;
             $("#idseccion").html(producto_select);
 
         });
+    
         //para el combobox cursos
         $("#idseccion").change(function(){
         var seccion = $(this).val();
@@ -328,6 +329,7 @@ var c=0;
 
         });
       });
+    });
       //para el combo capacidades y el profesor de un curso
       $("#idcurso").change(function(){
         var curso = $(this).val();
@@ -360,66 +362,38 @@ var c=0;
         });
       });
 
-    });
+   
   
-<<<<<<< HEAD
-//para mostrar las notas por capacidades xd xd xd
-     
-=======
 //para mostrar las notas por capacidades
->>>>>>> Roberto
       $("#idcapacidad").change(function(){
         var capacidad = $(this).val();
         
         $.get('../notasbycapacidad/'+capacidad, function(data){
           console.log(data);
             var producto_select ;
-<<<<<<< HEAD
+
             for (var x=0; x<c+1;x++){
             $('#fila'+x).remove();
             }
             c=0;
           
-              for (var i=0; i<data.length;i++){
-<<<<<<< HEAD
-              c=i;
-              var ind=data[i].idnota;
-=======
-                 c=i;
-=======
-            for (var x=0; x<=c+1;x++){
-            $('#fila'+x).remove();
-            }
-            c=0;
+               
             
               for (var i=0; i<data.length;i++){
                 c=i;
->>>>>>> Roberto
-                var ind=data[i].idnota;
->>>>>>> 31600c849c68c88650f5ca02f36ff940b375f62d
+             
               fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
  
             	$('#tabla1').append(fila);
-////
-          
 
-              fila='';
-<<<<<<< HEAD
-             
-<<<<<<< HEAD
-            }
-=======
-=======
-              
->>>>>>> Roberto
+            fila='';
+   
               }
-              
->>>>>>> 31600c849c68c88650f5ca02f36ff940b375f62d
             
         });
       });
-
     });
+   
 
      
 function Editar(idnota) {                      //para el editar una nota
@@ -433,11 +407,11 @@ function Editar(idnota) {                      //para el editar una nota
         });
      $('#modal_editar').modal('show');
     
-     ///$("#editarnota1").placeholder(idnota);
+     
        };
 
     
-       function guardar() { 
+    function guardar() { 
 
       var  nota1=document.getElementById('editarnota1').value;
       var  nota2=document.getElementById('editarnota2').value;

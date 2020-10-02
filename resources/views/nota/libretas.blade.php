@@ -7,11 +7,12 @@
     <div class="col-12">
       <h3 class="text-center">LISTADO DE NOTAS</h3>
       <div class="col-12"> &nbsp;</div>
-      <div class="btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-primary">
-          <input type="checkbox"> Text
-        </label>
-      </div><form class="form-inline my-2 my-lg-0 float-right col-5">
+     
+      <div class="col-12" style="text-align: left"> 
+        <button class=" btn btn-success"  type="menu"><a class="text-white" href="../nota" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button></div>
+       
+
+      <form class="form-inline my-2 my-lg-0 float-right col-5">
       <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{$buscarpor}}">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
       </form>
