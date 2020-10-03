@@ -176,7 +176,7 @@ table tr:hover {
     <a href="{{route('nota.registros')}}" class="btn btn-success" ><i class="fa fa-book"></i>_Ver Registros de Notas</a>
   </div>
 </div>
-  <!--  todo completo no mover nada -->
+  <!--  todo completo no mover nada---si funciona tu proyecto no le muevas-->
  
 <div class="modal fade" id="modal_editar" role="dialog">
   <div class="modal-dialog">
