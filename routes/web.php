@@ -26,8 +26,6 @@ Route::Get('/gradobyniveles/{id}', 'NotaController@byGrado');
 Route::Get('/seccionesbygrados/{id}', 'NotaController@bySeccion');
 Route::Get('/cursosbygrados/{id}', 'NotaController@byCurso');
 Route::Get('/capacidadbycursos/{id}', 'NotaController@byCapacidad');
-Route::Get('/capacidadbycursos2/{id}', 'NotaController@byCapacidadNotas');
-Route::Get('/capacidadbycursos3/{id}', 'NotaController@byCapacidadNotas2');
 Route::Get('/profesorbycurso/{id}', 'NotaController@byprofesor');
 Route::Get('/notasbycapacidad/{id}', 'NotaController@byNotas');
 Route::Get('/matriculabyalumno/{id}', 'NotaController@byMatricula');
@@ -73,7 +71,12 @@ Route::get('cancelarProfesor', function () {
     return redirect()->route('profesor.index')->with('datos','Accion cancelada..!');
 })->name('cancelarProfesor');  //le damos nombre a la ruta
 
+Route::get('cancelarSeccion', function () {
+    return redirect()->route('seccion.index')->with('datos','Accion cancelada..!');
+})->name('cancelarSeccion');  //le damos nombre a la ruta
+
 Route::get('/matricula/{numeromatricula}/confirmar', 'MatriculaController@confirmar')->name('matricula.confirmar');
+Route::get('/seccion/{idseccion}/confirmar', 'SeccionController@confirmar')->name('seccion.confirmar');
 
 
 Route::Get('/gradobyniveles/{id}', 'MatriculaController@byGrado');
@@ -85,4 +88,3 @@ Route::get('/imprime/{idmatricula}/imprime','MatriculaController@show')->name('i
 
 //grafico
 Route::get('grafico','GraficoController@graficoMatricula')->name('graficoMatricula');
-
