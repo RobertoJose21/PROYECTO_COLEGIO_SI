@@ -133,6 +133,31 @@ class NotaController extends Controller
      
     return Capacidad::where('estado','=','1')->where('idcurso','=',$id)->get();
     }
+    public function byCapacidadNotas($id){
+      
+
+    return DB::table('capacidades as c','c.estado','=','1')
+    ->where('c.idcurso','=',$id)
+    ->join('cursos as cu','cu.idcurso','=','c.idcurso')
+    ->where('cu.idcurso','=',$id)
+    ->join('grados as g','g.idgrado','=','cu.idgrado')
+    ->join('secciones as s','s.idgrado','=','g.idgrado')
+    ->join('notas as n','n.idcapacidad','=','c.idcapacidad')
+    ->select('n.idmatricula','c.idcapacidad','c.capacidad','c.idcurso')->get();
+    //['capNotas'=>$capNotas,'todCap'=>$todCap];
+
+    }
+    public function byCapacidadNotas2($id){
+
+        return DB::table('capacidades as c','c.estado','=','1')
+        ->where('c.idcurso','=',$id)
+        ->join('cursos as cu','cu.idcurso','=','c.idcurso')
+        ->where('cu.idcurso','=',$id)
+        ->join('grados as g','g.idgrado','=','cu.idgrado')
+        ->join('secciones as s','s.idgrado','=','g.idgrado')
+        ->select('c.idcapacidad','c.capacidad','c.idcurso')->get();
+
+    }
     public function byProfesor($id){
        $catedra= Detalle_Catedra::where('estado','=','1')->where('idcurso','=',$id)->get();
        
@@ -148,7 +173,7 @@ class NotaController extends Controller
        // ->join('secciones as s','s.idseccion','=','%'.$seccion.'%')
         ->join('alumnos as a','m.idalumno','=','a.idalumno')
         ->where('n.idcapacidad','like',$id)
-        ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
+        ->select('m.idmatricula','m.idperiodo','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
     
     }
 
@@ -175,8 +200,9 @@ class NotaController extends Controller
         $capacidad=Capacidad::where('estado','=','1')->get();
         //,$itemnota->idcapacidad
         $matricula=Matricula::where('estado','=','1')->get();
-        $alumno=Alumno::where('estado','=','1')->get();        
-        return view('nota.create',['alumno'=>$alumno,'matricula'=>$matricula,'capacidad'=>$capacidad]);
+        $alumno=Alumno::where('estado','=','1')->get();   
+        $notas=Nota::where('estado','=','1')->get();      
+        return view('nota.create',['notitas'=>$notas,'alumno'=>$alumno,'matricula'=>$matricula,'capacidad'=>$capacidad]);
     }
 
     /**
@@ -206,7 +232,8 @@ class NotaController extends Controller
          
         ]);
  
-    if((DB::table('notas as n','n.estado','=','1')->where('n.idmatricula','=',$request->idmatricula)->where('n.idcapacidad','=',$request->idcapacidad))->count()>=1)
+    if(
+    (DB::table('notas as n','n.estado','=','1')->where('n.idmatricula','=',$request->idmatricula)->where('n.idcapacidad','=',$request->idcapacidad))->count()>=1)
         {
         return redirect()->route('nota.create')->with('datos','Este Alumno Ya Tiene Notas en Esta Capacidad...!');
         }
