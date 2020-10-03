@@ -26,8 +26,6 @@ Route::Get('/gradobyniveles/{id}', 'NotaController@byGrado');
 Route::Get('/seccionesbygrados/{id}', 'NotaController@bySeccion');
 Route::Get('/cursosbygrados/{id}', 'NotaController@byCurso');
 Route::Get('/capacidadbycursos/{id}', 'NotaController@byCapacidad');
-Route::Get('/capacidadbycursos2/{id}', 'NotaController@byCapacidadNotas');
-Route::Get('/capacidadbycursos3/{id}', 'NotaController@byCapacidadNotas2');
 Route::Get('/profesorbycurso/{id}', 'NotaController@byprofesor');
 Route::Get('/notasbycapacidad/{id}', 'NotaController@byNotas');
 Route::Get('/matriculabyalumno/{id}', 'NotaController@byMatricula');
