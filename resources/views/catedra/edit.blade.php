@@ -87,7 +87,9 @@
   </style>
 
 <div class="container-fluid">
-    <h3>LISTA DE CATEDRAS - REGISTRADAS</h3>
+  <br>
+  <div class="row"><div class="col">
+    <h3>EDITAR CATEDRA </h3></div></div><br><br>
                                               <!-- la catedra ya esta todo listo  -->
     @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
@@ -104,8 +106,8 @@
         <input name="_method" type="hidden" value="PATCH">
         
     <div class="row" style="text-align: center">
-        <div class="col-3"></div>
-        <div class=" col-6 text-center"> 
+        <div class="col-4"></div>
+        <div class=" col-4 text-center"> 
             <label for="profesor">PROFESOR</label>
     
             <select type="text" name="idprofesor" class="form-control" style="border-radius: 40px;" required="">
@@ -119,11 +121,12 @@
             </select>
     
         </div>
-        <div class="col-3"></div>
+        <div class="col-"></div>
     </div>
     <br><br>
 <div class="row  " style="text-align: center">
-    <div class="  col-3 text-center">
+  <div class="col-2"></div>
+    <div class="  col-2 text-center">
         <label for="">NIVELES</label>
             <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;" required>
               <option value="{{$catedra->curso->grado->nivel->idnivel}}" disabled selected>{{$catedra->curso->grado->nivel->nivel}}</option>
@@ -134,7 +137,7 @@
       </div>
       
     
-      <div class=" col-4 text-center">
+      <div class=" col-3 text-center">
         <label for="">GRADOS</label>
              
               <select  name="idgrado" id="idgrado"  class="form-control" style="border-radius: 40px;" disabled required>
@@ -151,7 +154,7 @@
               
             </select>
         </div>
-    
+    <div class="clo-1"></div>
        
     
     </div>
@@ -161,8 +164,9 @@
     <br>
     <div class="row" style="text-align: center">
         <div class="col-12">
-        <input type="submit" value="Guardar" id="Guardar" class="btn btn-success" onclick="return confirm('Guardar ?')">&nbsp
-        <a href="{{route('catedra.index')}}" class="btn btn-primary">Volver</a>
+          <button  type="submit" value="Guardar" id="Guardar" class="btn btn-success " onclick="return confirm('Guardar ?')"style="border-radius: 40px;"><i class="fas fa-save"> </i>&nbsp;Grabar</button>
+          &nbsp;
+        <a href="{{route('catedra.index')}}" class="btn btn-primary"style="border-radius: 40px;"><i class="fas fa-window-close"> </i>&nbsp;Volver</a>
         <br> 
         </div> </div>
 <br> <br>
