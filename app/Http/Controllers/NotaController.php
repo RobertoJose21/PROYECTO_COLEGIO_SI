@@ -67,9 +67,27 @@ class NotaController extends Controller
 
        public function libretaNotas($id){
         $matricula= Matricula::where('idmatricula','=',$id)->first();
-        
-        $pdf = \PDF::loadView('nota.notas', compact('matricula'))->setPaper('a4', 'landscape');
-         return $pdf->stream('libreta.pdf');
+                            ////richard no borres mi funcion 
+        $notita = DB::table('matriculas as m','m.estado','=','1')->where('m.idmatricula','=',$id)
+        ->join('secciones as s','s.idseccion','=','m.idseccion')
+        ->join('grados as g','g.idgrado','=','s.idgrado')
+        ->join('cursos as c','c.idgrado','=','g.idgrado')
+        ->join('capacidades as ca','ca.idcurso','=','c.idcurso')
+        ->join('notas as n','n.idcapacidad','=','ca.idcapacidad')
+        ->where('n.idmatricula','=',$id)
+        ->select('c.curso','ca.idcurso','ca.capacidad','n.promedio','n.nota1','n.nota2','n.nota3')
+        ->get();
+
+        $cursos = DB::table('cursos as c','c.estado','=','1')
+        ->join('grados as g','g.idgrado','=','c.idgrado')
+        ->join('secciones as s','s.idgrado','=','g.idgrado')
+        ->join('matriculas as m','m.idseccion','=','s.idseccion')
+        ->where('m.idmatricula','=',$id)
+        ->select('c.idcurso','c.curso')->get();
+
+
+        $pdf = \PDF::loadView('nota.notas', ['cursos'=>$cursos,'matricula'=>$matricula,'notitas'=>$notita]);
+        return $pdf->stream('libreta.pdf');
                
     }
 
