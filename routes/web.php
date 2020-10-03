@@ -88,4 +88,3 @@ Route::get('/imprime/{idmatricula}/imprime','MatriculaController@show')->name('i
 
 //grafico
 Route::get('grafico','GraficoController@graficoMatricula')->name('graficoMatricula');
-
