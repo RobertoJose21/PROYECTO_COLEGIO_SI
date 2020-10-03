@@ -68,6 +68,9 @@ class NotaController extends Controller
        public function libretaNotas($id){
         $matricula= Matricula::where('idmatricula','=',$id)->first();
                             ////richard no borres mi funcion :V
+
+                            //richex no borres mi parte x2 :V
+
         $notita = DB::table('matriculas as m','m.estado','=','1')->where('m.idmatricula','=',$id)
         ->join('secciones as s','s.idseccion','=','m.idseccion')
         ->join('grados as g','g.idgrado','=','s.idgrado')
