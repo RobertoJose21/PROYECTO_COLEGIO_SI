@@ -99,13 +99,13 @@
               </button>
         </div>
   @endif
-  <a href="{{route('matricula.create')}}" class="btn btn-primary"  ><i class="fas fa-plus"></i>Nuevo Registro </a>
+  <a href="{{route('matricula.create')}}" class="btn btn-primary" style="border-radius: 40px;" ><i class="fas fa-plus"></i>Nuevo Registro </a>
   
   <nav class="navbar navbar-light ">
-    <a href="{{route('graficoMatricula')}}" class="btn primary" ><i class="fas fa-chart-pie"></i>Estadistica</a>
+    <a href="{{route('graficoMatricula')}}" class="btn primary" style="border-radius: 40px;" ><i class="fas fa-chart-pie"></i>Estadistica</a>
           <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-              <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor}}">
-              <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar <i class="fa fa-search"></i></button>
+              <input name="buscarpor" class="form-control mr-sm-2" style="border-radius: 40px;" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor}}">
+              <button class="btn btn-success my-2 my-sm-0"  style="border-radius: 40px;" type="submit">Buscar <i class="fa fa-search"></i></button>
           </form>  <!--buscador por -->
 
       </nav>         
@@ -142,18 +142,18 @@
             
               <td>
 
-                <a class="btn btn-success btn-xs" href="{{route('imprimeMatricula',$k->idmatricula)}}" class="btn-primary btn-sm" ><i class="far fa-file-pdf"></i>PDF</a>
+                <a class="btn btn-success btn-xs" style="border-radius: 40px;" href="{{route('imprimeMatricula',$k->idmatricula)}}" class="btn-primary btn-sm" ><i class="far fa-file-pdf"></i>PDF</a>
 
               </td>
                 
               <td>
-                <a href="{{route('matricula.edit', $k->idmatricula)}}" class="btn btn-info btn-sm">
+                <a href="{{route('matricula.edit', $k->idmatricula)}}" style="border-radius: 40px;" class="btn btn-info btn-sm">
                  <i class="fas fa-edit"></i>Editar</a>
 
               </td>
              
               <td>
-                <a href="{{route('matricula.confirmar', $k->idmatricula)}}" class="btn btn-danger btn-sm">
+                <a href="{{route('matricula.confirmar', $k->idmatricula)}}" style="border-radius: 40px;" class="btn btn-danger btn-sm">
                   
                   <i class="fas fa-trash"></i>Eliminar
                 </a>          

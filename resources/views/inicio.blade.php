@@ -61,33 +61,30 @@
           <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
         </a>
       </div>
+      <div class="col-lg-4">
+        <a class="portfolio-item" href="/profesor">
+          <div class="caption">
+            <div class="caption-content">
+              <div class="h2">PROFESOR</div>
+              <p class="mb-0">Registra aquí los Profesores</p>
+            </div>
+          </div>
+          <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+        </a>
+      </div>
+      <div class="col-lg-4">
+        <a class="portfolio-item" href="/seccion">
+          <div class="caption">
+            <div class="caption-content">
+              <div class="h2">SECCIONES</div>
+              <p class="mb-0">Registra aquí las Secciones</p>
+            </div>
+          </div>
+          <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+        </a>
+      </div>
 
  
-  <div class="col-lg-4">
-    <a class="portfolio-item" href="/profesor">
-      <div class="caption">
-        <div class="caption-content">
-          <div class="h2">PROFESOR</div>
-          <p class="mb-0">Registra aquí los Profesores</p>
-        </div>
-      </div>
-      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
-    </a>
-  </div>
-  <div class="col-lg-4">
-    <a class="portfolio-item" href="/seccion">
-      <div class="caption">
-        <div class="caption-content">
-          <div class="h2">SECCIONES</div>
-          <p class="mb-0">Registra aquí las Secciones</p>
-        </div>
-      </div>
-      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
-    </a>
-  </div>
-</div>
-
-<div class="row no-gutters">
   <div class="col-lg-4">
     <a class="portfolio-item" href="/periodo">
       <div class="caption">
@@ -99,6 +96,31 @@
       <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
     </a>
   </div>
+  <div class="col-lg-4">
+    <a class="portfolio-item" href="/curso">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">CURSOS</div>
+          <p class="mb-0">Registra aquí los Cursos</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
+  </div>
+  <div class="col-lg-4">
+    <a class="portfolio-item" href="/capacidad">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">CAPACIDADES</div>
+          <p class="mb-0">Registra aquí las capacidades</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
+  </div>
+</div>
+
+<div class="row no-gutters">
   
    
   <!-- 

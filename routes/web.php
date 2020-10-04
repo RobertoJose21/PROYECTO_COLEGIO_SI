@@ -63,6 +63,8 @@ Route::resource('seccion','SeccionController');
 Route::resource('periodo','PeriodoController');
 Route::resource('catedra','Detalle_CatedraController');
 Route::resource('profesor','ProfesorController');
+Route::resource('curso','CursoController');
+Route::resource('capacidad','CapacidadController');
 Route::resource('matricula', 'MatriculaController');  //para darle un mejor nombre a als categorias
 
 Route::get('cancelarMatricula', function () {
@@ -81,15 +83,27 @@ Route::get('cancelarPeriodo', function () {
     return redirect()->route('periodo.index')->with('datos','Accion cancelada..!');
 })->name('cancelarPeriodo');  //le damos nombre a la ruta
 
+Route::get('cancelarCurso', function () {
+    return redirect()->route('curso.index')->with('datos','Accion cancelada..!');
+})->name('cancelarCurso');  //le damos nombre a la ruta
+
+Route::get('cancelarCapacidad', function () {
+    return redirect()->route('capacidad.index')->with('datos','Accion cancelada..!');
+})->name('cancelarCapacidad');  //le damos nombre a la ruta
+
 Route::get('/matricula/{numeromatricula}/confirmar', 'MatriculaController@confirmar')->name('matricula.confirmar');
 Route::get('/seccion/{idseccion}/confirmar', 'SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('/periodo/{idperiodo}/confirmar', 'PeriodoController@confirmar')->name('periodo.confirmar');
+Route::get('/curso/{idcurso}/confirmar', 'CursoController@confirmar')->name('curso.confirmar');
 
 
 Route::Get('/gradobyniveles/{id}', 'MatriculaController@byGrado');
 Route::Get('/seccionesbygrados/{id}', 'MatriculaController@bySeccion');
 
+Route::Get('/gradobynivelesCurso/{idcurso}', 'CursoController@byGrado');
 
+Route::Get('/gradobynivelesCapacidad/{id}', 'CapacidadController@byGrado');
+Route::Get('/cursosbygradosCapacidad/{id}', 'CapacidadController@byCurso');
 //impresion
 Route::get('/imprime/{idmatricula}/imprime','MatriculaController@show')->name('imprimeMatricula');
 

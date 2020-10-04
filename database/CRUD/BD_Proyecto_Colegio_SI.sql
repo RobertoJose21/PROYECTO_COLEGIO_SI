@@ -31,7 +31,7 @@ CREATE TABLE niveles
 	
 );
 
-INSERT niveles VALUES(null,'INCIAL','1');
+INSERT niveles VALUES(null,'INICIAL','1');
 INSERT niveles VALUES(null,'PRIMARIA','1');
 INSERT niveles VALUES(null,'SECUNDARIA','1');
 
