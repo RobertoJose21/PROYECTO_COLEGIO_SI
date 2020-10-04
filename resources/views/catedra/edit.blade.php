@@ -106,7 +106,20 @@
         <input name="_method" type="hidden" value="PATCH">
         
     <div class="row" style="text-align: center">
-        <div class="col-4"></div>
+        <div class="col"></div>
+         
+        <div class="  col-2 text-center">
+          <label for="">PERIODO</label>
+              <select class="form-control" name="idperiodo" id="idperiodo" style="border-radius: 40px;" required>
+                @foreach($periodo as $per)
+                    <option value="{{$per->idperiodo}}" 
+                    @if($catedra->periodo->idperiodo==$per->idperiodo)
+                        selected="selected"
+                    @endif
+                    >{{$per->periodo}}</option>
+                @endforeach
+              </select>
+        </div>
         <div class=" col-4 text-center"> 
             <label for="profesor">PROFESOR</label>
     
@@ -121,7 +134,7 @@
             </select>
     
         </div>
-        <div class="col-"></div>
+        <div class="col"></div>
     </div>
     <br><br>
 <div class="row  " style="text-align: center">
@@ -154,7 +167,7 @@
               
             </select>
         </div>
-    <div class="clo-1"></div>
+    <div class="col-1"></div>
        
     
     </div>
