@@ -101,10 +101,10 @@
   
 
 <nav class="navbar navbar-light ">
-    <a href="{{route('profesor.create')}}" class="btn btn-success"><i class="fas fa-plus"></i>Registrar Profesor</a><br>
+    <a href="{{route('profesor.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus mr-2"></i>Registrar Profesor</a><br>
     <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Nombre" aria-label="Search" value="{{ $buscarpor }}">
-         <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Nombre" aria-label="Search" value="{{ $buscarpor }}" style="border-radius: 40px;">
+         <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 20px;"><i class="fas fa-search mr-2"></i>Buscar</button>
     </form>  <!--buscador por -->
 
 </nav> 
@@ -141,8 +141,8 @@
                         <form class="submit-eliminar " action="{{action('ProfesorController@destroy', $itemprofesor->idprofesor)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea eliminar el Profesor?')" type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash" ></i>
+                           <button onclick="return confirm('Desea eliminar el Profesor?')" type="submit" class="btn btn-danger btn-sm" style="border-radius: 40px;">
+                            <i class="fas fa-trash mr-2" ></i>
                             Eliminar
                         </button>
                          </form>
@@ -157,7 +157,13 @@
 
   </div>
   <div class="row">
-    <div class="align-center" style="margin-left: 45%"><h5>{{$profesor->links()}}</h5></div>
+    <div class="form">
+      <div class="form-group">
+        <div class="col-12" style="text-align: left"> 
+          <button class=" btn btn-success"  type="menu" style="border-radius: 40px;"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left mr-2"> </i>Regresar</a> </button></div>
+      </div>
+    </div>
+    <div class="align-center" style="margin-left: 35%;"><h5>{{$profesor->links()}}</h5></div>
   </div>
 </div>
 @endsection
