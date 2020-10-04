@@ -38,7 +38,7 @@ class NotaController extends Controller
             ->where('m.idalumno','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);*/
             $grado=Grado::where('estado','=','1')->get();
             $seccion=Seccion::where('estado','=','1')->get();
-            $periodo=Periodo::where('estado','=','1')->get();
+            $periodo=Periodo::all();
             $curso=Curso::where('estado','=','1')->get();
             $profesor=Profesor::where('estado','=','1')->get();
             $nivel=Nivel::where('estado','=','1')->get();
@@ -140,9 +140,14 @@ class NotaController extends Controller
         ->join('cursos as c','c.idgrado','=','g.idgrado')
         ->where('c.idcurso','=',$id)
         ->select('a.idalumno','a.nombres','a.apellidos','m.idmatricula','s.idseccion')->distinct()->get();
-      //  return $nota;
+     
+        $profesor=DB::table('profesores as p','estado','=','1')
+        ->join('detalle_catedra as dc','dc.idprofesor','=','p.idprofesor')
+        ->where('dc.idcurso','=',$id)->first();
+        $detalle_catedra=Detalle_Catedra::where('estado','=','1');
+        //return $curso;
    
-     $pdf = \PDF::loadView('nota.registros',['curso'=>$curso,'notas'=>$nota,'alumno'=>$alumno])->setPaper('a4', 'portrait');
+     $pdf = \PDF::loadView('nota.registros',['detalle_catedra'=>$detalle_catedra,'profesor'=>$profesor,'curso'=>$curso,'notas'=>$nota,'alumno'=>$alumno])->setPaper('a4', 'portrait');
      return $pdf->stream('registros.pdf');
  
     }

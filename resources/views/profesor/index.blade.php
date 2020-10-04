@@ -109,7 +109,7 @@
 
 </nav> 
 
-  
+  <div class="row"><div class="col">
   <div class="table-responsive " style="border-radius: 12px;" >
     <table class="table" style="border-radius: 12px;" >
         <thead class="thead-dark">
@@ -156,6 +156,7 @@
     </table>  
 
   </div>
+</div></div>
   <div class="row">
     <div class="align-center" style="margin-left: 45%"><h5>{{$profesor->links()}}</h5></div>
   </div>
