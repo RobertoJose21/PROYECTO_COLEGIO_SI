@@ -94,8 +94,8 @@
     
     <div class="col-7" >
   <h3>LISTA DE CATEDRAS - REGISTRADAS</h3></div>
- 
-  <!--<div class="  col-3 text-center">
+ <!-- para seleccionar por periodos aun falta -->
+  <!--<div class="  col-3 text-center"> 
     <label for=""  >PERIODO</label>
         <select class="form-control text-black" name="idperiodo" id="idperiodo" style="border-radius: 40px;">
             @foreach($periodo as $itemperiodo)
