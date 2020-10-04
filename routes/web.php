@@ -31,6 +31,8 @@ Route::Get('/notasbycapacidad/{id}', 'NotaController@byNotas');
 Route::Get('/matriculabyalumno/{id}', 'NotaController@byMatricula');
 Route::Get('/cursobymatricula/{id}', 'NotaController@byCursoM');
 Route::Get('/Minota/{id}', 'NotaController@MiNota');
+Route::Get('/capacidadbycursos2/{id}', 'NotaController@byCapacidadNotas');
+Route::Get('/capacidadbycursos3/{id}', 'NotaController@byCapacidadNotas2');
 
 //rutas para la libreta y actualizar notas
 Route::get('/libretas','NotaController@libretas')->name('nota.libretas');
