@@ -100,10 +100,14 @@
   </div>
 @endif
 
- 
-<div class="row"><div class="col-12" style="text-align: center">
-  <h1>LISTADO DE PERIODOS </h1></div></div>
-  
+
+<div class="row">
+  <div class="col-12" style="text-align: center">
+  <h1>LISTADO DE PERIODOS </h1> </div></div>
+  <div class="row">
+    <div class="col-2">
+      <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+    </div> </div>
   <div class="form-group">
   
     

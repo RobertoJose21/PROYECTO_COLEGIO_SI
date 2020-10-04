@@ -87,7 +87,11 @@
   </style>
 
 <div class="container-fluid">
-  <h3>LISTA DE ALUMNOS - REGISTRADOS</h3>
+  <div class="row"><div class="col">  <h3>LISTA DE ALUMNOS - REGISTRADOS</h3> </div></div>
+  <div class="row">
+    <div class="col-2">
+      <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+    </div> </div>
 
   @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
           <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
@@ -101,15 +105,15 @@
   
 
 <nav class="navbar navbar-light ">
-    <a href="{{route('alumno.create')}}" class="btn btn-success"><i class="fas fa-plus"></i>Registrar Alumno</a><br>
+    <a href="{{route('alumno.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>&nbsp;Registrar Alumno</a><br>
     <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor }}">
-         <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor }}" style="border-radius: 40px;">
+         <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 20px;"><i class="fas fa-search"> </i>&nbsp;Buscar</button>
     </form>  <!--buscador por -->
 
 </nav> 
 
-  
+  <div class="row"><div class="col">
   <div class="table-responsive " style="border-radius: 12px;" >
     <table class="table" style="border-radius: 12px;" >
         <thead class="thead-dark">
@@ -135,7 +139,7 @@
                     <td>{{$itemalumno->telefono}}</td>
                     <td>{{$estadom}}</td>
                     <td class="menu" data-animation="to-left">  
-                      <a href="{{route('alumno.edit',$itemalumno->idalumno)}}"> 
+                      <a href="{{route('alumno.edit',$itemalumno->idalumno)}}" style="border-radius: 40px;"> 
                         <span><b>EDITAR</b></span>
                         <span>
                           <i class="fas fa-edit" aria-hidden="true"></i>
@@ -147,7 +151,7 @@
                         <form class="submit-eliminar " action="{{action('AlumnoController@destroy', $itemalumno->idalumno)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea eliminar el Alumno?')" type="submit" class="btn btn-danger btn-sm">
+                           <button onclick="return confirm('Desea eliminar el Alumno?')" type="submit" class="btn btn-danger btn-sm" style="border-radius: 40px;">
                             <i class="fas fa-trash"></i>
                             Eliminar
                         </button>
@@ -161,7 +165,7 @@
         </tbody>
     </table>  
 
-  </div>
+  </div></div></div>
   <div class="row">
     <div class="align-center" style="margin-left: 45%"><h5>{{$alumno->links()}}</h5></div>
   </div>
