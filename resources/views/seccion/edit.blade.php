@@ -25,12 +25,20 @@
              
             <div class="form-group col-md-6">
                 <label for="seccion">Seccion</label>
-            <input type="text" class="form-control @error('seccion') is-invalid @enderror" id="seccion" name="seccion" value="{{$seccion->seccion}}" style="border-radius: 40px;">
-               @error('seccion')
-                   <span class="invalid-feedback" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>                  
-               @enderror
+                <select class="form-control custom-select" name="seccion" id="seccion"   style="border-radius: 40px;" >
+                  <option value="" selected>Seleccione una Seccion (Seccion actual: {{$seccion->seccion}})</option>
+
+                  <option value="A" >A</option>
+                  <option value="B" >B</option>
+                  <option value="C" >C</option>
+                  <option value="D" >D</option>
+                  <option value="E" >E</option>
+                  <option value="F" >F</option>
+                  <option value="G" >G</option>
+                  <option value="H" >H</option>
+                  <option value="I" >I</option>
+                  <option value="J" >J</option>
+                </select>
            </div>
            <div class="from-group col-md-6">
             <label for="">Grados</label>
@@ -44,13 +52,12 @@
         <div class="row">
                 <div class="col-12">&nbsp;</div>
         </div>
-        <div class="row"><div class="col-12">&nbsp;</div></div>   
           <div class="row"><div class="col-12">&nbsp;</div></div>
           <div class="row">
-                <div class="col-md-5">&nbsp;</div> 
+                <div class="col-md-4">&nbsp;</div> 
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary" ><i class="fas fa-save"></i>Guardar</button>
-                    <a href="{{route('cancelarSeccion')}}" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+                    <button type="submit" class="btn btn-primary" style="border-radius: 40px;"><i class="fas fa-save"></i>Guardar</button>
+                    <a href="{{route('cancelarSeccion')}}" style="border-radius: 40px;" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
                 </div>
           </div>
           <div class="row"><div class="col-12">&nbsp;</div></div>   

@@ -103,10 +103,10 @@
     @endif
 
     <nav class="navbar navbar-light ">
-      <a href="{{route('periodo.create')}}" class="btn btn-success"><i class="fas fa-plus"></i>Registrar Seccion</a><br>
+      <a href="{{route('periodo.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>Registrar Periodo</a><br>
       <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-          <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Periodo" aria-label="Search" value="{{ $buscarpor }}">
-           <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar <i class="fa fa-search"></i></button>
+          <input name="buscarpor" class="form-control mr-sm-2" style="border-radius: 40px;" type="search" placeholder="Buscar por Periodo" aria-label="Search" value="{{ $buscarpor }}">
+           <button class="btn btn-success my-2 my-sm-0" style="border-radius: 40px;" type="submit">Buscar <i class="fa fa-search"></i></button>
       </form>  <!--buscador por -->
   
   </nav> 
@@ -139,7 +139,7 @@
                     <form class="submit-eliminar " action="{{action('PeriodoController@destroy', $k->idperiodo)}}" method="post">
                        @csrf
                        <input name="_method" type="hidden" value="DELETE">
-                       <button onclick="return confirm('Desea eliminar la Seccion?')" type="submit" class="btn btn-danger btn-sm">
+                       <button onclick="return confirm('Desea eliminar la Seccion?')"  style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">
                         <i class="fas fa-trash" ></i>
                         Eliminar
                     </button>

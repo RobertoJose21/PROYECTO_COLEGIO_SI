@@ -71,10 +71,10 @@
               
                         <div class="row"><div class="col-12">&nbsp;</div></div>
                         <div class="row">
-                              <div class="col-md-5">&nbsp;</div> 
+                              <div class="col-md-4">&nbsp;</div> 
                               <div class="col-md-4">
-                                  <button type="submit" class="btn btn-primary" ><i class="fas fa-save"></i>Guardar</button>
-                                  <a href="{{route('cancelarMatricula')}}" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+                                  <button type="submit" style="border-radius: 40px;" class="btn btn-primary" ><i class="fas fa-save"></i>Guardar</button>
+                                  <a href="{{route('cancelarMatricula')}}" style="border-radius: 40px;" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
                               </div>
                               <div class="col-md-3">&nbsp;</div> 
                         </div>

@@ -89,7 +89,7 @@
   <div class="form-group">
     
     <div class="container">
-      <h3 class="text-center">LISTADO DE SECCIONES</h3>
+      <h3 class="text-center">LISTADO DE CAPACIDADES</h3>
       <div class="col-12"> &nbsp;</div>
 
     @if(session('datos'))
@@ -102,10 +102,10 @@
     @endif
 
     <nav class="navbar navbar-light ">
-      <a href="{{route('seccion.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>Registrar Seccion</a><br>
+      <a href="{{route('capacidad.create')}}" style="border-radius: 40px;" class="btn btn-success"><i class="fas fa-plus"></i>Registrar Capacidad</a><br>
       <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-          <input name="buscarpor" class="form-control mr-sm-2" style="border-radius: 40px;" type="search" placeholder="Buscar por Seccion" aria-label="Search" value="{{ $buscarpor }}">
-           <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 40px;">Buscar <i class="fa fa-search"></i></button>
+          <input name="buscarpor" class="form-control mr-sm-2" type="search"  style="border-radius: 40px;" placeholder="Buscar por Capacidad" aria-label="Search" value="{{ $buscarpor }}">
+           <button class="btn btn-success my-2 my-sm-0" style="border-radius: 40px;" type="submit">Buscar <i class="fa fa-search"></i></button>
       </form>  <!--buscador por -->
   
   </nav> 
@@ -115,21 +115,21 @@
         <table class="table" style="border-radius: 12px;">
         <thead class="thead-dark">
           <tr>
-            <th scope="col"style="text-align: center">ID SECCION</th>
-            <th scope="col" style="text-align: center">SECCION</th>
-            <th scope="col" style="text-align: center">GRADO</th>
+            <th scope="col"style="text-align: center">ID CAPACIDAD</th>
+            <th scope="col" style="text-align: center">CAPACIDAD</th>
+            <th scope="col" style="text-align: center">CURSO</th>
             <th scope="col" style="text-align: center;">EDITAR</th>
             <th scope="col" style="text-align: center;" >ELIMINAR</th>
           </tr>
         </thead>
         <tbody>
-            @foreach($seccion as $k)
+            @foreach($capacidad as $k)
                 <tr>
-                    <td style="text-align: center">{{$k->idseccion}}</td>
-                    <td style="text-align: center">{{$k->seccion}}</td>
-                    <td style="text-align: center">{{$k->grado->grado}}</td>
+                    <td style="text-align: center">{{$k->idcapacidad}}</td>
+                    <td style="text-align: center">{{$k->capacidad}}</td>
+                    <td style="text-align: center">{{$k->curso->curso}}</td>
                     <td class="menu" data-animation="to-left">  
-                      <a href="{{route('seccion.edit',$k->idseccion)}}"> 
+                      <a href="{{route('capacidad.edit',$k->idcapacidad)}}"> 
                         <span><b>EDITAR</b></span>
                         <span>
                           <i class="fas fa-edit" aria-hidden="true"></i>
@@ -138,10 +138,10 @@
                     </td>
                     <td>
                       <div class="form-group" style="text-align: center">
-                        <form class="submit-eliminar " action="{{action('SeccionController@destroy', $k->idseccion)}}" method="post">
+                        <form class="submit-eliminar " action="{{action('CapacidadController@destroy', $k->idcapacidad)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea eliminar la Seccion?')" type="submit"  style="border-radius: 40px;" class="btn btn-danger btn-sm">
+                           <button onclick="return confirm('Desea eliminar la capacidad?')" style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash" ></i>
                             Eliminar
                         </button>
@@ -154,7 +154,7 @@
     </table>  
     <a href="/inicio" style="margin-left: 95%" class="btn btn-info btn-sm">
       <i class="fas fa-backward"></i> Volver</a>
-    <div class="align-center"  style="margin-left: 45%"><h5>{{$seccion->links()}}</h5></div>
+      <div class="align-center" style="margin-left: 45%"><h5>{{$capacidad->links()}}</h5></div>
 </div>
 
 @endsection

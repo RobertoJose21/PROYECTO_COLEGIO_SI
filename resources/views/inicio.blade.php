@@ -8,7 +8,7 @@
     </div>
     <div class="row no-gutters">
 
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <a class="portfolio-item" href="/matricula">
           <div class="caption">
             <div class="caption-content">
@@ -20,7 +20,7 @@
         </a>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <a class="portfolio-item" href="/nota">
           <div class="caption">
             <div class="caption-content">
@@ -32,11 +32,7 @@
         </a>
       </div>          
       
-    </div>
-    
-    <div class="row no-gutters">
-
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <a class="portfolio-item" href="/alumno">
           <div class="caption">
             <div class="caption-content">
@@ -47,8 +43,12 @@
           <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
         </a>
       </div>
+    </div>
+    
+    <div class="row no-gutters">
+
      
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <a class="portfolio-item" href="/catedra">
           <div class="caption">
             <div class="caption-content">
@@ -59,38 +59,35 @@
           <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
         </a>
       </div>
+      <div class="col-lg-4">
+        <a class="portfolio-item" href="/profesor">
+          <div class="caption">
+            <div class="caption-content">
+              <div class="h2">PROFESOR</div>
+              <p class="mb-0">Registra aquí los Profesores</p>
+            </div>
+          </div>
+          <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+        </a>
+      </div>
+      <div class="col-lg-4">
+        <a class="portfolio-item" href="/seccion">
+          <div class="caption">
+            <div class="caption-content">
+              <div class="h2">SECCIONES</div>
+              <p class="mb-0">Registra aquí las Secciones</p>
+            </div>
+          </div>
+          <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+        </a>
+      </div>
 
   </div>
    
  
-  
-<div class="row no-gutters">
-  <div class="col-lg-6">
-    <a class="portfolio-item" href="/profesor">
-      <div class="caption">
-        <div class="caption-content">
-          <div class="h2">PROFESOR</div>
-          <p class="mb-0">Registra aquí los Profesores</p>
-        </div>
-      </div>
-      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
-    </a>
-  </div>
-  <div class="col-lg-6">
-    <a class="portfolio-item" href="/seccion">
-      <div class="caption">
-        <div class="caption-content">
-          <div class="h2">SECCIONES</div>
-          <p class="mb-0">Registra aquí las Secciones</p>
-        </div>
-      </div>
-      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
-    </a>
-  </div>
-</div>
 
 <div class="row no-gutters">
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <a class="portfolio-item" href="/periodo">
       <div class="caption">
         <div class="caption-content">
@@ -101,8 +98,27 @@
       <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
     </a>
   </div>
-  <div class="col-lg-6">
-    
+  <div class="col-lg-4">
+    <a class="portfolio-item" href="/curso">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">CURSOS</div>
+          <p class="mb-0">Registra aquí los Cursos</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
+  </div>
+  <div class="col-lg-4">
+    <a class="portfolio-item" href="/capacidad">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">CAPACIDADES</div>
+          <p class="mb-0">Registra aquí las capacidades</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
   </div>
 </div>
  
