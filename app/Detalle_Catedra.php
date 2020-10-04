@@ -19,4 +19,8 @@ class Detalle_Catedra extends Model
     public function profesor(){
         return $this->hasOne('App\Profesor','idprofesor','idprofesor');
     }
+
+    public function periodo(){
+        return $this->hasOne('App\Periodo','idperiodo','idperiodo');
+    }
 }

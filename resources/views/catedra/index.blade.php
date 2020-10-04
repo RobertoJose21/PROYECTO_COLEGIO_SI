@@ -91,9 +91,20 @@
     <div class="col-2">
       <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
     </div>
-    <div class="col-10">
-  <h3>LISTA DE CATEDRAS - REGISTRADAS</h3></div></div>
-
+    
+    <div class="col-7" >
+  <h3>LISTA DE CATEDRAS - REGISTRADAS</h3></div>
+ 
+  <!--<div class="  col-3 text-center">
+    <label for=""  >PERIODO</label>
+        <select class="form-control text-black" name="idperiodo" id="idperiodo" style="border-radius: 40px;">
+            @foreach($periodo as $itemperiodo)
+            <option value="{{$itemperiodo->idperiodo}}">{{$itemperiodo->periodo}}</option>
+            @endforeach
+        </select>
+  </div> -->
+</div>
+   
   @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
           <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
             {{ session('datos') }}
@@ -102,9 +113,7 @@
               </button>
         </div>
   @endif
-
-  
-
+ 
 <nav class="navbar navbar-light ">
   
     <a href="{{route('catedra.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>&nbsp;Registrar Catedras</a><br>
@@ -116,6 +125,7 @@
 </nav> 
  <!--   esta es la vistasa de la catedra xd-->
   <div class="container-fluid">
+    
     <div class="row">
       <div class="col-12">
 
@@ -124,12 +134,12 @@
     <table class="table" style="border-radius: 12px;" >
         <thead class="thead-dark">
           <tr>
-            <th scope="col">ID CATEDRA</th>
-            <th scope="col">ID CURSO</th>
+             
+            
             <th scope="col">CURSO</th>
             <th scope="col">GRADO</th>
             <th scope="col">NIVEL</th>
-            <th scope="col">ID PROFESOR</th>
+            <th scope="col">PERIODO</th>
             <th scope="col">PROFESOR</th>
             <th scope="col" style="text-align: center"  >EDITAR</th>
             <th scope="col" style="text-align: center"   > ELIMINAR</th>
@@ -138,13 +148,16 @@
         </thead>
         <tbody>
             @foreach($catedras as $itemcat)
-                <tr>
-                    <td>{{$itemcat->id}}</td>
-                    <td>{{$itemcat->idcurso}}</td>
-                    <td>{{$itemcat->curso}}</td>
+           
+        
+        
+            
+         
+            <tr>
+                   <td>{{$itemcat->curso}}</td>
                     <td>{{$itemcat->grado}}</td>
                     <td>{{$itemcat->nivel}}</td>
-                    <td>{{$itemcat->idprofesor}}</td>
+                    <td>{{$itemcat->periodo}}</td>
                     <td>{{$itemcat->profesor}}</td>
                     <td class="menu" data-animation="to-left">  
                       <a href="{{route('catedra.edit',$itemcat->id)}}" style="border-radius: 40px;"> 
@@ -167,7 +180,9 @@
                         </div>
                     </td>
                     
-                </tr>   
+                </tr>  
+                     
+                
             @endforeach
           
         </tbody>
@@ -176,8 +191,11 @@
 </div>
   </div>
 </div>
-  <div class="row">
-    <div class="align-center" style="margin-left: 45%"><h5>{{$catedras->links()}}</h5></div>
+  <div class="row" style="text-align: center">
+    <div class="col"></div>
+    <div class="col" style="text-align: center">
+    <h5>{{$catedras->links()}}</h5></div>
+    <div class="col"></div>
   </div>
 </div>
 @endsection

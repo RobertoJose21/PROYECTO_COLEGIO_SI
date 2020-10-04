@@ -105,9 +105,18 @@
     
 <div class="row">
     <div class="col"></div>
+    <div class="  col-2 text-center">
+      <label for="">PERIODO</label>
+          <select class="form-control" name="idperiodo" id="idperiodo" style="border-radius: 40px;" required>
+            <option value="" disabled selected>Seleccione un Periodo</option>
+              @foreach($periodo as $itemperiodo)
+              <option value="{{$itemperiodo['idperiodo']}}">{{$itemperiodo['periodo']}}</option>
+              @endforeach
+          </select>
+    </div>
     <div class="  col-3 text-center">
         <label for="">PROFESORES</label>
-            <select class="form-control" name="idprofesor" id="idprofesor" style="border-radius: 40px;">
+            <select class="form-control" name="idprofesor" id="idprofesor" style="border-radius: 40px;" required>
               <option value="" disabled selected>Seleccione un Profesor</option>
                 @foreach($profesor as $itemprof)
                 <option value="{{$itemprof['idprofesor']}}">{{$itemprof['profesor']}}</option>
@@ -123,7 +132,7 @@
   <div class="col-1"></div>
 <div class="  col-3 text-center">
     <label for="">NIVELES</label>
-        <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;">
+        <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;" required>
           <option value="" disabled selected>Seleccione un Nivel</option>
             @foreach($nivel as $itemnivel)
             <option value="{{$itemnivel['idnivel']}}">{{$itemnivel['nivel']}}</option>
