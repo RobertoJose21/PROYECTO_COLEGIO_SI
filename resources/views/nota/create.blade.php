@@ -24,7 +24,7 @@
                 <select class="form-control   " name="idalumno" id="idalumno" style="border-radius: 40px;">
                     <option value="" disabled selected>Seleccione un Alumno</option> 
                     @foreach($alumno as $itemalumno)
-                    <option value="{{$itemalumno['idalumno']}}">{{$itemalumno['nombres']}}, {{$itemalumno['apellidos']}}</option>
+                    <option value="{{$itemalumno->idalumno}}">{{$itemalumno->nombres}}, {{$itemalumno->apellidos}}</option>
                     @endforeach
                 </select>
           </div>
@@ -142,16 +142,19 @@
          var producto_select = '<option value="" disabled selected>Seleccione una Capacidad</option>';
          //matricula=document.getElementById('idmatricula').value;
          if(data3.length>=1){
+          idmatricula=document.getElementById('idmatricula').value;
            for (var i=0; i<data3.length;i++){
              var cont=0;
+             if(data1.length>=1){
                for(var x=0;x<data1.length;x++){
+                 if(data1[x].idmatricula==idmatricula){
                  if(data3[i].idcapacidad==data1[x].idcapacidad){cont=cont+1;}
-               }
+               }}}
              if(cont==0){
              producto_select+='<option value="'+data3[i].idcapacidad+'">'+data3[i].capacidad+'</option>';
            
            }
-         //  c=0;  }
+           c=0;  
                }
          }else
              producto_select+='<option value="" disabled selected>Ninguna Capacidad Encontrada</option>';
