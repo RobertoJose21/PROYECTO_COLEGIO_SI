@@ -87,6 +87,12 @@
   </style>
 
 <div class="container-fluid">
+  <div class="row"><div class="col">  <h3>LISTA DE ALUMNOS - REGISTRADOS</h3> </div></div>
+  <div class="row">
+    <div class="col-2">
+      <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+    </div> </div>
+
   @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
           <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
             {{ session('datos') }}
@@ -96,17 +102,17 @@
         </div>
   @endif
   
-  <h3 style="text-align: center;">LISTA DE ALUMNOS - REGISTRADOS</h3>
-  
-  <nav class="navbar navbar-light ">
-      <a href="{{route('alumno.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus mr-2"></i>Registrar Alumno</a><br>
-      <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-          <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor }}"style="border-radius: 40px;">
-          <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 20px;"><i class="fas fa-search mr-2"></i>Buscar</button>
-      </form>  <!--buscador por -->
 
-  </nav> 
-    
+<nav class="navbar navbar-light ">
+    <a href="{{route('alumno.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>&nbsp;Registrar Alumno</a><br>
+    <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
+        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor }}" style="border-radius: 40px;">
+         <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 20px;"><i class="fas fa-search"> </i>&nbsp;Buscar</button>
+    </form>  <!--buscador por -->
+
+</nav> 
+
+  <div class="row"><div class="col">
   <div class="table-responsive " style="border-radius: 12px;" >
     <table class="table" style="border-radius: 12px;" >
         <thead class="thead-dark">
@@ -132,7 +138,7 @@
                     <td style="text-align: center">{{$itemalumno->telefono}}</td>
                     <td style="text-align: center">{{$estadom}}</td>
                     <td class="menu" data-animation="to-left">  
-                      <a href="{{route('alumno.edit',$itemalumno->idalumno)}}"> 
+                      <a href="{{route('alumno.edit',$itemalumno->idalumno)}}" style="border-radius: 40px;"> 
                         <span><b>EDITAR</b></span>
                         <span>
                           <i class="fas fa-edit" aria-hidden="true"></i>
@@ -158,7 +164,7 @@
         </tbody>
     </table>  
 
-  </div>
+  </div></div></div>
   <div class="row">
     <div class="form">
       <div class="form-group">

@@ -32,6 +32,10 @@
         </a>
       </div>          
       
+    
+    
+   
+
       <div class="col-lg-4">
         <a class="portfolio-item" href="/alumno">
           <div class="caption">
@@ -44,18 +48,16 @@
         </a>
       </div>
     </div>
-    
-    <div class="row no-gutters">
-
      
-      <div class="col-lg-4">
-        <a class="portfolio-item" href="/catedra">
-          <div class="caption">
-            <div class="caption-content">
-              <div class="h2">CATEDRA</div>
-              <p class="mb-0">Registra Las Catedras</p>
-            </div>
+    <div class="row no-gutters">
+    <div class="col-lg-4">
+      <a class="portfolio-item" href="/catedra">
+        <div class="caption">
+          <div class="caption-content">
+            <div class="h2">CATEDRA</div>
+            <p class="mb-0">Registra Las Catedras</p>
           </div>
+        </div>
           <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
         </a>
       </div>
@@ -82,11 +84,7 @@
         </a>
       </div>
 
-  </div>
-   
  
-
-<div class="row no-gutters">
   <div class="col-lg-4">
     <a class="portfolio-item" href="/periodo">
       <div class="caption">
@@ -121,6 +119,22 @@
     </a>
   </div>
 </div>
- 
 
+<div class="row no-gutters">
+  
+   
+  <!-- 
+  <div class="col-lg-4">
+    <a class="portfolio-item" href="/periodo">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">PERIODOS</div>
+          <p class="mb-0">Registra aquí Un Nuevo Periodo</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
+  </div>-->
+</div>
+</div>
 @endsection

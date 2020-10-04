@@ -86,73 +86,88 @@
 </style>
 
 <div class="container-fluid ">
-    <div class="form-group">
+  @if(session('datos'))
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    {{session('datos')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
 
-      <div class="container">
-      <h3 class="text-center">LISTADO DE PERIODOS</h3>
-        <div class="col-12"> &nbsp;</div>
 
+<div class="row">
+  <div class="col-12" style="text-align: center">
+  <h1>LISTADO DE PERIODOS </h1> </div></div>
+  <div class="row">
+    <div class="col-2">
+      <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+    </div> </div>
+  <div class="form-group">
   
-    @if(session('datos'))
-      <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-        {{session('datos')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    @endif
+    
+<nav class="navbar navbar-light ">
+  <a href="{{route('periodo.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus" ></i>&nbsp;Registrar Periodo</a><br>
+  <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
+      <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar Periodo" aria-label="Buscar" value="{{ $buscarpor }}"style="border-radius: 40px;">
+       <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 20px;"><i class="fas fa-search"> </i>&nbsp;Buscar</button>
+  </form>  <!--buscador por -->
 
-    <nav class="navbar navbar-light ">
-      <a href="{{route('periodo.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>Registrar Periodo</a><br>
-      <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-          <input name="buscarpor" class="form-control mr-sm-2" style="border-radius: 40px;" type="search" placeholder="Buscar por Periodo" aria-label="Search" value="{{ $buscarpor }}">
-           <button class="btn btn-success my-2 my-sm-0" style="border-radius: 40px;" type="submit">Buscar <i class="fa fa-search"></i></button>
-      </form>  <!--buscador por -->
-  
-  </nav> 
-<br>
-  <div class="table-responsive"  style="border-radius: 12px;">
-    <table class="table" style="border-radius: 12px;">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col"style="text-align: center">ID PERIODO</th>
-        <th scope="col" style="text-align: center">PERIODO</th>
-        <th scope="col" style="text-align: center">EDITAR</th>
-        <th scope="col" style="text-align: center;" >ELIMINAR</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($periodo as $k)
-            <tr>
-                <td style="text-align: center">{{$k->idperiodo}}</td>
-                <td style="text-align: center">{{$k->periodo}}</td>
-                <td class="menu" data-animation="to-left">  
-                  <a href="{{route('periodo.edit',$k->idperiodo)}}"> 
-                    <span><b>EDITAR</b></span>
-                    <span>
-                      <i class="fas fa-edit" aria-hidden="true"></i>
-                    </span>
-                  </a> 
-                </td>
-                <td>
-                  <div class="form-group" style="text-align: center">
-                    <form class="submit-eliminar " action="{{action('PeriodoController@destroy', $k->idperiodo)}}" method="post">
-                       @csrf
-                       <input name="_method" type="hidden" value="DELETE">
-                       <button onclick="return confirm('Desea eliminar la Seccion?')"  style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">
-                        <i class="fas fa-trash" ></i>
-                        Eliminar
-                    </button>
-                     </form>
-                    </div>
-                </td>
-            </tr>   
-        @endforeach
-    </tbody>
-</table>  
-    <a href="/inicio" style="margin-left: 95%" class="btn btn-info btn-sm">
-      <i class="fas fa-backward"></i> Volver</a>
-    <div class="align-center" style="margin-left: 45%"><h5>{{$periodo->links()}}</h5></div>
+</nav> 
+
+    
+  </div>  <br>
+   <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive " style="border-radius: 12px;" >
+    <table class="table  table-bordred" style="border-radius: 12px;">
+        <thead class="thead-dark text-center">
+          <tr>
+            <th scope="col">Id Periodo</th>
+            <th scope="col">Periodo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Cambiar Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach($periodo as $k)
+                <tr>
+                    <td>{{$k->idperiodo}}</td>
+                    <td>{{$k->periodo}}</td>
+                    @if($k->estado==1)  <td>HABILITADO</td> 
+                    @else <td>DESHABILITADO</td>  @endif
+                    
+                    <td class="menu" data-animation="to-left">  
+                      <a href="{{route('periodo.edit',$k->idperiodo)}}" style="border-radius: 40px;"> 
+                        <span><b>EDITAR</b></span>
+                        <span>
+                          <i class="fas fa-edit" aria-hidden="true"></i>
+                        </span>
+                      </a> 
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <form class="submit-eliminar " action="{{action('PeriodoController@destroy', $k->idperiodo)}}" method="post">
+                           @csrf
+                           <input name="_method" type="hidden" value="DELETE">
+                           <button onclick="return confirm('Desea Cambiar el Estado?')" type="submit" class="btn btn-warning btn-sm" style="border-radius: 40px;">
+                            <i class="fas fa-trash" ></i>
+                            Cambiar
+                        </button>
+                         </form>
+                        </div>
+                    </td>
+
+                </tr>   
+            @endforeach
+        </tbody>
+    </table>  
+          </div>
+  </div></div></div>
+  <div class="row"><div class="col">
+      {{$periodo->links()}}    </div></div>
 </div>
 
 @endsection

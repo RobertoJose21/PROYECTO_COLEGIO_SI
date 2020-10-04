@@ -5,7 +5,6 @@ use App\Periodo;   //no olvidar poner esto
 use Illuminate\Http\Request;
 use DB;
 
-
 class PeriodoController extends Controller
 {
     /**
@@ -19,7 +18,7 @@ class PeriodoController extends Controller
     public function index( Request $request)  //voy a hacer una consulta por descripcion poer eso request    
     {
        $buscarpor=$request->get('buscarpor');
-       $periodo=Periodo::where('estado','=','1')->where('periodo','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);   //creo una variable categorias y llamo a todas con estado 1 y lo almacena
+       $periodo=Periodo::where('periodo','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);   //creo una variable categorias y llamo a todas con estado 1 y lo almacena
        return view('periodo.index',compact('periodo','buscarpor'));  
     }
 
@@ -48,6 +47,11 @@ class PeriodoController extends Controller
                 'periodo.required'=>'Ingrese periodo',
                 'periodo.max'=>'Máximo 4 caracteres para el periodo'
             ]);
+        $perioditos=DB::table('periodos')->get();
+        foreach($perioditos as $period){
+            if($period->periodo==$request->periodo){
+            return redirect()->route('periodo.create')->with('datos','Este Periodo Ya Existe...!');}
+            }
         $periodo=new Periodo();    //instanciamos nuestro modelo categoria
         $periodo->periodo=$request->periodo;  //designamos el valor de descripcion
         $periodo->estado='1';   //campo de descripcion
@@ -98,17 +102,18 @@ class PeriodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data=request()->validate([
-            'periodo'=>'required|max:4'
-        ],
-        [
-            'periodo.required'=>'Ingrese periodo',
-            'periodo.max'=>'Máximo 4 caracteres para el periodo'
-        ]);
+        $perioditos=DB::table('periodos')->get();
+        foreach($perioditos as $period){
+            if($period->periodo==$request->periodo){
+            return redirect()->route('periodo.edit',$id)->with('datos','Este Periodo Ya Existe...!');}
+            }
 
         $periodo=Periodo::findOrFail($id);
         $periodo->periodo=$request->periodo;
-        $periodo->estado='1';   //campo de descripcion
+        $periodo->estado=$request->estado;   //campo de descripcion
+        $periodo->save();
+        return redirect()->route('periodo.index')->with('datos','Registro Actualizado...!');
+      
 
         if((DB::table('periodos as p','p.estado','=','1')->where('p.periodo','=',$request->periodo))->count()>=1)
         {
@@ -139,8 +144,9 @@ class PeriodoController extends Controller
     public function destroy($id)
     {
         $periodo=Periodo::findOrFail($id);
-        $periodo->estado='0';
+        if($periodo->estado==1){$periodo->estado='0';}
+        else{ $periodo->estado='1';} 
         $periodo->save();
-        return redirect()->route('periodo.index')->with('datos','Registro Eliminado...!');
+        return redirect()->route('periodo.index')->with('datos','Estado Del Periodo Cambiado...!');
     }
 }

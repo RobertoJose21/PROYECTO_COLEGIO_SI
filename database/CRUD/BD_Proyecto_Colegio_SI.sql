@@ -67,15 +67,15 @@ insert into profesores values(null,'DIAZ VALDERRAMA ANA MARIA ','010103','1');
 CREATE TABLE periodos
 (
 	idperiodo            INT AUTO_INCREMENT ,
-	periodo              VARCHAR(50) NULL,
+	periodo              int NULL,
 	estado               CHAR(1) NOT NULL,
 	PRIMARY KEY (idperiodo)
 );
 
-insert periodos values(null,'2017',1);
-insert periodos values(null,'2018',1);
-insert periodos values(null,'2019',1);
-insert periodos values(null,'2020',1);
+insert periodos values(null,2017,1);
+insert periodos values(null,2018,1);
+insert periodos values(null,2019,1);
+insert periodos values(null,2020,1);
 
 
 CREATE TABLE departamentos

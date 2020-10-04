@@ -105,72 +105,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 <script >
-<<<<<<< HEAD
-     //para el combobox matricula
-     $(document).ready(function(){
-      $("#idalumno").change(function(){
-            var nivel = $(this).val();
-                $('#idmatricula').removeAttr('disabled');
-            $.get('../../matriculabyalumno/'+nivel, function(data){
-              console.log(data);
-                var producto_select = '<option value="" disabled selected>Seleccione una matricula</option>'
-                  for (var i=0; i<data.length;i++)
-                    producto_select+='<option value="'+data[i].idmatricula+'">'+data[i].fecha+'</option>';
-                  $("#idmatricula").html(producto_select);
-    
-            });
-          });
-          $("#idmatricula").change(function(){
-            var matricula = $(this).val();
-                $('#idcurso').removeAttr('disabled');
-            $.get('../../cursobymatricula/'+matricula, function(data){
-              console.log(data);
-                var producto_select = '<option value="" disabled selected>Seleccione un curso</option>'
-                  for (var i=0; i<data.length;i++)
-                    producto_select+='<option value="'+data[i].idcurso+'">'+data[i].curso+'</option>';
-                  $("#idcurso").html(producto_select);
-    
-            });
-          });
-
-          $("#idcurso").change(function(){
-              var curso = $(this).val();
-              $("#idcapacidad").removeAttr('disabled');
-       // $("#idprofesor").removeAttr('disabled');
-
-             $.get('../capacidadbycursos3/'+curso, function(data3){
-              console.log(data3);
-
-                    $.get('../capacidadbycursos2/'+curso, function(data1){
-                      console.log(data1);
-                    var producto_select = '<option value="" disabled selected>Seleccione una Capacidad</option>';
-                    //matricula=document.getElementById('idmatricula').value;
-                    if(data3.length>=1){
-                      for (var i=0; i<data3.length;i++){
-                        var cont=0;
-                          for(var x=0;x<data1.length;x++){
-                            if(data3[i].idcapacidad==data1[x].idcapacidad){cont=cont+1;}
-                          }
-                        if(cont==0){
-                        producto_select+='<option value="'+data3[i].idcapacidad+'">'+data3[i].capacidad+'</option>';
-                      
-                        }
-                    //  c=0;  }
-                          }
-                    }else
-                        producto_select+='<option value="" disabled selected>Ninguna Capacidad Encontrada</option>';
-                    $("#idcapacidad").html(producto_select);
-
-        });
-
-      });
-
-
-
-
-
-
-=======
   //para el combobox matricula
   $(document).ready(function(){
    $("#idalumno").change(function(){
@@ -227,7 +161,6 @@
          $("#idcapacidad").html(producto_select);
      });
    });
->>>>>>> master
 
 
    $.get('../profesorbycurso/'+curso, function(data){
