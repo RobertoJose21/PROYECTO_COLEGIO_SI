@@ -26,16 +26,13 @@ Route::Get('/gradobyniveles/{id}', 'NotaController@byGrado');
 Route::Get('/seccionesbygrados/{id}', 'NotaController@bySeccion');
 Route::Get('/cursosbygrados/{id}', 'NotaController@byCurso');
 Route::Get('/capacidadbycursos/{id}', 'NotaController@byCapacidad');
-Route::Get('/capacidadbycursos2/{id}', 'NotaController@byCapacidadNotas');
-Route::Get('/capacidadbycursos3/{id}', 'NotaController@byCapacidadNotas2');
 Route::Get('/profesorbycurso/{id}', 'NotaController@byprofesor');
 Route::Get('/notasbycapacidad/{id}', 'NotaController@byNotas');
 Route::Get('/matriculabyalumno/{id}', 'NotaController@byMatricula');
 Route::Get('/cursobymatricula/{id}', 'NotaController@byCursoM');
 Route::Get('/Minota/{id}', 'NotaController@MiNota');
-Route::Get('/seccionesbygradosValidado/{id}', 'SeccionController@bySeccion');
-Route::Get('/seccionbygrados/{id}', 'NotaController@bySeccionGrados');
-Route::Get('/seccionbygrados2/{id}', 'NotaController@bySeccionGrados2');
+Route::Get('/capacidadbycursos2/{id}', 'NotaController@byCapacidadNotas');
+Route::Get('/capacidadbycursos3/{id}', 'NotaController@byCapacidadNotas2');
 
 //rutas para la libreta y actualizar notas
 Route::get('/libretas','NotaController@libretas')->name('nota.libretas');
@@ -98,4 +95,3 @@ Route::get('/imprime/{idmatricula}/imprime','MatriculaController@show')->name('i
 
 //grafico
 Route::get('grafico','GraficoController@graficoMatricula')->name('graficoMatricula');
-

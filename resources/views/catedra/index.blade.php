@@ -87,7 +87,12 @@
   </style>
 
 <div class="container-fluid">
-  <h3>LISTA DE CATEDRAS - REGISTRADAS</h3>
+  <div class="row">
+    <div class="col-2">
+      <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+    </div>
+    <div class="col-10">
+  <h3>LISTA DE CATEDRAS - REGISTRADAS</h3></div></div>
 
   @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
           <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
@@ -101,15 +106,20 @@
   
 
 <nav class="navbar navbar-light ">
-    <a href="{{route('catedra.create')}}" class="btn btn-success"><i class="fas fa-plus"></i>Registrar Catedras</a><br>
+  
+    <a href="{{route('catedra.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>&nbsp;Registrar Catedras</a><br>
     <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Profesores" aria-label="Search" value="{{ $buscarpor }}">
-         <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+        <input name="buscarpor" class="form-control mr-sm-2" type="search" style="border-radius: 40px;" placeholder="Buscar por Profesores" aria-label="Search" value="{{ $buscarpor }}">
+         <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 40px;"> <i class="fas fa-search"> </i>&nbsp;Buscar</button>
     </form>  <!--buscador por -->
 
 </nav> 
  <!--   esta es la vistasa de la catedra xd-->
-  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+
+      
   <div class="table-responsive " style="border-radius: 12px;" >
     <table class="table" style="border-radius: 12px;" >
         <thead class="thead-dark">
@@ -121,8 +131,8 @@
             <th scope="col">NIVEL</th>
             <th scope="col">ID PROFESOR</th>
             <th scope="col">PROFESOR</th>
-            <th scope="col" style="text-align: center">EDITAR</th>
-            <th scope="col" style="text-align: center" > ELIMINAR</th>
+            <th scope="col" style="text-align: center"  >EDITAR</th>
+            <th scope="col" style="text-align: center"   > ELIMINAR</th>
             
           </tr>
         </thead>
@@ -137,7 +147,7 @@
                     <td>{{$itemcat->idprofesor}}</td>
                     <td>{{$itemcat->profesor}}</td>
                     <td class="menu" data-animation="to-left">  
-                      <a href="{{route('catedra.edit',$itemcat->id)}}"> 
+                      <a href="{{route('catedra.edit',$itemcat->id)}}" style="border-radius: 40px;"> 
                         <span><b>EDITAR</b></span>
                         <span>
                           <i class="fas fa-edit" aria-hidden="true"></i>
@@ -148,8 +158,8 @@
                       <div class="form-group">
                         <form class="submit-eliminar " action="{{action('Detalle_CatedraController@destroy', $itemcat->id)}}" method="post">
                            @csrf
-                           <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea eliminar esta Catedra?')" type="submit" class="btn btn-danger btn-sm">
+                           <input name="_method" type="hidden" value="DELETE" >
+                           <button onclick="return confirm('Desea eliminar esta Catedra?')" type="submit" class="btn btn-danger btn-sm" style="border-radius: 40px;">
                             <i class="fas fa-trash"></i>
                             Eliminar
                         </button>
@@ -162,8 +172,10 @@
           
         </tbody>
     </table>  
-
   </div>
+</div>
+  </div>
+</div>
   <div class="row">
     <div class="align-center" style="margin-left: 45%"><h5>{{$catedras->links()}}</h5></div>
   </div>

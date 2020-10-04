@@ -13,11 +13,11 @@
                      
                         <div class="from-group col-md-6">
                             <h5  style="text-align: center">Profesor</h5>
-                            <input type="text" class="form-control" name="profesor" id="profesor" required> 
+                            <input type="text" class="form-control" name="profesor" id="profesor" style="border-radius: 40px;" required> 
                         </div>
                         <div class="from-group col-md-6">
                             <h5 style="text-align: center">Código del Profesor</h5>
-                                <input type="number" class="form-control" name="codigoprofesor" id="codigoprofesor" required> 
+                                <input type="number" min="1" class="form-control" name="codigoprofesor" id="codigoprofesor" style="border-radius: 40px;" required> 
                         </div>
                 </div>
                 <div class="row">
@@ -28,8 +28,8 @@
                   <div class="row">
                         <div class="col-md-5">&nbsp;</div> 
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary" ><i class="fas fa-save"></i>Guardar</button>
-                            <a href="{{route('cancelarProfesor')}}" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+                            <button type="submit" class="btn btn-primary" ><i class="fas fa-save mr-2"></i>Guardar</button>
+                            <a href="{{route('cancelarProfesor')}}" class="btn btn-danger ml-4"> <i class="fas fa-ban mr-1"></i> Cancelar</a>
                         </div>
                         <div class="col-md-3">&nbsp;</div> 
                   </div>

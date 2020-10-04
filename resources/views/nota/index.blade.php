@@ -97,13 +97,36 @@ table tr:hover {
               </button>
         </div>
       @endif
-     
+     <div class="row" style="text-align: center"><div class="col-12"><h5> OPCIONES PARA TRABAJAR CON LAS NOTAS</h5></div></div>
+        
 
+      <div class="row" >
+        <div class="col-2">
+          <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+        </div>
+        <div class="col-3"style="text-align: right">
+          <a type="button" href="{{route('nota.create')}}" class="btn btn-success " style="border-radius: 40px;"   ><i class="fas fa-plus"></i>&nbsp;Agregar Nota</a><br>
+      
+        </div>
+        <div class="col-2" style="text-align: center">
+          
+          <a href="{{route('nota.libretas')}}" class="btn btn-success" style="border-radius: 40px;" ><i class="fas fa-graduation-cap"></i>&nbsp;Ver Libretas</a>
+        </div>
+      
+        <div class="col-5"style="text-align: left">
+          
+          <a href="{{route('nota.registros')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fa fa-book"></i>&nbsp;Ver Registros de Notas</a>
+        </div>
+      </div>
+      <br><br>
+
+      <div class="row" style="text-align: center"><div class="col-12"><h5>PARA VER LAS NOTAS DE UNA CAPACIDAD SELECCIONE UN PERIODO Y LAS DEMAS OPCIONES</h5></div></div>
+    <div class="container-fluid">
   <div class="row">
 
     <div class="  col-3 text-center">
-      <label for="">PERIODO</label>
-          <select class="form-control" name="idperiodo" id="idperiodo" style="border-radius: 40px;">
+      <label for=""  >PERIODO</label>
+          <select class="form-control text-black" name="idperiodo" id="idperiodo" style="border-radius: 40px;">
               @foreach($periodo as $itemperiodo)
               <option value="{{$itemperiodo['idperiodo']}}">{{$itemperiodo['periodo']}}</option>
               @endforeach
@@ -112,7 +135,7 @@ table tr:hover {
 
       <div class="  col-3 text-center">
         <label for="">NIVELES</label>
-            <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;">
+            <select class="form-control text-black" name="idnivel" id="idnivel" style="border-radius: 40px;">
               <option value="" disabled selected>Seleccione un Nivel</option>
                 @foreach($nivel as $itemnivel)
                 <option value="{{$itemnivel['idnivel']}}">{{$itemnivel['nivel']}}</option>
@@ -121,7 +144,7 @@ table tr:hover {
       </div>
       
 
-      <div class=" col-4 text-center">
+      <div class=" col-3 text-center">
         <label for="">GRADOS</label>
              
               <select  name="idgrado" id="idgrado"  class="form-control" style="border-radius: 40px;" disabled required>
@@ -130,7 +153,7 @@ table tr:hover {
             
       </div>  
        
-      <div class="   col-2 text-center">
+      <div class="   col-3 text-center">
         <label for="">SECCIONES</label>
             <select class="form-control" name="idseccion" id="idseccion" style="border-radius: 40px;" disabled required>
               <option value="" selected>Seleccione una Seccion</option> 
@@ -161,55 +184,42 @@ table tr:hover {
 </div><br>
  
  
-<div class="row">
-  <div class="col-4">
-    <a type="button" href="{{route('nota.create')}}" class="btn btn-success " style="text-align: left" ><i class="fas fa-plus"></i>_Agregar Nota</a><br>
-
-  </div>
-  <div class="col-4">
-    
-    <a href="{{route('nota.libretas')}}" class="btn btn-success" ><i class="fas fa-graduation-cap"></i>_Ver Libretas</a>
-  </div>
-
-  <div class="col-4">
-    
-    <a href="{{route('nota.registros')}}" class="btn btn-success" ><i class="fa fa-book"></i>_Ver Registros de Notas</a>
-  </div>
 </div>
   <!--  todo completo no mover nada---si funciona tu proyecto no le muevas-->
  
 <div class="modal fade" id="modal_editar" role="dialog">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div class="modal-header" style="text-align: right">
+             
               
-              <h3 class="modal-title text-black">Modificar Nota</h3>
+              <h3 class="modal-title text-black" style="text-align: center"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Modificar Nota</h3>
+              <button type="button"  class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
 
                 <div class="form-group">
-                <form method="post" action="{{route('nota.store')}}">
+                <form method="post" action="{{route('nota.actualizar')}}">
         
                   @csrf
                   <div class="form-row">
                       
                     <div class="  col col-xs-1 text-center">
                       <label for="id" class="text-black">ID</label>
-                  <input type="number"  class="form-control text-success"   id="idnota" name="idnota"      >
+                  <input type="number" style="border-radius: 40px;" class="form-control text-success"   id="idnota" name="idnota" readonly required     >
                   </div>
                       
                       <div class="  col-md-3 text-center">
                           <label for="id" class="text-black">NOTA 1 :</label>
-                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota1" name="nota1"   >
+                      <input type="number" min="0" max="20" step="0.1" style="border-radius: 40px;" class="form-control text-danger"   id="editarnota1" name="nota1"  required >
                       </div>
                       <div class="  col-md-3 text-center">
                           <label for="id" class="text-black">NOTA 2 :</label>
-                          <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"   id="editarnota2" name="nota2"  >
+                          <input type="number" min="0" max="20" step="0.1" style="border-radius: 40px;" class="form-control text-danger"   id="editarnota2" name="nota2"  required>
                       </div>
                       <div class="  col-md-3 text-center">
                           <label for="id" class="text-black">NOTA 3 :</label>
-                      <input type="number" min="0" max="20" step="0.1" class="form-control text-danger"  id="editarnota3" name="nota3"  >
+                      <input type="number" min="0" max="20" step="0.1"  style="border-radius: 40px;" class="form-control text-danger"  id="editarnota3" name="nota3" required>
                       </div>
                   
                     
@@ -219,10 +229,11 @@ table tr:hover {
                   
                   </div>
               
-                
-                  <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> GRABAR</button><!--no hace nada-->
-                  <button type="button" class="btn btn-warning" data-dismiss="modal">CANCELAR</button>
-              </form>
+              <div class="row" style="text-align: center"><div class="col col-xs-12" style="text-align: center"> 
+                  <button type="submit" style="border-radius: 40px;" class="btn btn-primary"><i class="fas fa-save"></i> GRABAR</button><!--no hace nada-->
+                  <button type="button" style="border-radius: 40px;" class="btn btn-warning" data-dismiss="modal"> <i class="fas fa-window-close" ></i> CANCELAR</button>
+                </div></div>
+                </form>
               </div>
               </div>
           <div class="modal-footer">
@@ -235,6 +246,7 @@ table tr:hover {
 
  
 <!--  para la tabla donde se va mostrar los alumnos y las notas -->
+<div class="container-fluid">
 <div class="row">
   <div class="col-12">
     <h3 class="text-center">LISTADO DE NOTAS</h3>
@@ -252,7 +264,7 @@ table tr:hover {
           <th scope="col">PROMEDIO</th>
           <th scope="col">EDITAR NOTAS</th>
         </thead>
-        <tbody> 
+        <tbody style="text-align: center"> 
          
        </tbody> 
      </table>
@@ -261,7 +273,7 @@ table tr:hover {
   </div>
 </div>
 <div class="row">
-  
+</div> 
 </div>
 </div>
 
@@ -374,7 +386,7 @@ var c=0;
              for (var i=0; i<data.length;i++){
                 if(periodo==data[i].idperiodo){
                 c=i;
-                fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary  btn-lg" href="#" onclick="Editar('+data[i].idnota+');" >Editar</a></td></tr>';
+                fila='<tr id="fila'+i+'"><td >'+data[i].idnota+'</td><td >'+data[i].nombres +' , '+ data[i].apellidos+'</td><td >'+data[i].nota1+'</td><td>'+data[i].nota2+'</td><td>'+data[i].nota3+'</td><td>'+data[i].promedio+'</td> <td><a class="btn btn-primary   btn-md" href="#" onclick="Editar('+data[i].idnota+');" style="border-radius: 40px;" > <i class="fas fa-edit" ></i> Editar</a></td></tr>';
  
             	  $('#tabla1').append(fila);}
 

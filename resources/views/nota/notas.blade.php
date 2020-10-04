@@ -20,7 +20,7 @@
             <table class="table"  style="margin-left: 30px;">
                 <tbody>
                     <tr>
-                        <td colspan="1" style=" border: inset 0pt"><h3 class="text-center"> <b>FICHA DE MATRICULA  </b>  </h3></td>
+                        <td colspan="1" style=" border: inset 0pt"><h3 class="text-center"> <b>LIBRETA DE NOTAS </b>  </h3></td>
                     </tr>
                     <tr>
                         <td style=" border: inset 0pt">NUMERO DE MATRICULA : {{$matricula->idmatricula}}</td>

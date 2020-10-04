@@ -88,9 +88,9 @@
   </style>
 
 <div class="container-fluid">
-
+<div class="row"><div class="col">
    <h3>ASIGNAR UNA NUEVA CATEDRA</h3>
-
+  </div></div>
    @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
      {{ session('datos') }}
@@ -120,6 +120,7 @@
     
 
 <div class="row  " style="text-align: center">
+  <div class="col-1"></div>
 <div class="  col-3 text-center">
     <label for="">NIVELES</label>
         <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;">
@@ -148,25 +149,42 @@
           
         </select>
     </div>
-
+<div class="col-1"></div>
 </div>
 <br><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">LISTADO DE NOTAS</h3>
+      <div class="col-12"> &nbsp;</div>
+       
+      <div class="table-responsive " style="border-radius: 12px;" >
+        <table class="table  table-bordred" name="detalle" id="detalle"  >
+          <thead class="thead-dark text-center"  >
+            <th scope="col">ID CURSO </th>
+  
+            <th scope="col">CURSO</th>
+            <th scope="col">ACCION</th>
+           
+          </thead>
+          <tbody style="text-align: center"> 
+           
+         </tbody> 
+       </table>
+      </div>
+  
+    </div>
+  </div>
+  <div class="row">
+  </div> 
+  </div>
  
- 
-<div class="col-xs-12">
-    <table id="detalle" class="table table-condensed table-bordred">
-        <tr class="bg-danger ">
-            <td>Id Curso</td>
-            <td>Curso</td>
-            <td>Accion</td>
-        </tr>
-    </table>
-</div>
  
 </div>
 <br>
 <div class="row" style="text-align: center"><div class="col-12">
-    <input type="submit" value="Grabar" id="Grabar" class="btn btn-success" onclick="return confirm('Grabar ?')">&nbsp<a href="{{route('catedra.index')}}" class="btn btn-primary">Volver</a>
+  <button  type="submit" value="Grabar" id="Grabar" class="btn btn-success " onclick="return confirm('Grabar ?')"style="border-radius: 40px;"><i class="fas fa-save"> </i>&nbsp;Grabar</button>
+     &nbsp<a href="{{route('catedra.index')}}" class="btn btn-primary"style="border-radius: 40px;"> <i class="fas fa-window-close"> </i>&nbsp;Volver</a>
 	<br> 
     </div> </div>
 	

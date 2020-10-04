@@ -54,7 +54,7 @@ class NotaController extends Controller
             return view('nota.index',['alumno'=>$alumno,'matricula'=>$matricula,'capacidad'=>$capacidad,'nivel'=>$nivel,'profesores'=>$profesor,'nota'=>$notas,'buscarpor'=>$buscarpor,'grado'=>$grado,'seccion'=>$seccion,'periodo'=>$periodo,'curso'=>$curso]);
     }
 
-    public function libretas(Request $request){
+    public function libretas(Request $request){//las libretas de un alumno index
 
         $buscarpor=$request->get('buscarpor');
         $notas=DB::table('matriculas as m','m.estado','=','1')
@@ -67,7 +67,11 @@ class NotaController extends Controller
 
        public function libretaNotas($id){
         $matricula= Matricula::where('idmatricula','=',$id)->first();
-                            ////richard no borres mi funcion 
+                            ////richard no borres mi funcion :V
+
+                            //richex no borres mi parte x2 :V x3 x4 x5 x6
+
+                        
         $notita = DB::table('matriculas as m','m.estado','=','1')->where('m.idmatricula','=',$id)
         ->join('secciones as s','s.idseccion','=','m.idseccion')
         ->join('grados as g','g.idgrado','=','s.idgrado')
@@ -100,7 +104,6 @@ class NotaController extends Controller
      }
     
     public function registrosNotas(Request $request){
-        
         $buscarpor=$request->get('buscarpor');
         $notas=DB::table('secciones as s','s.estado','=','1')
         ->join('grados as g','g.idgrado','=','s.idgrado')
@@ -108,33 +111,40 @@ class NotaController extends Controller
         ->join('cursos as c','c.idgrado','=','g.idgrado')
         ->join('detalle_catedra as dc','dc.idcurso','=','c.idcurso')
         ->join('profesores as pro','pro.idprofesor','=','dc.idprofesor')
-        ->where('c.curso','like','%'.$buscarpor.'%')
-        ->select('pro.idprofesor','pro.profesor','c.idcurso','c.curso','ni.nivel','g.grado')->paginate($this::PAGINACION);
+        ->where('g.grado','like','%'.$buscarpor.'%')
+        ->select('pro.idprofesor','pro.profesor','c.idcurso','c.curso','ni.nivel','g.grado')->get();//paginate($this::PAGINACION);
         
-        return view('nota.registrosNotas',['nota'=>$notas,'buscarpor'=>$buscarpor]);
+        return view('nota.registrosNotas',['notas'=>$notas,'buscarpor'=>$buscarpor]);
     }
         
     
     public function reporteRegistroNotas($id){
         $curso=Curso::where('idcurso','=',$id)->first();
-        $matricula= Matricula::where('idmatricula','=',$id)->first();
-        $alumno=Matricula::where('idalumno','=',$id)->first();
-        $profesor=Detalle_Catedra::where('idprofesor','=',$id)->get();
-        
-        $notas=DB::table('matriculas as m','m.estado','=','1')
+       
+        $nota=DB::table('alumnos as a','a.estado','=','=','1')
+        ->join('matriculas as m','a.idalumno','=','m.idalumno')
+        ->join('notas as n','n.idmatricula','=','m.idmatricula')
         ->join('secciones as s','s.idseccion','=','m.idseccion')
         ->join('grados as g','g.idgrado','=','s.idgrado')
         ->join('cursos as c','c.idgrado','=','g.idgrado')
-        ->join('capacidades as ca','ca.idcurso','=','c.idcurso')
-        ->where('ca.idcurso','=',$id)
-        ->join('notas as n','n.idmatricula','=','m.idmatricula')
-        ->join('alumnos as a','a.idalumno','=','m.idalumno')
         ->where('c.idcurso','=',$id)
-        ->select('m.idmatricula','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
+        ->join('capacidades as ca','ca.idcapacidad','=','n.idcapacidad')
+        ->where('ca.idcurso','=',$id)
+        ->select('m.idmatricula','n.nota1','ca.capacidad','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
       
-     $pdf = \PDF::loadView('nota.registros', compact('profesor','alumno','notas','matricula','curso',))->setPaper('a4', 'portrait');
-      return $pdf->stream('registros.pdf');
-            
+        $alumno=DB::table('alumnos as a','a.estado','=','=','1')
+        ->join('matriculas as m','a.idalumno','=','m.idalumno')
+        ->join('notas as n','n.idmatricula','=','m.idmatricula')
+        ->join('secciones as s','s.idseccion','=','m.idseccion')
+        ->join('grados as g','g.idgrado','=','s.idgrado')
+        ->join('cursos as c','c.idgrado','=','g.idgrado')
+        ->where('c.idcurso','=',$id)
+        ->select('a.idalumno','a.nombres','a.apellidos','m.idmatricula','s.idseccion')->distinct()->get();
+      //  return $nota;
+   
+     $pdf = \PDF::loadView('nota.registros',['curso'=>$curso,'notas'=>$nota,'alumno'=>$alumno])->setPaper('a4', 'portrait');
+     return $pdf->stream('registros.pdf');
+ 
     }
     
 
@@ -154,15 +164,17 @@ class NotaController extends Controller
     public function byCapacidadNotas($id){
       
 
-    return DB::table('capacidades as c','c.estado','=','1')
-    ->where('c.idcurso','=',$id)
-    ->join('cursos as cu','cu.idcurso','=','c.idcurso')
-    ->where('cu.idcurso','=',$id)
-    ->join('grados as g','g.idgrado','=','cu.idgrado')
-    ->join('secciones as s','s.idgrado','=','g.idgrado')
-    ->join('notas as n','n.idcapacidad','=','c.idcapacidad')
-    ->select('n.idmatricula','c.idcapacidad','c.capacidad','c.idcurso')->get();
-    //['capNotas'=>$capNotas,'todCap'=>$todCap];
+        return DB::table('capacidades as c','c.estado','=','1')
+        ->where('c.idcurso','=',$id)
+        ->join('cursos as cu','cu.idcurso','=','c.idcurso')
+        ->where('cu.idcurso','=',$id)
+        ->join('grados as g','g.idgrado','=','cu.idgrado')
+        ->join('secciones as s','s.idgrado','=','g.idgrado')
+        ->join('notas as n','n.idcapacidad','=','c.idcapacidad')
+        ->join('matriculas as m','m.idmatricula','=','n.idmatricula')
+        ->join('alumnos as a','a.idalumno','=','m.idalumno')
+        ->select('n.idmatricula','c.idcapacidad','c.capacidad','c.idcurso','a.idalumno')->get();
+        //['capNotas'=>$capNotas,'todCap'=>$todCap];
 
     }
     public function byCapacidadNotas2($id){
@@ -185,10 +197,9 @@ class NotaController extends Controller
 
     public function byNotas($id){
 
-        /**/
+         
         return DB::table('notas as n','n.estado','=','1')
         ->join('matriculas as m','n.idmatricula','=','m.idmatricula')
-       // ->join('secciones as s','s.idseccion','=','%'.$seccion.'%')
         ->join('alumnos as a','m.idalumno','=','a.idalumno')
         ->where('n.idcapacidad','like',$id)
         ->select('m.idmatricula','m.idperiodo','n.nota1','n.idnota','n.nota2','n.nota3','n.promedio','a.idalumno','a.nombres','a.apellidos')->get();
@@ -216,9 +227,10 @@ class NotaController extends Controller
     public function create()
     {
         $capacidad=Capacidad::where('estado','=','1')->get();
-        //,$itemnota->idcapacidad
+         
         $matricula=Matricula::where('estado','=','1')->get();
-        $alumno=Alumno::where('estado','=','1')->get();   
+        //$alumno=Alumno::where('estado','=','1')->get();   
+        $alumno=DB::table('alumnos as a','a.estado','=','1')->join('matriculas as m','m.idalumno','=','a.idalumno')->get();
         $notas=Nota::where('estado','=','1')->get();      
         return view('nota.create',['notitas'=>$notas,'alumno'=>$alumno,'matricula'=>$matricula,'capacidad'=>$capacidad]);
     }

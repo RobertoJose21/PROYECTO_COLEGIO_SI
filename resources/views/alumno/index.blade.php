@@ -87,8 +87,6 @@
   </style>
 
 <div class="container-fluid">
-  <h3>LISTA DE ALUMNOS - REGISTRADOS</h3>
-
   @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
           <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
             {{ session('datos') }}
@@ -97,43 +95,42 @@
               </button>
         </div>
   @endif
-
   
-
-<nav class="navbar navbar-light ">
-    <a href="{{route('alumno.create')}}" class="btn btn-success"><i class="fas fa-plus"></i>Registrar Alumno</a><br>
-    <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
-        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor }}">
-         <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>  <!--buscador por -->
-
-</nav> 
-
+  <h3 style="text-align: center;">LISTA DE ALUMNOS - REGISTRADOS</h3>
   
+  <nav class="navbar navbar-light ">
+      <a href="{{route('alumno.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus mr-2"></i>Registrar Alumno</a><br>
+      <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
+          <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Apellidos" aria-label="Search" value="{{ $buscarpor }}"style="border-radius: 40px;">
+          <button class="btn btn-success my-2 my-sm-0" type="submit" style="border-radius: 20px;"><i class="fas fa-search mr-2"></i>Buscar</button>
+      </form>  <!--buscador por -->
+
+  </nav> 
+    
   <div class="table-responsive " style="border-radius: 12px;" >
     <table class="table" style="border-radius: 12px;" >
         <thead class="thead-dark">
           <tr>
-            <th scope="col">CODIGO_ALUMNO</th>
-            <th scope="col">APELLIDOS</th>
-            <th scope="col">NOMBRES</th>
-            <th scope="col">DIRECCION</th>
-            <th scope="col">TELEFONO</th>
-            <th scope="col">ESTADO</th>
+            <th scope="col" style="text-align: center">CODIGO_ALUMNO</th>
+            <th scope="col" style="text-align: center">APELLIDOS</th>
+            <th scope="col" style="text-align: center">NOMBRES</th>
+            <th scope="col" style="text-align: center">DIRECCION</th>
+            <th scope="col" style="text-align: center">TELEFONO</th>
+            <th scope="col" style="text-align: center">ESTADO</th>
             <th scope="col" style="text-align: center">EDITAR</th>
-            <th scope="col" style="text-align: center" > ELIMINAR</th>
+            <th scope="col" style="text-align: left" > ELIMINAR</th>
             
           </tr>
         </thead>
         <tbody>
             @foreach($alumno as $itemalumno)
                 <tr>
-                    <td>{{$itemalumno->codigoalumno}}</td>
-                    <td>{{$itemalumno->apellidos}}</td>
-                    <td>{{$itemalumno->nombres}}</td>
-                    <td>{{$itemalumno->direccion}}</td>
-                    <td>{{$itemalumno->telefono}}</td>
-                    <td>{{$estadom}}</td>
+                    <td style="text-align: center">{{$itemalumno->codigoalumno}}</td>
+                    <td style="text-align: center">{{$itemalumno->apellidos}}</td>
+                    <td style="text-align: center">{{$itemalumno->nombres}}</td>
+                    <td style="text-align: center">{{$itemalumno->direccion}}</td>
+                    <td style="text-align: center">{{$itemalumno->telefono}}</td>
+                    <td style="text-align: center">{{$estadom}}</td>
                     <td class="menu" data-animation="to-left">  
                       <a href="{{route('alumno.edit',$itemalumno->idalumno)}}"> 
                         <span><b>EDITAR</b></span>
@@ -144,11 +141,11 @@
                     </td>
                     <td>
                       <div class="form-group">
-                        <form class="submit-eliminar " action="{{action('AlumnoController@destroy', $itemalumno->idalumno)}}" method="post">
+                        <form class="submit-eliminar " action="{{action('AlumnoController@destroy', $itemalumno->idalumno)}}" method="post" >
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea eliminar el Alumno?')" type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i>
+                           <button onclick="return confirm('Desea eliminar el Alumno?')" type="submit" class="btn btn-danger btn-sm" style="border-radius: 40px;">
+                            <i class="fas fa-trash mr-2"></i>
                             Eliminar
                         </button>
                          </form>
@@ -163,7 +160,13 @@
 
   </div>
   <div class="row">
-    <div class="align-center" style="margin-left: 45%"><h5>{{$alumno->links()}}</h5></div>
+    <div class="form">
+      <div class="form-group">
+        <div class="col-12" style="text-align: left"> 
+          <button class=" btn btn-success"  type="menu" style="border-radius: 40px;"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left mr-2"> </i>Regresar</a> </button></div>
+      </div>
+    </div>
+    <div class="align-center" style="margin-left: 35%"><h5>{{$alumno->links()}}</h5></div>
   </div>
 </div>
 @endsection
