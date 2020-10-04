@@ -525,6 +525,7 @@ class ComposerStaticInitc6749fc8b48a52437a472305cb0e6b71
         'App\\Http\\Controllers\\AlumnoController' => __DIR__ . '/../..' . '/app/Http/Controllers/AlumnoController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CursoController' => __DIR__ . '/../..' . '/app/Http/Controllers/CursoController.php',
+        'App\\Http\\Controllers\\Detalle_CatedraController' => __DIR__ . '/../..' . '/app/Http/Controllers/Detalle_CatedraController.php',
         'App\\Http\\Controllers\\GradoController' => __DIR__ . '/../..' . '/app/Http/Controllers/GradoController.php',
         'App\\Http\\Controllers\\GraficoController' => __DIR__ . '/../..' . '/app/Http/Controllers/GraficoController.php',
         'App\\Http\\Controllers\\MatriculaController' => __DIR__ . '/../..' . '/app/Http/Controllers/MatriculaController.php',

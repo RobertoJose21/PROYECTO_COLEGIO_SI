@@ -58,9 +58,9 @@
             <p class="mb-0">Registra Las Catedras</p>
           </div>
         </div>
-        <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
-      </a>
-    </div>
+          <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+        </a>
+      </div>
 
  
   <div class="col-lg-4">
@@ -86,8 +86,22 @@
     </a>
   </div>
 </div>
- 
+
 <div class="row no-gutters">
+  <div class="col-lg-4">
+    <a class="portfolio-item" href="/periodo">
+      <div class="caption">
+        <div class="caption-content">
+          <div class="h2">PERIODO</div>
+          <p class="mb-0">Registra aquí los Periodos</p>
+        </div>
+      </div>
+      <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
+    </a>
+  </div>
+  
+   
+  <!-- 
   <div class="col-lg-4">
     <a class="portfolio-item" href="/periodo">
       <div class="caption">
@@ -98,7 +112,7 @@
       </div>
       <img class="img-fluid" src="/img/colegiofondo01.jpg" alt="">
     </a>
-  </div>
+  </div>-->
 </div>
 </div>
 @endsection

@@ -140,7 +140,7 @@
       <div class=" col-3 text-center">
         <label for="">GRADOS</label>
              
-              <select  name="idgrado" id="idgrado"  class="form-control" style="border-radius: 40px;" disabled required>
+              <select  name="idgrado" id="idgrado"  class="form-control" style="border-radius: 40px;" readonly  required>
                 <option value="{{$catedra->curso->grado->idgrado}}" selected>{{$catedra->curso->grado->grado}}</option>
             </select>
             
@@ -149,7 +149,7 @@
       
     <div class="  col-4 text-center">
         <label for="">CURSO</label>
-            <select class="form-control" name="idcurso" id="idcurso" style="border-radius: 40px;"  disabled required>
+            <select class="form-control" name="idcurso" id="idcurso" style="border-radius: 40px;" readonly   required>
               <option value="{{$catedra->curso->idcurso}}" selected>{{$catedra->curso->curso}}</option> 
               
             </select>
@@ -191,7 +191,7 @@
         $(document).ready(function(){
           $("#idnivel").change(function(){
             var nivel = $(this).val();
-                $('#idgrado').removeAttr('disabled');
+                $('#idgrado').removeAttr('readonly');
             $.get('../../../gradobyniveles/'+nivel, function(data){
               console.log(data);
                 var producto_select = '<option value="" disabled selected>Seleccione un Grado</option>'
@@ -205,7 +205,7 @@
           //para el combobox seccion
           $("#idgrado").change(function(){
             var grado = $(this).val();
-            $("#idcurso").removeAttr('disabled');
+            $("#idcurso").removeAttr('readonly');
             $.get('../../../cursosbygrados/'+grado, function(data){
               console.log(data);
                 var producto_select = '<option value="" disabled selected>Seleccione un Curso</option>';

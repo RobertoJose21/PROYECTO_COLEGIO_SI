@@ -13,7 +13,7 @@ class PeriodoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    CONST PAGINACION=10;  //numero de filas en la tabla para que apse a las siguiente
+    CONST PAGINACION=4;  //numero de filas en la tabla para que apse a las siguiente
 
     public function index( Request $request)  //voy a hacer una consulta por descripcion poer eso request    
     {
@@ -55,8 +55,19 @@ class PeriodoController extends Controller
         $periodo=new Periodo();    //instanciamos nuestro modelo categoria
         $periodo->periodo=$request->periodo;  //designamos el valor de descripcion
         $periodo->estado='1';   //campo de descripcion
-        $periodo->save();       
-        return redirect()->route('periodo.index')->with('datos','Registro Nuevo Guardado...!'); //devolvemos los datos q usara el index
+
+
+        if((DB::table('periodos as p','p.estado','=','1')->where('p.periodo','=',$request->periodo))->count()>=1)
+                {
+                    return redirect()->route('periodo.create')->with('datos','Este Periodo ya esta registrado...!');
+                }
+                
+                else
+                {
+                  $periodo->save();     
+                  return redirect()->route('periodo.index')->with('datos','Registro Nuevo Guardado...!'); 
+
+                 }
     }
 
     /**
@@ -102,6 +113,20 @@ class PeriodoController extends Controller
         $periodo->estado=$request->estado;   //campo de descripcion
         $periodo->save();
         return redirect()->route('periodo.index')->with('datos','Registro Actualizado...!');
+      
+
+        if((DB::table('periodos as p','p.estado','=','1')->where('p.periodo','=',$request->periodo))->count()>=1)
+        {
+            return redirect()->route('periodo.create')->with('datos','Este Periodo ya esta registrado...!');
+        }
+        
+        else
+        {
+          $periodo->save();     
+          return redirect()->route('periodo.index')->with('datos','Registro Actualizado...!'); 
+
+         }
+       
     }
 
 

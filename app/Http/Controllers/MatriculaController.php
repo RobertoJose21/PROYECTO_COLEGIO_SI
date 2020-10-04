@@ -25,7 +25,15 @@ class MatriculaController extends Controller
 
     {
         $buscarpor=$request->get('buscarpor');
-        $matricula=Matricula::where('estado','=','1')->where('fecha','like','%'.$buscarpor.'%')->paginate($this::PAGINATION);   
+        
+        $matricula=DB::table('matriculas as m')->join('alumnos as a','a.idalumno','=','m.idalumno')
+        ->join('periodos as p','p.idperiodo','=','m.idperiodo')
+        ->join('secciones as s','s.idseccion','=','m.idseccion')
+        ->join('grados as g','g.idgrado','=','s.idgrado')
+        ->join('niveles as n','n.idnivel','=','g.idnivel')
+        ->select('m.idmatricula','m.fecha','p.periodo','a.nombres','a.apellidos','n.nivel','g.grado','s.seccion') 
+        ->where('a.apellidos','LIKE','%'.$buscarpor.'%')
+        ->paginate($this::PAGINATION);
         return view('matricula.index',compact('matricula','buscarpor'));
     }
 

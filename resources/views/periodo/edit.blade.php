@@ -56,7 +56,7 @@
     <br>
     <div class="row" style="text-align: center"><div class="col-12">
       <button  type="submit" value="Grabar" id="Grabar" class="btn btn-success " onclick="return confirm('Grabar ?')"style="border-radius: 40px;"><i class="fas fa-save"> </i>&nbsp;Grabar</button>
-         &nbsp<a href="{{route('periodo.index')}}" class="btn btn-primary"style="border-radius: 40px;"> <i class="fas fa-window-close"> </i>&nbsp;Volver</a>
+         &nbsp;<a href="{{route('periodo.index')}}" class="btn btn-primary"style="border-radius: 40px;"> <i class="fas fa-window-close"> </i>&nbsp;Volver</a>
         <br> 
         </div> </div>
         

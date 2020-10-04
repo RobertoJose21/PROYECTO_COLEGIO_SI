@@ -77,8 +77,13 @@ Route::get('cancelarSeccion', function () {
     return redirect()->route('seccion.index')->with('datos','Accion cancelada..!');
 })->name('cancelarSeccion');  //le damos nombre a la ruta
 
+Route::get('cancelarPeriodo', function () {
+    return redirect()->route('periodo.index')->with('datos','Accion cancelada..!');
+})->name('cancelarPeriodo');  //le damos nombre a la ruta
+
 Route::get('/matricula/{numeromatricula}/confirmar', 'MatriculaController@confirmar')->name('matricula.confirmar');
 Route::get('/seccion/{idseccion}/confirmar', 'SeccionController@confirmar')->name('seccion.confirmar');
+Route::get('/periodo/{idperiodo}/confirmar', 'PeriodoController@confirmar')->name('periodo.confirmar');
 
 
 Route::Get('/gradobyniveles/{id}', 'MatriculaController@byGrado');

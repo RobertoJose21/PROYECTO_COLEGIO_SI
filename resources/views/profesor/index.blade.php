@@ -146,8 +146,8 @@
                         <form class="submit-eliminar " action="{{action('ProfesorController@destroy', $itemprofesor->idprofesor)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea eliminar el Profesor?')" type="submit" class="btn btn-danger btn-sm"  style="border-radius: 40px;">
-                            <i class="fas fa-trash" ></i>
+                           <button onclick="return confirm('Desea eliminar el Profesor?')" type="submit" class="btn btn-danger btn-sm" style="border-radius: 40px;">
+                            <i class="fas fa-trash mr-2" ></i>
                             Eliminar
                         </button>
                          </form>
@@ -163,7 +163,13 @@
   </div>
 </div></div>
   <div class="row">
-    <div class="align-center" style="margin-left: 45%"><h5>{{$profesor->links()}}</h5></div>
+    <div class="form">
+      <div class="form-group">
+        <div class="col-12" style="text-align: left"> 
+          <button class=" btn btn-success"  type="menu" style="border-radius: 40px;"><a class="text-white" href="../inicio" ><i class="fas fa-arrow-left mr-2"> </i>Regresar</a> </button></div>
+      </div>
+    </div>
+    <div class="align-center" style="margin-left: 35%;"><h5>{{$profesor->links()}}</h5></div>
   </div>
 </div>
 @endsection

@@ -87,7 +87,10 @@
   </style>
 <div class="container-fluid ">
   <div class="form-group">
-    <h1>LISTADO DE SECCIONES</h1>
+    
+    <div class="container">
+      <h3 class="text-center">LISTADO DE SECCIONES</h3>
+      <div class="col-12"> &nbsp;</div>
 
     @if(session('datos'))
       <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
@@ -102,28 +105,29 @@
       <a href="{{route('seccion.create')}}" class="btn btn-success"><i class="fas fa-plus"></i>Registrar Seccion</a><br>
       <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
           <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por Seccion" aria-label="Search" value="{{ $buscarpor }}">
-           <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+           <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar <i class="fa fa-search"></i></button>
       </form>  <!--buscador por -->
   
   </nav> 
 
       <br>
-    <table class="table">
+      <div class="table-responsive"  style="border-radius: 12px;">
+        <table class="table" style="border-radius: 12px;">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">ID SECCION</th>
-            <th scope="col">SECCION</th>
-            <th scope="col">GRADO</th>
+            <th scope="col"style="text-align: center">ID SECCION</th>
+            <th scope="col" style="text-align: center">SECCION</th>
+            <th scope="col" style="text-align: center">GRADO</th>
             <th scope="col" style="text-align: center;">EDITAR</th>
-            <th scope="col" style="text-align: left;" >ELIMINAR</th>
+            <th scope="col" style="text-align: center;" >ELIMINAR</th>
           </tr>
         </thead>
         <tbody>
             @foreach($seccion as $k)
                 <tr>
-                    <td>{{$k->idseccion}}</td>
-                    <td>{{$k->seccion}}</td>
-                    <td>{{$k->grado->grado}}</td>
+                    <td style="text-align: center">{{$k->idseccion}}</td>
+                    <td style="text-align: center">{{$k->seccion}}</td>
+                    <td style="text-align: center">{{$k->grado->grado}}</td>
                     <td class="menu" data-animation="to-left">  
                       <a href="{{route('seccion.edit',$k->idseccion)}}"> 
                         <span><b>EDITAR</b></span>
@@ -133,7 +137,7 @@
                       </a> 
                     </td>
                     <td>
-                      <div class="form-group">
+                      <div class="form-group" style="text-align: center">
                         <form class="submit-eliminar " action="{{action('SeccionController@destroy', $k->idseccion)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
@@ -148,7 +152,9 @@
             @endforeach
         </tbody>
     </table>  
-      {{$seccion->links()}}    
+    <a href="/inicio" style="margin-left: 95%" class="btn btn-info btn-sm">
+      <i class="fas fa-backward"></i> Volver</a>
+    <div class="align-center" style="margin-left: 45%"><h5>{{$seccion->links()}}</h5></div>
 </div>
 
 @endsection

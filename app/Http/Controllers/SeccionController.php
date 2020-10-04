@@ -15,12 +15,11 @@ class SeccionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    CONST PAGINACION=4;  //numero de filas en la tabla para que apse a las siguiente
+    CONST PAGINACION=6;  //numero de filas en la tabla para que apse a las siguiente
 
     public function index( Request $request)  //voy a hacer una consulta por descripcion poer eso request
     
     {
-
        $buscarpor=$request->get('buscarpor');
        $seccion=Seccion::where('estado','=','1')->where('seccion','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);  
        return view('seccion.index',compact('seccion','buscarpor'));  
@@ -52,9 +51,7 @@ class SeccionController extends Controller
                 'seccion.required'=>'Ingrese seccion ',
                 'seccion.max'=>'Máximo 1 caracter para seccion'
                 ]);
-                
-
-                
+      
                 $seccion=new Seccion();    //instanciamos nuestro modelo categoria
                 $seccion->seccion=$request->seccion;  //designamos el valor de descripcion
                 $seccion->idgrado=$request->idgrado;  //designamos el valor de descripcion
@@ -63,17 +60,15 @@ class SeccionController extends Controller
                 if((DB::table('secciones as s','s.estado','=','1')->where('s.seccion','=',$request->seccion))->where('s.idgrado','=',$request->idgrado)->count()>=1)
                 {
                     return redirect()->route('seccion.create')->with('datos','Esta Seccion ya esta asignado a ese grado...!');
-                }
-                
+                }            
                 else
                 {
                   $seccion->save();     
                   return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado...!'); 
-
                  }
-
     }
 
+   
     /**
      * Display the specified resource.
      *
@@ -132,6 +127,8 @@ class SeccionController extends Controller
                     return redirect()->route('seccion.index')->with('datos','Registro Actualizado...!');
                 }
     }
+
+    
 
 
     public function confirmar($id){

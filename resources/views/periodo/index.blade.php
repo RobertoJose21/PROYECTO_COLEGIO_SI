@@ -1,7 +1,7 @@
 @extends('layouts.plantilla')
 @section('contenido')
 <style>
-   :root {
+  :root {
     --body-bg-color: #1a1c1d;
     --hr-color: #26292a;
     --red: #e74c3c;
@@ -81,15 +81,10 @@
     background-color: #8ce1fd;
   }
   table tr:hover {
-    background-color: #E3E4E5;
-  }
-    table tbody {
-    background-color: #8ce1fd; 
-  }
-  table tr:hover {
-    background-color: #E3E4E5;
-  }
-  </style>
+    background-color: #E3E4E5;}
+
+</style>
+
 <div class="container-fluid ">
   @if(session('datos'))
   <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
