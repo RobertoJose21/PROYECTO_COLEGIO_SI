@@ -15,7 +15,7 @@ class SeccionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    CONST PAGINACION=4;  //numero de filas en la tabla para que apse a las siguiente
+    CONST PAGINACION=6;  //numero de filas en la tabla para que apse a las siguiente
 
     public function index( Request $request)  //voy a hacer una consulta por descripcion poer eso request
     
@@ -69,11 +69,11 @@ class SeccionController extends Controller
                 {
                   $seccion->save();     
                   return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado...!'); 
-
                  }
 
     }
 
+   
     /**
      * Display the specified resource.
      *
@@ -132,6 +132,8 @@ class SeccionController extends Controller
                     return redirect()->route('seccion.index')->with('datos','Registro Actualizado...!');
                 }
     }
+
+    
 
 
     public function confirmar($id){

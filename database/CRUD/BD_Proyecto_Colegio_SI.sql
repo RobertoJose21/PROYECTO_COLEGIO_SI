@@ -2425,8 +2425,7 @@ CREATE TABLE notas
 
 
 create procedure alumnosxgrados()
-select g.grado as grado,
-	 
+select g.grado as grado,	 
 	 count(m.idalumno) as cantidad
 	 from secciones s inner join matriculas m on s.idseccion=m.idseccion 
 	 inner join grados g on s.idgrado=g.idgrado
@@ -2436,6 +2435,15 @@ create procedure alumnosxperiodo()
 select p.periodo	as periodo,
 	   count(m.idalumno) as cantidad
 	   from periodos p inner join matriculas m on p.idperiodo=m.idperiodo
-	   group by p.idperiodo
+	   group by p.idperiodo;
+
+create procedure alumnosxnivel()
+select n.nivel	as nivel,
+	   count(m.idalumno) as cantidad
+	   from secciones s 
+	   inner join matriculas m on s.idseccion=m.idseccion 
+	   inner join grados g on s.idgrado=g.idgrado
+	   inner join niveles n on n.idnivel=g.idnivel
+	   group by n.nivel;
 
  

@@ -125,32 +125,32 @@
           });
 
           $("#idcurso").change(function(){
-        var curso = $(this).val();
-        $("#idcapacidad").removeAttr('disabled');
+              var curso = $(this).val();
+              $("#idcapacidad").removeAttr('disabled');
        // $("#idprofesor").removeAttr('disabled');
 
-       $.get('../capacidadbycursos3/'+curso, function(data3){
-          console.log(data3);
+             $.get('../capacidadbycursos3/'+curso, function(data3){
+              console.log(data3);
 
-        $.get('../capacidadbycursos2/'+curso, function(data1){
-          console.log(data1);
-            var producto_select = '<option value="" disabled selected>Seleccione una Capacidad</option>';
-            //matricula=document.getElementById('idmatricula').value;
-            if(data3.length>=1){
-              for (var i=0; i<data3.length;i++){
-                var cont=0;
-                  for(var x=0;x<data1.length;x++){
-                    if(data3[i].idcapacidad==data1[x].idcapacidad){cont=cont+1;}
-                  }
-                if(cont==0){
-                producto_select+='<option value="'+data3[i].idcapacidad+'">'+data3[i].capacidad+'</option>';
-              
-              }
-            //  c=0;  }
-                  }
-            }else
-                producto_select+='<option value="" disabled selected>Ninguna Capacidad Encontrada</option>';
-            $("#idcapacidad").html(producto_select);
+                    $.get('../capacidadbycursos2/'+curso, function(data1){
+                      console.log(data1);
+                    var producto_select = '<option value="" disabled selected>Seleccione una Capacidad</option>';
+                    //matricula=document.getElementById('idmatricula').value;
+                    if(data3.length>=1){
+                      for (var i=0; i<data3.length;i++){
+                        var cont=0;
+                          for(var x=0;x<data1.length;x++){
+                            if(data3[i].idcapacidad==data1[x].idcapacidad){cont=cont+1;}
+                          }
+                        if(cont==0){
+                        producto_select+='<option value="'+data3[i].idcapacidad+'">'+data3[i].capacidad+'</option>';
+                      
+                        }
+                    //  c=0;  }
+                          }
+                    }else
+                        producto_select+='<option value="" disabled selected>Ninguna Capacidad Encontrada</option>';
+                    $("#idcapacidad").html(producto_select);
 
         });
 

@@ -11,7 +11,8 @@ class GraficoController extends Controller
     {
         $registros=DB::select('call alumnosxgrados()');
         $registrosDos=DB::select('call alumnosxperiodo()');
-        return view('matricula.grafico',compact('registros','registrosDos'));
+        $registrosTres=DB::select('call alumnosxnivel()');
+        return view('matricula.grafico',compact('registros','registrosDos','registrosTres'));
     }
 
    

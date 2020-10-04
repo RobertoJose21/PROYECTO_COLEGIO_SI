@@ -1,13 +1,26 @@
 @extends('layouts.plantilla')
 
 @section('contenido')
+<style>
+
+  #outer {
+    width: 100%;
+    text-align: center;
+    }
+  
+    #inner {
+    display: inline-block;
+    width: 50%
+    }
+
+
+</style>
 
     <div class="container-fluid" >
-        <h1 style="text-align: center">Editar Seccion</h1>
+        <h1 style="text-align: center">Nuevo Periodo</h1>
         <div class="row">
             <div class="col-12">&nbsp;</div>
     </div>
-
 
     @if(session('datos'))  <!--Buscar una alerta en el caso q nuestro registro ha sido guardado o hemos cancelado-->
     <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
@@ -17,29 +30,22 @@
         </button>
   </div>
   @endif
-        <form method="POST"  action="{{route('seccion.update',$seccion->idseccion)}}" > <!--para que vaya a la ruta esa y luego vaya al controlador a llamar ee metodo-->
-            @method('put')
-             @csrf  
+  
+        <form method="POST"  action="{{route('periodo.store')}}" > <!--para que vaya a la ruta esa y luego vaya al controlador a llamar ee metodo-->
+            @csrf   
            
          <div class="form-row">
              
-            <div class="form-group col-md-6">
-                <label for="seccion">Seccion</label>
-            <input type="text" class="form-control @error('seccion') is-invalid @enderror" id="seccion" name="seccion" value="{{$seccion->seccion}}" style="border-radius: 40px;">
-               @error('seccion')
+            <div id="outer" class="form-group">
+                <label for="periodo" id="inner" >Periodo</label>
+                <input type="number" id="inner" class="form-control @error('periodo') is-invalid @enderror" id="periodo" name="periodo" min="0"  style="border-radius: 40px; width: 50%">
+               @error('periodo')
                    <span class="invalid-feedback" role="alert">
                         <strong>{{$message}}</strong>
                     </span>                  
                @enderror
            </div>
-           <div class="from-group col-md-6">
-            <label for="">Grados</label>
-                  <select class="form-control" name="idgrado" id="idgrado" style="border-radius: 40px;">
-                        @foreach($grado as $k)
-                          <option value="{{$k->idgrado}}"{{$k->idgrado==$seccion->idgrado ? 'selected':''}}>{{$k->grado}}</option>
-                        @endforeach
-                 </select>                           
-            </div>
+           
         </div>
         <div class="row">
                 <div class="col-12">&nbsp;</div>
@@ -50,9 +56,13 @@
                 <div class="col-md-5">&nbsp;</div> 
                 <div class="col-md-4">
                     <button type="submit" class="btn btn-primary" ><i class="fas fa-save"></i>Guardar</button>
-                    <a href="{{route('cancelarSeccion')}}" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+                    <a href="{{route('cancelarPeriodo')}}" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
                 </div>
+                <div class="col-md-3">&nbsp;</div> 
           </div>
+          <div class="row"><div class="col-12">&nbsp;</div></div>   
+          <div class="row"><div class="col-12">&nbsp;</div></div>
+          <div class="row"><div class="col-12">&nbsp;</div></div>   
           <div class="row"><div class="col-12">&nbsp;</div></div>   
         </form>
 </div>

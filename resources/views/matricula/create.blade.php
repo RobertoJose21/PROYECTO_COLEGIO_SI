@@ -3,8 +3,10 @@
 @section('contenido')
 
     <div class="contenido" >
-                <h1>Nueva Matricula</h1>
+                  <h3 class="text-center">NUEVA MATRICULA</h3>
+                    <div class="col-12"> &nbsp;</div>
                           <!--para lo que se toque-->
+
                 <form method="POST"  action="{{route('matricula.store')}}" > <!--para que vaya a la ruta esa y luego vaya al controlador a llamar ee metodo-->
                     @csrf   
                    
@@ -12,16 +14,16 @@
                      
                      <div class="from-group col-md-6">
                          <label for="">Alumno</label>
-                         <select class="form-control" name="idalumno" id="idalumno">
+                         <select class="form-control" name="idalumno" id="idalumno" style="border-radius: 40px;">
                              @foreach($alumno as $k)
-                             <option value="{{$k['idalumno']}}">{{$k['apellidos']}}</option>
+                             <option value="{{$k['idalumno']}}">{{$k['apellidos'].', '.$k['nombres']}}</option>
                              @endforeach
                             </select>
                             
                         </div>
                          <div class="form-group col-md-6">
                              <label for="fecha">fecha</label>
-                            <input type="date"  class="form-control"   id="fecha" name="fecha" >
+                            <input type="date"  class="form-control"   id="fecha" name="fecha" style="border-radius: 40px;" >
                                         
                          </div>
                 </div>
@@ -30,7 +32,7 @@
                    
                     <div class="from-group col-md-6">
                         <label for="">Niveles</label>
-                        <select class="form-control" name="idnivel" id="idnivel">
+                        <select class="form-control" name="idnivel" id="idnivel" style="border-radius: 40px;">
                             @foreach($nivel as $k)
                         <option value="{{$k['idnivel']}}" >{{$k->nivel}} </option>
                             @endforeach
@@ -50,7 +52,7 @@
                 <div class="form-row">        
                     <div class="from-group col-md-6">
                         <label for="">Seccion</label>
-                        <select class="form-control" name="idseccion" id="idseccion" disabled required>
+                        <select class="form-control" name="idseccion" id="idseccion" disabled required style="border-radius: 40px;">
                           <option value="" selected>Seleccione una Seccion</option>
                         </select>
                     </div>
@@ -66,10 +68,20 @@
                      </div>
      
                 </div>
-
-                    
-                    <button type="submit" class="btn btn-primary" ><i class="fas fa-save"></i>Grabar</button>
-                      <a href="{{route('cancelarMatricula')}}" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+              
+                        <div class="row"><div class="col-12">&nbsp;</div></div>
+                        <div class="row">
+                              <div class="col-md-5">&nbsp;</div> 
+                              <div class="col-md-4">
+                                  <button type="submit" class="btn btn-primary" ><i class="fas fa-save"></i>Guardar</button>
+                                  <a href="{{route('cancelarMatricula')}}" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+                              </div>
+                              <div class="col-md-3">&nbsp;</div> 
+                        </div>
+                        <div class="row"><div class="col-12">&nbsp;</div></div>   
+                        <div class="row"><div class="col-12">&nbsp;</div></div>
+                        <div class="row"><div class="col-12">&nbsp;</div></div>   
+                        <div class="row"><div class="col-12">&nbsp;</div></div>  
                 </form>
     </div>
 @endsection

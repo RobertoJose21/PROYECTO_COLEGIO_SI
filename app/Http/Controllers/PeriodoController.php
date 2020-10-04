@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 use App\Periodo;   //no olvidar poner esto
 use Illuminate\Http\Request;
+use DB;
 
 
-class NivelController extends Controller
+class PeriodoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +14,12 @@ class NivelController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    CONST PAGINACION=10;  //numero de filas en la tabla para que apse a las siguiente
+    CONST PAGINACION=4;  //numero de filas en la tabla para que apse a las siguiente
 
     public function index( Request $request)  //voy a hacer una consulta por descripcion poer eso request    
     {
        $buscarpor=$request->get('buscarpor');
-       $periodo=Nivel::where('estado','=','1')->where('periodo','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);   //creo una variable categorias y llamo a todas con estado 1 y lo almacena
+       $periodo=Periodo::where('estado','=','1')->where('periodo','like','%'.$buscarpor.'%')->paginate($this::PAGINACION);   //creo una variable categorias y llamo a todas con estado 1 y lo almacena
        return view('periodo.index',compact('periodo','buscarpor'));  
     }
 
@@ -47,11 +48,22 @@ class NivelController extends Controller
                 'periodo.required'=>'Ingrese periodo',
                 'periodo.max'=>'Máximo 4 caracteres para el periodo'
             ]);
-        $periodo=new Nivel();    //instanciamos nuestro modelo categoria
+        $periodo=new Periodo();    //instanciamos nuestro modelo categoria
         $periodo->periodo=$request->periodo;  //designamos el valor de descripcion
         $periodo->estado='1';   //campo de descripcion
-        $periodo->save();       
-        return redirect()->route('periodo.index')->with('datos','Registro Nuevo Guardado...!'); //devolvemos los datos q usara el index
+
+
+        if((DB::table('periodos as p','p.estado','=','1')->where('p.periodo','=',$request->periodo))->count()>=1)
+                {
+                    return redirect()->route('periodo.create')->with('datos','Este Periodo ya esta registrado...!');
+                }
+                
+                else
+                {
+                  $periodo->save();     
+                  return redirect()->route('periodo.index')->with('datos','Registro Nuevo Guardado...!'); 
+
+                 }
     }
 
     /**
@@ -97,8 +109,19 @@ class NivelController extends Controller
         $periodo=Periodo::findOrFail($id);
         $periodo->periodo=$request->periodo;
         $periodo->estado='1';   //campo de descripcion
-        $periodo->save();
-        return redirect()->route('periodo.index')->with('datos','Registro Actualizado...!');
+
+        if((DB::table('periodos as p','p.estado','=','1')->where('p.periodo','=',$request->periodo))->count()>=1)
+        {
+            return redirect()->route('periodo.create')->with('datos','Este Periodo ya esta registrado...!');
+        }
+        
+        else
+        {
+          $periodo->save();     
+          return redirect()->route('periodo.index')->with('datos','Registro Actualizado...!'); 
+
+         }
+       
     }
 
 
