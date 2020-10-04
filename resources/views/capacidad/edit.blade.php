@@ -18,13 +18,13 @@
   </div>
   @endif
   <form method="POST"  action="{{route('capacidad.update',$capacidad->idcapacidad)}}" > <!--para que vaya a la ruta esa y luego vaya al controlador a llamar ee metodo-->
-            @method('put')
-            @csrf  
+    @method('put')
+    @csrf  
             
             <div class="form-row">
               
               <div class="from-group col-md-6">
-               <label for="">Niveles</label>
+               <label for="idnivel">Niveles</label>
                <select name="idnivel" id="idnivel" class="form-control" required  style="border-radius: 40px;">
                    <option value="" disabled selected>Seleccione un Nivel (Nivel actual: {{$capacidad->curso->grado->nivel->nivel}})</option>
                    @foreach ( $nivel as $itemnivel)
@@ -36,7 +36,7 @@
               
               <div class="form-group col-md-6">
                   
-                   <label for="">Grados</label>
+                   <label for="idgrado">Grados</label>
                        <select class="form-control" name="idgrado" id="idgrado" style="border-radius: 40px;" disabled required>
                            <option value="" selected>Seleccione un Grado (Grado actual: {{$capacidad->curso->grado->grado}})</option>
               
@@ -51,15 +51,15 @@
               
               </div>
               
-              <div class="form-group col-md-6">
-            <label for="capacidad">Capacidad</label>
-          <input type="text" class="form-control @error('capacidad') is-invalid @enderror" id="capacidad" name="capacidad"  style="border-radius: 40px;" value="{{$capacidad->capacidad}}">
-            @error('capacidad')
-                <span class="invalid-feedback" role="alert">
-                     <strong>{{$message}}</strong>
-                 </span>                  
-            @enderror
-           </div>
+                    <div class="form-group col-md-6">
+                  <label for="capacidad">Capacidad</label>
+                <input type="text" class="form-control @error('capacidad') is-invalid @enderror" id="capacidad" name="capacidad"  style="border-radius: 40px;" value="{{$capacidad->capacidad}}">
+                  @error('capacidad')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{$message}}</strong>
+                      </span>                  
+                  @enderror
+                </div>
 
           
         </div>

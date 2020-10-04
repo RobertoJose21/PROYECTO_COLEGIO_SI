@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Capacidad;
 use App\Curso;
 use App\Grado;
-use App\Nivel;
 use Illuminate\Http\Request;
+use App\Nivel;
 use DB;
 
 
@@ -52,7 +52,7 @@ class CapacidadController extends Controller
         ],
         [
             'capacidad.required'=>'Ingrese capacidad ',
-            'capacidad.max'=>'Máximo 50 caracteres para la capacidad',
+            'capacidad.max'=>'Máximo 50 caracteres para la capacidad'
           
             ]);
   
@@ -61,9 +61,9 @@ class CapacidadController extends Controller
             $capacidad->idcurso=$request->idcurso;  //designamos el valor de descripcion
             $capacidad->estado='1';   //campo de descripcion
             
-            if((DB::table('capacidades as ca','ca.estado','=','1')->where('ca.capacidad','=',$request->capacidad))->where('ca.idcurso','=',$request->idcurso)->count()>=1)
+            if((DB::table('capacidades as ca','ca.estado','=','1')->where('ca.idcurso','=',$request->idcurso))->count()>=3)
             {
-                return redirect()->route('capacidad.create')->with('datos','Esta Capacidad ya esta asignado a ese curso...!');
+                return redirect()->route('capacidad.create')->with('datos','Este Curso ya tiene Tres capacidades...!');
             }            
             else
             {
@@ -121,16 +121,9 @@ class CapacidadController extends Controller
             $capacidad->capacidad=$request->capacidad;  //designamos el valor de descripcion
             $capacidad->idcurso=$request->idcurso;  //designamos el valor de descripcion
             $capacidad->estado='1';   //campo de descripcion
-            
-            if((DB::table('capacidades as ca','ca.estado','=','1')->where('ca.capacidad','=',$request->capacidad))->where('ca.idcurso','=',$request->idcurso)->count()>=1)
-            {
-                return redirect()->route('capacidad.edit')->with('datos','Esta Capacidad ya esta asignado a ese curso...!');
-            }            
-            else
-            {
-                $capacidad->save();     
-              return redirect()->route('capacidad.index')->with('datos','Registro Actualizado...!'); 
-             }
+            $capacidad->save();     
+            return redirect()->route('capacidad.index')->with('datos','Registro Actualizado...!'); 
+          
     }
 
     public function confirmar($id){

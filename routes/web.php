@@ -95,6 +95,7 @@ Route::get('/matricula/{numeromatricula}/confirmar', 'MatriculaController@confir
 Route::get('/seccion/{idseccion}/confirmar', 'SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('/periodo/{idperiodo}/confirmar', 'PeriodoController@confirmar')->name('periodo.confirmar');
 Route::get('/curso/{idcurso}/confirmar', 'CursoController@confirmar')->name('curso.confirmar');
+Route::get('/capacidad/{idcapacidad}/confirmar', 'CapacidadController@confirmar')->name('capacidad.confirmar');
 
 
 Route::Get('/gradobyniveles/{id}', 'MatriculaController@byGrado');

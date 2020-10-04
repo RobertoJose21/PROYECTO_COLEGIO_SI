@@ -40,8 +40,8 @@
             </div>
   
             <div class="from-group col-md-6">
-                <label for="">Cursos</label>
-                <select class="form-control" name="idcurso" id="idcurso" disabled required style="border-radius: 40px;">
+                <label for="idcurso">Cursos</label>
+                <select class="form-control" name="idcurso" id="idcurso"  required style="border-radius: 40px;">
                   <option value="" selected>Seleccione un Curso</option>
                 </select>
             </div>
@@ -52,20 +52,17 @@
                     <span class="invalid-feedback" role="alert">
                          <strong>{{$message}}</strong>
                      </span>                  
-                @enderror
+                @enderror              
            </div>
-                   
-             
-        </div>
 
-
+          
         </div>
-       
+        </div>      
           <div class="row"><div class="col-12">&nbsp;</div></div>
           <div class="row">
                 <div class="col-md-4">&nbsp;</div> 
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary" style="border-radius: 40px;"><i class="fas fa-save"></i>Guardar</button>
+                    <button type="submit" id="grabar" class="btn btn-primary" style="border-radius: 40px;" ><i class="fas fa-save"></i>Guardar</button>
                     <a href="{{route('cancelarCapacidad')}}" style="border-radius: 40px;" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
                 </div>
                 <div class="col-md-3">&nbsp;</div> 
@@ -110,5 +107,6 @@
         });
       });
     });
+
 
   </script>
