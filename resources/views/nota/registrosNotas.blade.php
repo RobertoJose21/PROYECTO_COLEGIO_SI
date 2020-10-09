@@ -112,7 +112,7 @@
              <th scope="col">NIVEL</th>
              <th scope="col">GRADO</th>
              
-            <th scope="col">LIBRETA</th>
+            <th scope="col">REGISTROS</th>
           </thead>
           <tbody> 
             @foreach($notas as $itemnota)  

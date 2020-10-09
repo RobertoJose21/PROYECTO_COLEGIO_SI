@@ -8,6 +8,11 @@ use App\Detalle_Catedra;
 use DB;
 class ProfesorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     const PAGINACION=5;
 
     public function index(Request $request)

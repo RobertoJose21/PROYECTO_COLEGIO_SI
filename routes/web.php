@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 //rutas pa el inicio
+/*
 Route::get('/', function () {    return view('index');});
-Route::post('/', 'UserController@login')->name('user.login');
+Route::post('/', 'UserController@login')->name('user.login');*/
+Route::post('/', 'UserController@login')->name('user.login'); 
 Route::get('/inicio', function () {    return view('inicio');});
-Route::get('/integrantes','UserController@integrantes')->name('user.integrantes');
-Route::resource('cuenta', 'UserController');
+//Route::get('/integrantes','UserController@integrantes')->name('user.integrantes');
+//Route::resource('cuenta', 'UserController');
 
 
 //rutas para los combobox dependientes de las notas
@@ -110,3 +112,14 @@ Route::get('/imprime/{idmatricula}/imprime','MatriculaController@show')->name('i
 
 //grafico
 Route::get('grafico','GraficoController@graficoMatricula')->name('graficoMatricula');
+
+//Autenticacion Laravel
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+

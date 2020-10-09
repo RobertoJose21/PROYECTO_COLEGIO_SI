@@ -13,6 +13,10 @@ use DB;
 
 class CapacidadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -116,15 +120,16 @@ class CapacidadController extends Controller
             'capacidad.max'=>'Máximo 50 caracteres para la capacidad',
           
             ]);
+   
+              $capacidad=Capacidad::findOrfail($id);    //instanciamos nuestro modelo categoria
+              $capacidad->capacidad=$request->capacidad;  //designamos el valor de descripcion
+              $capacidad->idcurso=$request->idcurso;  //designamos el valor de descripcion
+              $capacidad->estado='1';   //campo de descripcion
+              $capacidad->save();     
+              return redirect()->route('capacidad.index')->with('datos','Registro Actualizado...!'); 
   
-            $capacidad=Capacidad::findOrfail($id);    //instanciamos nuestro modelo categoria
-            $capacidad->capacidad=$request->capacidad;  //designamos el valor de descripcion
-            $capacidad->idcurso=$request->idcurso;  //designamos el valor de descripcion
-            $capacidad->estado='1';   //campo de descripcion
-            $capacidad->save();     
-            return redirect()->route('capacidad.index')->with('datos','Registro Actualizado...!'); 
-          
-    }
+              
+        }
 
     public function confirmar($id){
         $capacidad=Capacidad::find($id);

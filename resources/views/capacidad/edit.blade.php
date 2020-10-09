@@ -25,7 +25,7 @@
               
               <div class="from-group col-md-6">
                <label for="idnivel">Niveles</label>
-               <select name="idnivel" id="idnivel" class="form-control" required  style="border-radius: 40px;">
+               <select name="idnivel" id="idnivel" class="form-control"  required  style="border-radius: 40px;">
                    <option value="" disabled selected>Seleccione un Nivel (Nivel actual: {{$capacidad->curso->grado->nivel->nivel}})</option>
                    @foreach ( $nivel as $itemnivel)
                <option value="{{$itemnivel['idnivel']}}">{{$itemnivel['nivel']}}</option>

@@ -99,17 +99,31 @@
       </div>
       
       <div class="collapse navbar-collapse justify-content-end  " filter-color="black" id="navigation"  filter-color="black" >
-        <ul class="navbar-nav">
-        
-          
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Salir" data-placement="bottom" href="../" >
-                <img class="img-fluid" src="../../img/salir.png">
-                
-                
-            </a>
-          </li>
-        </ul>
+       <ul class="navbar-nav ml-auto">
+
+           
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="img-fluid" src="../../img/salir.png"> <br>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+            </li>
+
+          </ul>
       </div>
 
     </div>
@@ -209,7 +223,7 @@
         <script src="../../adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../../adminlte/dist/js/adminlte.min.js"></script>  
 
-
+        
 
 
 </body>

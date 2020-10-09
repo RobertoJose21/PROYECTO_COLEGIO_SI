@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class GraficoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function graficoMatricula()
     {
         $registros=DB::select('call alumnosxgrados()');
