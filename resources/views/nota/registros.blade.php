@@ -49,11 +49,16 @@
                         <td style=" border: inset 0pt"><b>PROFESOR:&nbsp;&nbsp; </b>{{ $profesor->profesor }} </td>
                     </tr>
                     <tr> <td><b> CAPACIDADES:</b></td></tr>
-                    <tr>
-                        <td> <b>C1 :</b> {{$notas[0]->capacidad}}</td> </tr>
-                        <tr><td> <b>{{' '}}C2 : &nbsp;&nbsp;</b> {{$notas[1]->capacidad}}</td> </tr>
-                        <tr><td> <b>{{' '}}C3 :&nbsp;&nbsp;</b> {{$notas[2]->capacidad}}</td></tr>
-                            
+                    @if($capacidades ->count()==1)  
+                      <tr> <td> <b>C1 :</b> {{$capacidades[0]->capacidad}}</td> </tr>
+                    @elseif($capacidades->count()==2)  
+                      <tr> <td> <b>C1 :</b> {{$capacidades[0]->capacidad}}</td> </tr>
+                      <tr><td> <b>{{' '}}C2 : &nbsp;&nbsp;</b> {{$capacidades[1]->capacidad}}</td> </tr>
+                    @elseif($capacidades->count()>=3)  
+                      <tr> <td> <b>{{' '}}C1 :&nbsp;&nbsp;</b> {{$capacidades[0]->capacidad}}</td> </tr>
+                      <tr><td> <b>{{' '}}C2 : &nbsp;&nbsp;</b> {{$capacidades[1]->capacidad}}</td> </tr>
+                      <tr><td> <b>{{' '}}C3 :&nbsp;&nbsp;</b> {{$capacidades[2]->capacidad}}</td></tr>
+                    @endif        
                     <tr>
                         <td style=" border: inset 0pt"><b>PC :&nbsp;&nbsp;</b> PROMEDIO DEL CURSO  </td>
                     </tr>  
@@ -124,13 +129,15 @@
         </tr>
     </thead>
     <tbody  style="text-align: center">
-        @foreach($alumno as $itemalumno)
+        @if($alumno ->count())  
+         @foreach($alumno as $itemalumno)
         @php
             $prom=0;
         @endphp
         <tr> 
         <td style="text-align: left"> {{$itemalumno->apellidos}},{{$itemalumno->nombres}} </td>
-            @foreach($notas as $itemnota)
+        @if($notas ->count())     
+        @foreach($notas as $itemnota)
             @if($itemalumno->idmatricula==$itemnota->idmatricula)
            @if($itemnota->nota1>=11) <td class="azul" style="border-color: black">{{$itemnota->nota1}} </td> @else  <td class="rojo" style="border-color: black"> {{$itemnota->nota1}} </td>     @endif
            @if($itemnota->nota2>=11) <td class="azul" style="border-color: black">{{$itemnota->nota2}} </td> @else  <td class="rojo" style="border-color: black"> {{$itemnota->nota2}} </td>     @endif
@@ -144,6 +151,7 @@
             @endif
             
             @endforeach
+            @endif
             @if($prom>=11) <td class="azul" style="border-color: black"> <b> {{round($prom/3) }} </b> </td>
             @else  <td class="rojo" style="border-color: black"> <b> {{round($prom/3) }} </b> </td>
             @endif
@@ -151,7 +159,11 @@
           
         </tr>
         @endforeach
-
+        @else
+        <tr>
+          <td colspan="14">No hay registros !!</td>
+        </tr>
+      @endif
     </tbody>
     </table>
        

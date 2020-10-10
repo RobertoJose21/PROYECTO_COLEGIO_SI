@@ -145,13 +145,16 @@ class NotaController extends Controller
         ->where('c.idcurso','=',$id)
         ->select('a.idalumno','a.nombres','a.apellidos','m.idmatricula','s.idseccion')->distinct()->get();
      
-        $profesor=DB::table('profesores as p','estado','=','1')
+        $profesor=DB::table('profesores as p','p.estado','=','1')
         ->join('detalle_catedra as dc','dc.idprofesor','=','p.idprofesor')
         ->where('dc.idcurso','=',$id)->first();
         $detalle_catedra=Detalle_Catedra::where('estado','=','1');
+        $capacidades=DB::table('cursos as c','c.estado','=','1')
+        ->join('capacidades as ca','ca.idcurso','=','c.idcurso')
+        ->where('c.idcurso','=',$id)->get();
         //return $curso;
    
-     $pdf = \PDF::loadView('nota.registros',['detalle_catedra'=>$detalle_catedra,'profesor'=>$profesor,'curso'=>$curso,'notas'=>$nota,'alumno'=>$alumno])->setPaper('a4', 'portrait');
+     $pdf = \PDF::loadView('nota.registros',['capacidades'=>$capacidades,'detalle_catedra'=>$detalle_catedra,'profesor'=>$profesor,'curso'=>$curso,'notas'=>$nota,'alumno'=>$alumno])->setPaper('a4', 'portrait');
      return $pdf->stream('registros.pdf');
  
     }
